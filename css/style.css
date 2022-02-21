@@ -101,6 +101,7 @@ header.header{
     left: 0;
     top: 0;
     width: 100%;
+    z-index: 99;
 }
 .header__company-logo{
     font-size: 1.8rem;
@@ -108,6 +109,9 @@ header.header{
     font-family: "OratorStd";
 
 }
+/* nav.header__nav{
+    z-index: 99;
+} */
 nav.header__nav ul{
     list-style: none;
     font-size: 1.6rem;
