@@ -1,0 +1,443 @@
+@font-face {
+    font-family: "OratorStd";
+    src: url("../webfonts/OratorStd.otf");
+}
+@font-face {
+    font-family: "capoonPersonalUseLight";
+    src: url("../webfonts/CapoonPersonalUseLight-2RYv.ttf");
+}
+@font-face {
+    font-family: "MyriadPro-Bold";
+    src: url("../webfonts/MyriadPro-Bold.otf");
+}
+@font-face {
+    font-family: "Hornbill-Personal";
+    src: url("../webfonts/Hornbill-Personal Use Bold.otf");
+    font-style: normal;
+    font-weight: bold;
+}
+@font-face {
+    font-family: "Hornbill-Personal";
+    src: url("../webfonts/Hornbill-Personal Use Italic.otf");
+    font-weight: normal;
+    font-style: italic;
+}
+:root{
+    --color-red: rgb(167 , 48 , 48);
+    --color-light-white: rgba(255, 255, 255, 0.7);
+}
+/* Resetting */
+html{
+    font-size: 62.5%;
+}
+a, a:link, a:active{
+    text-decoration: none;
+    color: inherit;
+}
+*,*::after, *::before{
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+body{
+    box-sizing: border-box;
+    background-image: url(../imgs/background.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: top;
+    min-height: 600rem;
+    line-height: 1.7;
+    background-color: #000;
+}
+.heading-secondary{
+    font-size: 5rem;
+    color: var(--color-light-white);
+    font-family: "MyriadPro-Bold";
+    text-transform: uppercase;
+}
+.red-badge{
+    color: var(--color-light-white);
+    background-color: var(--color-red);
+    font-size: 16px;
+    font-family: "Hornbill-Personal";
+    padding: 0 10px;
+    margin-bottom: 15px;
+    display: inline-block;
+
+}
+.marker {
+    position: relative;
+    line-height: 0.7;
+}
+.marker::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2.9%;
+    width: 100%;
+    height: 73%;
+    background: #973c4b;
+    z-index: -1;
+}
+.paragraph{
+    max-width: 400px;
+    font-size: 12px;
+    color: var(--color-light-white);
+    font-family: "Hornbill-Personal";
+    font-style: italic;
+}
+.fixed-pos{
+    position: absolute;
+    transform-origin: top left;
+}
+/* Start header styling */
+header.header{
+    color: #Fff;
+    padding: 2.7rem 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+.header__company-logo{
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    font-family: "OratorStd";
+
+}
+nav.header__nav ul{
+    list-style: none;
+    font-size: 1.6rem;
+    font-family: 'capoonPersonalUseLight';
+}
+nav.header__nav ul li{
+    display: inline-block;
+}
+nav.header__nav ul li:not(:last-child){
+    margin-right: 6rem;
+}
+nav.header__nav ul li a{
+    font-weight: 300;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
+    background-size: 250%;
+    transition: all .4s;
+    display: inline-block;
+    text-shadow: 1px 1px 5px rgb(0 0 0 / 90%);
+}
+nav.header__nav ul li a:hover,
+nav.header__nav ul li a:active {
+    background-position: 100%;
+    color: var(--color-red);
+    /* transform: translateY(-1rem); */
+    transform: scale(1.1);
+    text-shadow: none;
+}
+.header__checkbox {
+    display: none;
+}
+.header__button {
+    display: none;
+    background-color: #fff;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    top: 2.7rem;
+    right: 1.5rem;
+    border-radius: 50%;
+    z-index: 2000;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .1);
+    text-align: center;
+    cursor: pointer;
+}
+.header__button:hover .header__icon::before {
+    top: -1rem;
+}
+
+.header__button:hover .header__icon::after {
+    top: 1rem;
+}
+.header__icon{
+    display: none;
+    position: relative;
+    margin-top: 3.5rem;
+}
+.header__icon,
+.header__icon::after,
+.header__icon::before{
+    width: 3rem;
+    height: 2px;
+    background-color: var(--color-red);
+    display: inline-block;
+}
+.header__icon::after,
+.header__icon::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: all .2s;
+}
+.header__icon::after{
+    top: 0.8rem;
+}
+.header__icon::before{
+    top: -0.8rem;
+}
+.header__background{
+    display: none;
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient(rgb(167 , 48 , 48), rgb(233, 69, 69));
+    z-index: 1000;
+    transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+/* Big Desktop Media =>  *< 1800px */
+@media only screen and (min-width: 112.5em) {
+    html{
+        font-size: 75%; /* 12px */
+    }
+}
+/* Tablet (landscape) Media => 0 : 1200px */
+@media only screen and (max-width: 75em) {
+    html{
+        font-size: 56.25%; /* 9px */
+    }
+    nav.header__nav ul li:not(:last-child){
+        margin-right: 2rem;
+    }
+}
+/* Tablet Media => 0 : 900px */
+@media only screen and (max-width: 56.25em) {
+    html{
+        font-size: 50%; /* 8px */
+    }
+    .fixed-pos{
+        position: static;
+        margin-bottom: 5rem;
+    }
+    .header__button{
+        display: block;
+    }
+
+    nav.header__nav{
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1500;
+        opacity: 0;
+        width: 0;
+        visibility: hidden;
+        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    .header__background{
+        top: 3rem;
+        right: 2rem;
+    }
+    .header__background{
+        display: block;
+    }
+    nav.header__nav ul{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        list-style: none;
+        text-align: center;
+        width: 100%;
+    }
+    nav.header__nav ul li{
+        margin: 1rem !important;
+        display: list-item;
+    }
+    nav.header__nav ul li a:link,
+    nav.header__nav ul li a:visited {
+        display: inline-block;
+        font-size: 3rem;
+        font-weight: 300;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
+        background-size: 250%;
+        transition: all .4s;
+    }
+    nav.header__nav ul li a:hover,
+    nav.header__nav ul li a:active {
+        transform: translateX(-1rem);
+    }
+    /*FUNCTIONALITY*/
+    .header__checkbox:checked ~ .header__background {
+        transform: scale(80) !important;
+    }
+
+    .header__checkbox:checked ~ .header__nav {
+        opacity: 1 !important;
+        width: 100% !important;
+        visibility: visible;
+    }
+    .header__checkbox:checked + .header__button .header__icon {
+        background-color: transparent;
+    }
+
+    .header__checkbox:checked + .header__button .header__icon::before {
+        top: 0;
+        transform: rotate(135deg);
+    }
+
+    .header__checkbox:checked + .header__button .header__icon::after {
+        top: 0;
+        transform: rotate(-135deg);
+    }
+}
+/*Mobile Media =>0 : 600px*/
+@media only screen and (max-width: 37.5em) {
+    .header__background{
+        top: 3rem;
+        right: 2rem;
+    }
+    
+}
+/* End Header Styling */
+/* Start About Styling */
+section.about{
+    margin-top: 72rem;
+}
+section.about .heading-secondary {
+    font-size: 59px;
+    color: var(--color-light-white);
+    font-family: "MyriadPro-Bold";
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1.25;
+}
+.wer-sind {
+    /* top: 825px;
+    left: 1095px; */
+}
+.wer-sind__content{
+    display: flex;
+    justify-content: space-between;
+}
+.wer-sind__img{
+    margin-right: 20px;
+}
+.wer-sind__img img{
+    max-width: 75%;
+    display: block;
+    margin-left: auto;
+}
+.wer-sind__text span{
+    color: #973c4b;
+    font-size: 16px;
+    font-family: "MyriadPro-Bold";
+    text-transform: uppercase;
+}
+.was-bieten{
+    /* top: 905px; */
+    /* left: 5px; */
+}
+.was-bieten ul{
+    margin-left: 80px;
+    list-style: none;
+}
+.was-bieten ul li{
+    position: relative;
+}
+.was-bieten ul li::before{
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 5px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--color-red);
+}
+.our-vision p{
+    margin-left: 40px;
+    max-width: 225px;
+    font-family: "Hornbill-Personal";
+}
+.explore .red-badge{
+    max-width: 200px;
+    margin-bottom: 0;
+    color: #fff;
+    text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.7);
+    line-height: 1.2;
+    padding: 3px 10px;
+}
+.explore .paragraph{
+    max-width: 250px;
+    padding: 10px 25px 10px 10px;
+    background-color: rgba(75, 75, 75, 0.3);
+}
+.explore__slider{
+    background-color: rgba(167 , 48 , 48, 0.5);
+    padding: 15px;
+    max-width: 200px;
+    text-align: center;
+}
+.explore__slider-arrow{
+    fill: var(--color-light-white);
+    margin: 10px auto;
+}
+.explore__slider-arrow--up{
+    transform: rotate(-90deg);
+}
+.explore__slider-arrow--down{
+    transform: rotate(90deg);
+}
+.explore__slider-wrapper{
+    max-height: calc((3 * 170px) + (2 * 15px));
+    overflow-y: hidden;
+}
+.explore__slider-wrapper div{
+    transition: transform 0.2s ease-in-out;
+}
+.explore__sldier-img{
+    max-width: 100%;
+    display: block;
+}
+.explore__slider-wrapper img:not(:last-child){
+    margin-bottom: 15px;
+}
+/* Big Desktop Media =>  *< 1800px */
+@media only screen and (min-width: 112.5em) {}
+/* Tablet (landscape) Media => 0 : 1200px */
+@media only screen and (max-width: 75em) {}
+/* Tablet Media => 0 : 900px */
+@media only screen and (max-width: 56.25em) {}
+/*Mobile Media =>0 : 600px*/
+@media only screen and (max-width: 37.5em) {
+    .wer-sind{
+        margin-bottom: 5rem;
+    }
+    section.about{
+        margin-top: 104rem;
+        padding: 0 1.5rem;
+    }
+    section.about .heading-secondary {
+        font-size: 5.2rem;
+        white-space: normal;
+    }
+    .wer-sind__img img{
+        margin-left: 0;
+    }
+}
+
+/* Big Desktop Media =>  *< 1800px */
+@media only screen and (min-width: 112.5em) {}
+/* Tablet (landscape) Media => 0 : 1200px */
+@media only screen and (max-width: 75em) {}
+/* Tablet Media => 0 : 900px */
+@media only screen and (max-width: 56.25em) {}
+/*Mobile Media =>0 : 600px*/
+@media only screen and (max-width: 37.5em) {}
