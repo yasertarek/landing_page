@@ -1,9 +1,9 @@
 const fixedPos = [...document.querySelectorAll('.fixed-pos')];
 let dimensionsRef = {
-    width: 1688,
+    width: 1536,
     'wer-sind': {
-        left: 1090,
-        top: 840,
+        left: 985,
+        top: 785,
     },
     'was-bieten': {
         left: 5,
@@ -14,25 +14,26 @@ let dimensionsRef = {
         top: 1496,
     },
     explore: {
+        // left: 1285,
         right: 0,
-        top: 1350,
+        top: 1496,
     }
 }
 function handleRatios(elmnt){
-    if(document.body.offsetWidth < 600){
+    if(window.outerWidth < 600){
         elmnt.style.left = '';
         elmnt.style.top = '';
         elmnt.style.transform = '';
         return;
     }
     let newLeft;
-    let newTop = (document.body.offsetWidth * dimensionsRef[elmnt.getAttribute('data-pos')].top) / dimensionsRef.width + 'px';
-    let magnifyingFactor = document.body.offsetWidth / dimensionsRef.width;
+    let newTop = (window.outerWidth * dimensionsRef[elmnt.getAttribute('data-pos')].top) / dimensionsRef.width + 'px';
+    let magnifyingFactor = window.outerWidth / dimensionsRef.width;
     if(typeof dimensionsRef[elmnt.getAttribute('data-pos')].left !== 'undefined'){
-        newLeft = ( document.body.offsetWidth * dimensionsRef[elmnt.getAttribute('data-pos')].left) / dimensionsRef.width + 'px';
+        newLeft = ( window.outerWidth * dimensionsRef[elmnt.getAttribute('data-pos')].left) / dimensionsRef.width + 'px';
         elmnt.style.left = newLeft;
     }else if(typeof dimensionsRef[elmnt.getAttribute('data-pos')].right !== 'undefined'){
-        newLeft = ( document.body.offsetWidth * dimensionsRef[elmnt.getAttribute('data-pos')].right) / dimensionsRef.width + 'px';
+        newLeft = ( window.outerWidth * dimensionsRef[elmnt.getAttribute('data-pos')].right) / dimensionsRef.width + 'px';
         elmnt.style.right = newLeft;
     }else{
         console.log('Error in element', elmnt);

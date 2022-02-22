@@ -110,7 +110,7 @@ header.header{
 
 }
 /* nav.header__nav{
-    z-index: 99;
+    gitz-index: 99;
 } */
 nav.header__nav ul{
     list-style: none;
@@ -206,13 +206,13 @@ nav.header__nav ul li a:active {
 /* Big Desktop Media =>  *< 1800px */
 @media only screen and (min-width: 112.5em) {
     html{
-        font-size: 75%; /* 12px */
+         font-size: 75%; /* 12px */
     }
 }
 /* Tablet (landscape) Media => 0 : 1200px */
 @media only screen and (max-width: 75em) {
     html{
-        font-size: 56.25%; /* 9px */
+         font-size: 56.25%; /* 9px */
     }
     nav.header__nav ul li:not(:last-child){
         margin-right: 2rem;
@@ -221,11 +221,7 @@ nav.header__nav ul li a:active {
 /* Tablet Media => 0 : 900px */
 @media only screen and (max-width: 56.25em) {
     html{
-        font-size: 50%; /* 8px */
-    }
-    .fixed-pos{
-        position: static;
-        margin-bottom: 5rem;
+         font-size: 50%; /* 8px */
     }
     .header__button{
         display: block;
@@ -307,7 +303,10 @@ nav.header__nav ul li a:active {
         top: 3rem;
         right: 2rem;
     }
-    
+    .fixed-pos{
+        position: static;
+        margin-bottom: 5rem;
+    }
 }
 /* End Header Styling */
 /* Start About Styling */
@@ -315,7 +314,7 @@ section.about{
     margin-top: 72rem;
 }
 section.about .heading-secondary {
-    font-size: 59px;
+    font-size: 53px;
     color: var(--color-light-white);
     font-family: "MyriadPro-Bold";
     text-transform: uppercase;
@@ -365,10 +364,14 @@ section.about .heading-secondary {
     border-radius: 50%;
     background-color: var(--color-red);
 }
+
 .our-vision p{
     margin-left: 40px;
     max-width: 225px;
     font-family: "Hornbill-Personal";
+}
+.explore.fixed-pos{
+    transform-origin: top right;
 }
 .explore .red-badge{
     max-width: 200px;
