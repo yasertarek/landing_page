@@ -3,11 +3,11 @@ let dimensionsRef = {
     width: 1536,
     'wer-sind': {
         left: 985,
-        top: 785,
+        top: 768,
     },
     'was-bieten': {
         left: 5,
-        top: 1025,
+        top: 953,
     },
     'our-vision': {
         left: 0,
@@ -20,7 +20,7 @@ let dimensionsRef = {
     }
 }
 function handleRatios(elmnt){
-    if(window.innerWidth < 600){
+    if(window.innerWidth <= 600){
         elmnt.style.left = '';
         elmnt.style.top = '';
         elmnt.style.transform = '';

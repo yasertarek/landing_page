@@ -200,6 +200,9 @@ nav.header__nav ul li a:active {
     top: 6.5rem;
     right: 6.5rem;
     background-image: radial-gradient(rgb(167 , 48 , 48), rgb(233, 69, 69));
+    background-image: radial-gradient(rgb(233, 69 , 69) 10%, rgb(167 , 48 , 48) 20%);
+    /* background-image: linear-gradient(55deg, rgb(100 37 37) 36%, rgb(240 84 84) 49%); */
+    /* background-image: linear-gradient(55deg, rgb(100 37 37) 15%, rgb(240 84 84)); */
     z-index: 1000;
     transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
 }
@@ -314,7 +317,7 @@ section.about{
     margin-top: 72rem;
 }
 section.about .heading-secondary {
-    font-size: 52px;
+    font-size: 53px;
     color: var(--color-light-white);
     font-family: "MyriadPro-Bold";
     text-transform: uppercase;
@@ -347,8 +350,11 @@ section.about .heading-secondary {
     /* top: 905px; */
     /* left: 5px; */
 }
+.was-bieten .heading-secondary{
+    margin-left: 12px;
+}
 .was-bieten ul{
-    margin-left: 80px;
+    margin-left: 126px;
     list-style: none;
 }
 .was-bieten ul li{
@@ -366,7 +372,7 @@ section.about .heading-secondary {
 }
 
 .our-vision p{
-    margin-left: 40px;
+    margin-left: 61px;
     max-width: 225px;
     font-family: "Hornbill-Personal";
 }
