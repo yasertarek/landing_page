@@ -20,20 +20,20 @@ let dimensionsRef = {
     }
 }
 function handleRatios(elmnt){
-    if(window.outerWidth < 600){
+    if(window.innerWidth < 600){
         elmnt.style.left = '';
         elmnt.style.top = '';
         elmnt.style.transform = '';
         return;
     }
     let newLeft;
-    let newTop = (window.outerWidth * dimensionsRef[elmnt.getAttribute('data-pos')].top) / dimensionsRef.width + 'px';
-    let magnifyingFactor = window.outerWidth / dimensionsRef.width;
+    let newTop = (window.innerWidth * dimensionsRef[elmnt.getAttribute('data-pos')].top) / dimensionsRef.width + 'px';
+    let magnifyingFactor = window.innerWidth / dimensionsRef.width;
     if(typeof dimensionsRef[elmnt.getAttribute('data-pos')].left !== 'undefined'){
-        newLeft = ( window.outerWidth * dimensionsRef[elmnt.getAttribute('data-pos')].left) / dimensionsRef.width + 'px';
+        newLeft = ( window.innerWidth * dimensionsRef[elmnt.getAttribute('data-pos')].left) / dimensionsRef.width + 'px';
         elmnt.style.left = newLeft;
     }else if(typeof dimensionsRef[elmnt.getAttribute('data-pos')].right !== 'undefined'){
-        newLeft = ( window.outerWidth * dimensionsRef[elmnt.getAttribute('data-pos')].right) / dimensionsRef.width + 'px';
+        newLeft = ( window.innerWidth * dimensionsRef[elmnt.getAttribute('data-pos')].right) / dimensionsRef.width + 'px';
         elmnt.style.right = newLeft;
     }else{
         console.log('Error in element', elmnt);
