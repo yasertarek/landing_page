@@ -4,36 +4,62 @@ const fixedPos = [...document.querySelectorAll('.fixed-pos')];
 let dimensionsRef = {
     width: 1536,
     'wer-sind': {
-        left: 985,
-        top: 768,
+        left: 990,
+        top: 755,
     },
     'was-bieten': {
-        left: 5,
-        top: 953,
+        left: 0,
+        top: 939,
     },
     'our-vision': {
         left: 0,
-        top: 1496,
+        top: 1319,
     },
-    explore: {
+    shop: {
         // left: 1285,
         right: 0,
-        top: 1496,
+        top: 1296.47,
+    },
+    each_place_is_unique: {
+      left: 34,
+      top: 1525
+    },
+    'we-design':{
+      left: 704,
+      top: 1777
     }
 }
 /* ### Slider Variables ### */
-let sliderItems = document.querySelector('.explore__slider-wrapper div'),
-    prev = document.querySelector('.explore__slider-arrow--down'),
-    next = document.querySelector('.explore__slider-arrow--up');
+let sliderItems = document.querySelector('.shop__slider-slide'),
+    prev = document.querySelector('.shop__slider-arrow--down'),
+    next = document.querySelector('.shop__slider-arrow--up');
 /****** 
  * 
  * Main Flow and events
  * ******/
+// Handle Fixed ratios
  fixedPos.forEach((elmnt)=>{
     handleRatios(elmnt);
     window.addEventListener('resize', ()=>{handleRatios(elmnt)});
 });
+// Trigger Slider
 slide(sliderItems, prev, next);
+// Show Gallery
+[...document.querySelectorAll('.shop__slider-overlay svg')].forEach((elmnt)=>{
+  elmnt.addEventListener('click', (e)=>{
+    document.querySelector('.shop__gallery img').setAttribute('src', e.currentTarget.parentElement.parentElement.getElementsByTagName('img')[0].getAttribute('src'));
+    document.querySelector('.shop__gallery').classList.add('shop__gallery--active');
+  });
+});
+// Hide Gallery
+document.querySelector('.shop__gallery-times-icon').addEventListener('click', ()=>{
+  document.querySelector('.shop__gallery').classList.remove('shop__gallery--active');
+});
+document.addEventListener('click', (e)=>{
+  if(!e.target.matches('.shop__gallery-view-icon')){
+    document.querySelector('.shop__gallery').classList.remove('shop__gallery--active');
+  }
+});
 /****** 
  * 
  * Main Functions
@@ -45,6 +71,9 @@ function handleRatios(elmnt){
         elmnt.style.top = '';
         elmnt.style.transform = '';
         return;
+    }
+    if(!elmnt.getAttribute('data-pos') || !dimensionsRef[elmnt.getAttribute('data-pos')]){
+      return;
     }
     let newLeft;
     let newTop = (window.innerWidth * dimensionsRef[elmnt.getAttribute('data-pos')].top) / dimensionsRef.width + 'px';
@@ -67,10 +96,10 @@ function slide(items, prev, next) {
       posX2 = 0,
       posInitial,
       posFinal,
-      threshold = 100,
-      slides = items.getElementsByClassName('explore__slider-img'),
+      threshold = 115,
+      slides = [...document.querySelectorAll('.shop__slider-img')],
       slidesLength = slides.length,
-      slideSize = items.getElementsByClassName('explore__slider-img')[0].offsetHeight + 15,
+      slideSize = slides[0].offsetHeight + parseInt(getComputedStyle(slides[0]).marginBottom),
       firstSlide = slides[0],
       secondSlide = slides[1],
       bLastSlide = slides[slidesLength - 2],
@@ -81,7 +110,7 @@ function slide(items, prev, next) {
       cloneLast = lastSlide.cloneNode(true),
       index = 0,
       allowShift = true;
-  
+  // console.log(`slides[0].offsetHeight${slides[0].offsetHeight} + slides[0].marginBottom${parseInt(getComputedStyle(slides[0]).marginBottom)}  = slideSize: ${slideSize}`);
   // Clone first and last slide
   items.appendChild(cloneFirst);
   items.appendChild(cloneSecond);
@@ -146,6 +175,7 @@ function slide(items, prev, next) {
   }
   
   function shiftSlide(dir, action) {
+    console.log
     items.classList.add('shifting');
     
     if (allowShift) {
@@ -153,11 +183,10 @@ function slide(items, prev, next) {
 
       if (dir == 1) {
         items.style.top = (posInitial - slideSize) + "px";
-        console.log(posInitial - slideSize);
         index++;      
       } else if (dir == -1) {
         items.style.top = (posInitial + slideSize) + "px";
-        index--;      
+        index--;
       }
     };
     
@@ -166,7 +195,6 @@ function slide(items, prev, next) {
     
   function checkIndex (){
     items.classList.remove('shifting');
-
     if (index == -1) {
       items.style.top = -(slidesLength * slideSize) + "px";
       index = slidesLength - 1;
