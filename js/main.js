@@ -26,7 +26,18 @@ let dimensionsRef = {
     },
     'we-design':{
       left: 704,
-      top: 1777
+      top: 1770
+    },
+    'services__words-table': {
+      left: 44,
+      top: 1949
+    },
+    services__heading: {
+      left: 57,
+      top: 2017
+    },
+    'services__gips-deko': {
+      top: 2190
     }
 }
 /* ### Slider Variables ### */
