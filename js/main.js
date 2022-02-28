@@ -56,20 +56,31 @@ let dimensionsRef = {
       left: 763
     },
     'services__visualising': {
-      top: 2785,
+      top: 2789,
       left: 736
     },
     'services__visualising__heading': {
-      top: 2837,
+      top: 2800,
       left: 76
     },
     'services__visualising__item--1': {
-      top: 2990,
+      top: 2965,
       left: 70
     },
     'services__visualising__item--2': {
-      top: 2990,
+      top: 2965,
       left: 780
+    },
+    'services__3d': {
+      top: 3363,
+      left: 76
+    },
+    'services__3d__header': {
+      top: 3398,
+      left: 76
+    },
+    'services__3d__imgs': {
+      top: 3615
     }
 }
 /* ### Slider Variables ### */
@@ -130,10 +141,8 @@ document.addEventListener('click', (e)=>{
 // Make Specified positioned elements in its place
 function handleRatios(elmnt){
     if(window.screen.width <= 600){
-        elmnt.style.left = '';
-        elmnt.style.top = '';
-        elmnt.style.transform = '';
-        elmnt.style.fontSize = '';
+        elmnt.removeAttribute('style');
+        [...elmnt.querySelectorAll('*')].forEach(elmnt=>elmnt.removeAttribute('style'));
         return;
     }
     // console.log(`'window is Greater than 600' which is ${window.screen.width}`);
@@ -156,6 +165,10 @@ function handleRatios(elmnt){
     elmnt.style.top = newTop;
     elmnt.style.transform = `scale(${magnifyingFactor})`;
     // Exceptions
+    document.querySelector('.services__p-line').style.borderLeft = `${1.77 * magnifyingFactor}px solid var(--color-t-white)`;
+    document.querySelector('.services__p-line').style.borderRight = `${1.77 * magnifyingFactor}px solid var(--color-t-white)`;
+    document.querySelector('.services__line').style.borderTop = `${1.77 * magnifyingFactor}px solid var(--color-t-white)`;
+    document.querySelector('.services__line').style.borderBottom = `${1.77 * magnifyingFactor}px solid var(--color-t-white)`;
     if(elmnt.classList.contains('services__p-line')){
       elmnt.style.transform = ` scaleY(${magnifyingFactor}) translateX(-50%)`;
       elmnt.style.left = '50%';
@@ -178,16 +191,22 @@ function handleRatios(elmnt){
     if(elmnt.classList.contains('services__visualising__item')){
       console.log('item-2 class check worked correctly!');
       elmnt.style.transform = '';
+      elmnt.querySelector('.services__visualising__item > div:nth-child(2)').style.height = `${297.6 * magnifyingFactor}px`;
       elmnt.querySelector('h4.red-badge').style.fontSize = `${18 * magnifyingFactor}px`;
       elmnt.querySelector('h4.red-badge').style.padding = `0px ${40 * magnifyingFactor}px`;
-      elmnt.querySelector('.services__visualising__item__img').style.maxWidth = `${245 * magnifyingFactor}px`;
+      elmnt.querySelector('.services__visualising__item__img').style.width = `${245 * magnifyingFactor}px`;
       elmnt.querySelector('.services__visualising__item__text').style.width = 399 * magnifyingFactor + 'px';
       elmnt.querySelector('.services__visualising__item__text').style.padding = 40 * magnifyingFactor + 'px ' + magnifyingFactor * 35 + 'px';
       elmnt.querySelector('.services__visualising__item__text').style.marginRight = 17 * magnifyingFactor + 'px';
-      elmnt.querySelector('.services__visualising__item__text p').style.fontSize = 16 * magnifyingFactor + 'px';
+      elmnt.querySelector('.services__visualising__item__text p').style.fontSize = 16 * window.screen.width / 1536 + 'px';
       if(elmnt.classList.contains('services__visualising__item--2')){
         elmnt.style.marginRight = 29 + document.querySelector('.shop').getBoundingClientRect().width - document.querySelector('.shop__slider').getBoundingClientRect().width + 'px';
       }
+    }
+    if(elmnt.classList.contains('services__3d__imgs')){
+      elmnt.style.transform = '';
+      elmnt.style.right = (29 * magnifyingFactor) + document.querySelector('.shop').getBoundingClientRect().width - document.querySelector('.shop__slider').getBoundingClientRect().width + 'px';
+      [...elmnt.querySelectorAll('.services__3d__img')].forEach(elmnt=>elmnt.style.maxWidth = 594 * magnifyingFactor + 'px');
     }
 }
 /* ### Slider Functions ### */
