@@ -272,10 +272,10 @@ function handleRatios(elmnt) {
         document.querySelector('section.about').style.marginTop = `${380 * (window.screen.width / 390)}px`;
         return;
     }
-    if (!elmnt.getAttribute('data-pos') || !dimensionsRef[elmnt.getAttribute('data-pos')]) {
-        console.log('You did not Add element in data object yet!, element is: ', elmnt);
-        return;
-    }
+    // if (!elmnt.getAttribute('data-pos') || !dimensionsRef[elmnt.getAttribute('data-pos')]) {
+    //     console.log('You did not Add element in data object yet!, element is: ', elmnt);
+    //     return;
+    // }
     let magnifyingFactor = window.screen.width / dimensionsRef.width;
     let newLeft;
     let newTop = magnifyingFactor * dimensionsRef[elmnt.getAttribute('data-pos')].top + 'px';

@@ -1592,6 +1592,43 @@ section.about .heading-secondary {
     fill: var(--color-dark-red);
 }
 
+.fixed-btns {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 10px;
+}
+
+.to-top {
+    background-color: var(--color-dark-red);
+    width: 30px;
+    height: 30px;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.to-top svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--color-light-white);
+    transform: rotate(-90deg)
+}
+
+.contact-btn {
+    background-color: var(--color-dark-red);
+    font-size: 22px;
+    line-height: 1;
+    color: var(--color-light-white);
+    padding: 4px 7px;
+    text-transform: uppercase;
+    font-family: 'myriadPro';
+}
+
 
 /* Big Desktop Media =>  *< 1800px */
 
@@ -1692,7 +1729,10 @@ section.about .heading-secondary {
     }
     .form {
         /* flex-wrap: wrap; */
-        gap: 2rem;
+        gap: 3rem;
+        margin: 0 2rem;
+        transform: translateX(0);
+        left: auto;
     }
     .col-6 {
         flex-basis: 100%;
