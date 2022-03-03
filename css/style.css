@@ -301,13 +301,13 @@ nav.header__nav ul li a:active {
     width: 100%;
     height: 100%;
     background-color: rgba(167, 48, 48, 0.75);
-    transition: 0.2s transform ease-in-out, opacity 0.2s ease-in-out;
+    transition: 0.3s transform ease-in-out, opacity 0.2s ease-in-out;
     opacity: 0;
     visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: scale(0);
+    transform: scale(0.5);
 }
 
 .overlay_hover_container:hover .overlay_hover,
@@ -323,7 +323,7 @@ nav.header__nav ul li a:active {
     position: absolute;
     width: 50%;
     height: 50%;
-    transition: transform 0.5s ease-in-out 0.2s, opacity 0.5s ease-in-out 0.2s;
+    transition: transform 0.7s ease-in-out, opacity 0.5s ease-in-out;
     opacity: 0;
 }
 
@@ -332,7 +332,7 @@ nav.header__nav ul li a:active {
     top: 10px;
     border-top: 3px solid var(--color-light-white);
     border-left: 3px solid var(--color-light-white);
-    transform: translate(40%, 40%);
+    transform: translate(45%, 45%);
 }
 
 .overlay_hover::after {
@@ -340,13 +340,13 @@ nav.header__nav ul li a:active {
     bottom: 10px;
     border-right: 3px solid var(--color-light-white);
     border-bottom: 3px solid var(--color-light-white);
-    transform: translate(-40%, -40%);
+    transform: translate(-45%, -45%);
 }
 
 .overlay_hover_icon {
     fill: var(--color-t-white);
     transition: transform 0.4s ease-in-out, fill 0.2s ease-in-out;
-    transform: scale(0);
+    transform: scale(0.5);
     z-index: 999;
     cursor: pointer;
 }
@@ -1168,6 +1168,15 @@ section.about .heading-secondary {
 
 /* Services */
 
+.bg-word {
+    font-size: 504px;
+    text-transform: uppercase;
+    font-family: "myriadPro";
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.05);
+    z-index: -1;
+}
+
 .services {}
 
 .services__words-table {
@@ -1890,6 +1899,9 @@ section.about .heading-secondary {
     }
     .full-row {
         left: 0;
+    }
+    .bg-word {
+        display: none;
     }
 }
 

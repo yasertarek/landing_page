@@ -106,6 +106,9 @@ let dimensionsRef = {
         },
         'services__gips-deko__visual__gallery': {
             top: 2425
+        },
+        'bg-word': {
+            top: 1737
         }
     }
     /****** 
