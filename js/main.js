@@ -62,62 +62,58 @@ let dimensionsRef = {
             left: 763
         },
         'services__visualising': {
-            top: 2789,
+            top: 2809,
             left: 736
         },
         'services__visualising__heading': {
-            top: 2800,
+            top: 2820,
             left: 76
         },
         'services__visualising__item--1': {
-            top: 2965,
+            top: 2985,
             left: 70
         },
         'services__visualising__item--2': {
-            top: 2965,
+            top: 2985,
             left: 780
         },
         'services__3d': {
-            top: 3363,
+            top: 3383,
             left: 76
         },
         'services__3d__header': {
-            top: 3398,
+            top: 3408,
             left: 76
         },
         'services__3d__imgs': {
-            top: 3615
+            top: 3635
         },
         'contact__heading': {
-            top: 4025,
+            top: 4045,
         },
         'form': {
-            top: 4200,
+            top: 4220,
         },
         'footer__line': {
-            top: 4870
+            top: 4890
         },
         'full-row': {
-            top: 4870
+            top: 4890
         },
         'fixed-btns': {
             bottom: 15,
             right: 15
+        },
+        'services__gips-deko__visual__gallery': {
+            top: 2425
         }
     }
-    /* ### Slider Variables ### */
-let sliderItemsV = document.querySelector('.shop__slider-slide'),
-    sliderItemsH = document.querySelector('.shop__gallery__slider__wrapper')
-prevV = document.querySelector('.shop__slider-arrow--down'),
-    nextV = document.querySelector('.shop__slider-arrow--up'),
-    prevH = document.querySelector('.shop__gallery__arrow--left'),
-    nextH = document.querySelector('.shop__gallery__arrow--right');
-/****** 
- * 
- * Main Flow and events
- * ******/
-// Handle Fixed ratios
-// Trigger Slider
+    /****** 
+     * 
+     * Main Flow and events
+     * ******/
+    // Handle Fixed ratios
+    // Trigger Slider
 window.onload = () => {
     if (document.querySelector('.loading')) {
         document.querySelector('.loading').style.opacity = 0;
@@ -125,8 +121,15 @@ window.onload = () => {
             document.querySelector('.loading').remove();
         }, 500);
     }
-    slideV(sliderItemsV, prevV, nextV);
-    slideH(sliderItemsH, document.getElementsByClassName('shop__gallery__slider__wrapper__slide'), prevH, nextH);
+    slideV(document.querySelector('.shop__slider-slide'),
+        document.querySelector('.shop__slider-arrow--down'),
+        document.querySelector('.shop__slider-arrow--up')
+    );
+    slideH(document.querySelector('.shop__gallery__slider__wrapper'),
+        document.getElementsByClassName('shop__gallery__slider__wrapper__slide'),
+        document.querySelector('.shop__gallery__arrow--left'),
+        document.querySelector('.shop__gallery__arrow--right')
+    );
     slideH(
         document.querySelector('.gips-deko__gallery__slider__wrapper'),
         document.getElementsByClassName('gips-deko__gallery__slider__wrapper__slide'),
@@ -146,6 +149,11 @@ window.onload = () => {
         document.querySelector('.other3d__gallery__arrow--right')
     );
 };
+[...document.querySelectorAll('.overlay_hover_icon')].forEach(elmnt => {
+    elmnt.addEventListener('click', () => {
+        showGlobalGallery(elmnt);
+    });
+});
 document.addEventListener('scroll', () => {
     if (window.scrollY < 30) {
         document.querySelector('.fixed-btns').classList.remove('fixed-btns--active');
@@ -153,7 +161,6 @@ document.addEventListener('scroll', () => {
         document.querySelector('.fixed-btns').classList.add('fixed-btns--active');
     }
 });
-window.addEventListener
 fixedPos.forEach((elmnt) => {
     handleRatios(elmnt);
     window.addEventListener('resize', () => { handleRatios(elmnt) });
@@ -252,49 +259,39 @@ document.addEventListener('click', (e) => {
 // Handle Showing Gallery
 function showGallery(clickedElmnt) {
     let elesArr = [...document.querySelectorAll('.shop__slider-img')];
-    console.log('Before: ', elesArr);
     elesArr.shift();
     elesArr.shift();
     elesArr.pop();
     elesArr.pop();
-    console.log('After: ', elesArr);
     const clickedIndex = elesArr.indexOf(clickedElmnt);
-    // console.log(`clickedElement is ${clickedElmnt.outerHTML}, and its index is: ${clickedIndex}`);
-    console.log('clickedElement is ', clickedElmnt, '\nand its index is: ', clickedIndex, '\nwhich is in array: ', elesArr);
     document.querySelector('.shop__gallery').classList.add('shop__gallery--active');
     document.body.style.overflow = 'hidden';
     // Scroll to Clicked element
-    // document.querySelector('.shop__gallery img').setAttribute('src', e.currentTarget.parentElement.parentElement.getElementsByTagName('img')[0].getAttribute('src'));
     if (typeof clickedIndex !== undefined) {
         let slideWidth = parseFloat(getComputedStyle([...document.querySelectorAll('.shop__gallery__slider__wrapper__slide')][0]).width);
-        console.log(`-(clickedIndex[${clickedIndex}] + 1) * slideWidth[${slideWidth}] = ${-(clickedIndex + 1) * slideWidth}`)
         document.querySelector('.shop__gallery__slider__wrapper').style.left = -(clickedIndex + 1) * slideWidth + 'px';
-    } else {
-        console.log(clickedIndex, 'is undefiend');
-    }
+    } else {}
 }
 
 function showGlobalGallery(clickedElmnt) {
+    // Exit if element is not deifned in any gallery
     if (typeof clickedElmnt === 'undefined' || clickedElmnt.parentElement.parentElement.getAttribute('data-gallery') === null) return
         // Show Gallery
-
     let clickedElmntSelector = clickedElmnt.parentElement.parentElement.getAttribute('data-gallery');
     document.querySelector(`.${clickedElmntSelector}`).classList.add(`${clickedElmntSelector}--active`);
 
-    // Scroll to clicked element [Exception]
+    // Slide to clicked element [Exception]
 
+    // Exit if element is not indexed according to gallery
     if (typeof document.querySelector(`.${clickedElmntSelector}__slider__wrapper`) === 'undefined' || typeof document.querySelector(`.${clickedElmntSelector}__slider__wrapper__slide`) === 'undefined' || clickedElmnt.parentElement.parentElement.getAttribute('data-gallery-index') === null) return
+        // Store element index, wrapper[the Gallery bar] and  the slide width[visible area of slider]
     const clickedIndex = parseFloat(clickedElmnt.parentElement.parentElement.getAttribute('data-gallery-index'));
     const slideWrapper = document.querySelector(`.${clickedElmntSelector}__slider__wrapper`);
     const slideWidth = parseFloat(getComputedStyle([...document.querySelectorAll(`.${clickedElmntSelector}__slider__wrapper__slide`)][0]).width);
-    console.log(`Eq: -1 * (index[${clickedIndex}] + 1) * slideWidth[${slideWidth}] = ${-1 * (clickedIndex + 1) * slideWidth}`);
+    // Slide to clicked element
     slideWrapper.style.left = -1 * (clickedIndex + 1) * slideWidth + 'px';
 }
-[...document.querySelectorAll('.overlay_hover_icon')].forEach(elmnt => {
-    elmnt.addEventListener('click', () => {
-        showGlobalGallery(elmnt);
-    });
-});
+
 // Make Specified positioned elements in its place
 function handleRatios(elmnt) {
     // check if screen width is less than 600, then don't scale according to ratio and reset style
@@ -316,7 +313,7 @@ function handleRatios(elmnt) {
         newLeft = (window.screen.width * dimensionsRef[elmnt.getAttribute('data-pos')].right) / dimensionsRef.width + 'px';
         elmnt.style.right = newLeft;
     } else {
-        console.log('Error in element', elmnt);
+        // console.log('Error in element', elmnt);
     }
     if (typeof dimensionsRef[elmnt.getAttribute('data-pos')].top !== 'undefined') {
         newTop = magnifyingFactor * dimensionsRef[elmnt.getAttribute('data-pos')].top + 'px'
@@ -324,7 +321,9 @@ function handleRatios(elmnt) {
     } else if (typeof dimensionsRef[elmnt.getAttribute('data-pos')].bottom !== 'undefined') {
         newTop = magnifyingFactor * dimensionsRef[elmnt.getAttribute('data-pos')].bottom + 'px'
         elmnt.style.bottom = newTop;
-    } else { console.log('Error in element', elmnt) }
+    } else {
+        // console.log('Error in element', elmnt) 
+    }
     elmnt.style.transform = `scale(${magnifyingFactor})`;
     // Exceptions
     if (elmnt.classList.contains('services__p-line')) {
@@ -388,6 +387,12 @@ function handleRatios(elmnt) {
         elmnt.style.width = document.body.offsetWidth - (2 * (document.querySelector('.shop').getBoundingClientRect().width - document.querySelector('.shop__slider').getBoundingClientRect().width)) + 'px'
         elmnt.querySelector('p').style.fontSize = `${22 * magnifyingFactor}px`
         elmnt.querySelector('.footer__social_icons').style.transform = `scale(${magnifyingFactor})`;
+    }
+
+    if (elmnt.classList.contains('services__gips-deko__visual__gallery')) {
+        elmnt.style.transform = `scale(${magnifyingFactor}) translateX(-50%)`;
+        // [...elmnt.querySelectorAll('.services__gips-deko__visual__img')].forEach(elmnt => elmnt.style.transform = `scale(${magnifyingFactor})`);
+        // elmnt.style.width = document.body.offsetWidth - (2 * (document.querySelector('.shop').getBoundingClientRect().width - document.querySelector('.shop__slider').getBoundingClientRect().width)) + 'px'
     }
 }
 /* ### Slider Functions ### */
@@ -613,7 +618,7 @@ function slideH(items, slides, prev, next) {
             }
 
             if (dir == 1) {
-                console.log(`posInitial[${posInitial}] - slideSize[${slideSize}] = items.left[${posInitial - slideSize}]`);
+                // console.log(`posInitial[${posInitial}] - slideSize[${slideSize}] = items.left[${posInitial - slideSize}]`);
                 items.style.left = (posInitial - slideSize) + "px";
                 index++;
             } else if (dir == -1) {

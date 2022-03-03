@@ -88,6 +88,7 @@ body {
     /* min-height: 600rem; */
     line-height: 1.7;
     background-color: #000;
+    position: relative;
 }
 
 .heading-secondary {
@@ -1221,7 +1222,7 @@ section.about .heading-secondary {
 } */
 
 .services__p-line {
-    min-height: 555px;
+    min-height: 575px;
     border-left: 1.77px solid var(--color-t-white);
     border-right: 1.77px solid var(--color-t-white);
 }
@@ -1281,11 +1282,31 @@ section.about .heading-secondary {
     letter-spacing: 1px;
 }
 
+.services__gips-deko__visual__gallery {
+    left: 50%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    width: 1449.65px;
+}
+
 .services__gips-deko__visual__img {
     max-width: 421px;
-    margin-top: 60px;
+    margin-top: 81px;
     display: block;
     border-radius: 5px;
+}
+
+.services__gips-deko__visual__img:nth-child(1) {
+    transform-origin: left bottom;
+}
+
+.services__gips-deko__visual__img:nth-child(2) {
+    transform-origin: center bottom;
+}
+
+.services__gips-deko__visual__img:nth-child(3) {
+    transform-origin: right bottom;
 }
 
 .services__gips-deko__visual img {
@@ -1350,7 +1371,8 @@ section.about .heading-secondary {
 }
 
 .services__visualising {
-    min-height: 530px;
+    /* min-height: 530px; */
+    min-height: 550px;
 }
 
 .services__visualising__item .red-badge {
@@ -1395,7 +1417,7 @@ section.about .heading-secondary {
 }
 
 .services__3d {
-    min-height: 615px;
+    min-height: 625px;
 }
 
 .services__3d__header {
@@ -1777,6 +1799,9 @@ section.about .heading-secondary {
     .services__gips-deko__visual .heading-tertiary {
         font-size: 11rem;
         text-align: center;
+    }
+    .services__gips-deko__visual__gallery {
+        left: auto;
     }
     .services__gips-deko__visual img {
         margin: 5rem auto 0 auto;
