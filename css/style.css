@@ -540,6 +540,44 @@ section.about .heading-secondary {
 .wer-sind {
     /* top: 825px;
     left: 1095px; */
+    overflow: hidden;
+}
+
+
+/* Animation on scroll */
+
+.wer-sind .wer-sind__content {
+    transform: translateX(100px);
+    transition: transform 1s ease-in-out, opacity 0.2s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.wer-sind--scrolled .wer-sind__content {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.was-bieten .heading-secondary,
+.was-bieten .red-badge,
+.was-bieten .paragraph li,
+.our-vision .red-badge,
+.our-vision .paragraph {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: transform 1s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.was-bieten--scrolled .heading-secondary,
+.was-bieten--scrolled .red-badge,
+.was-bieten .paragraph li.li--scrolled,
+.our-vision--scrolled .red-badge,
+.our-vision--scrolled .paragraph {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
 }
 
 

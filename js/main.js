@@ -158,10 +158,36 @@ window.onload = () => {
     });
 });
 document.addEventListener('scroll', () => {
+    console.log(window.scrollY);
     if (window.scrollY < 30) {
         document.querySelector('.fixed-btns').classList.remove('fixed-btns--active');
     } else {
         document.querySelector('.fixed-btns').classList.add('fixed-btns--active');
+    }
+    // Elements Animation
+    // wer-sind
+    if (window.scrollY > 235) {
+        document.querySelector('.wer-sind').classList.add('wer-sind--scrolled');
+    }
+    // was-bieten
+    if (window.scrollY > 400) {
+        document.querySelector('.was-bieten').classList.add('was-bieten--scrolled');
+    }
+    if (window.scrollY > 475) {
+        document.querySelector('.was-bieten .paragraph li:nth-child(1)').classList.add('li--scrolled');
+    }
+    if (window.scrollY > 550) {
+        document.querySelector('.was-bieten .paragraph li:nth-child(2)').classList.add('li--scrolled');
+    }
+    if (window.scrollY > 625) {
+        document.querySelector('.was-bieten .paragraph li:nth-child(3)').classList.add('li--scrolled');
+    }
+    if (window.scrollY > 700) {
+        document.querySelector('.was-bieten .paragraph li:nth-child(4)').classList.add('li--scrolled');
+    }
+    // our vision
+    if (window.scrollY > 850) {
+        document.querySelector('.our-vision').classList.add('our-vision--scrolled');
     }
 });
 fixedPos.forEach((elmnt) => {
