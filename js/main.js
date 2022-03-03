@@ -158,13 +158,19 @@ window.onload = () => {
     });
 });
 let scrollFactor = window.screen.width / 1536;
-window.addEventListener('resize', () => {
+updateScrollFactor();
+window.addEventListener('resize', updateScrollFactor);
+
+function updateScrollFactor() {
     if (window.screen.width > 900) {
         scrollFactor = window.screen.width / 1536;
+        console.log('Screen is Greater than 900 and equal', window.screen.width, 'and factor is = ', scrollFactor);
     } else {
         scrollFactor = (window.screen.width / 1536) / 2;
+        console.log('Screen is Less than 900 and equal', window.screen.width, 'and factor is = ', scrollFactor);
+        console.log()
     }
-});
+}
 document.addEventListener('scroll', () => {
     console.log(window.scrollY);
     if (window.scrollY < 30) {
