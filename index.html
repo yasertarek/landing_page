@@ -60,7 +60,11 @@
             <span class="red-badge">Our vision</span>
             <p class="paragraph">We design practical solutions that meet the goals of our customers, increase the value of the project . </p>
         </div>
-        <span class="each_place_is_unique fixed-pos" data-pos="each_place_is_unique">Each<br>Place is<br>Unique</span>
+        <div class="each_place_is_unique fixed-pos" data-pos="each_place_is_unique">
+            <span>
+                Each<br>Place is<br>Unique
+            </span>
+        </div>
         <div class="we-design fixed-pos" data-pos="we-design">
             <div class="we-design__logo">
                 <img src="./imgs/Logosmall.png" alt="Logo">
@@ -173,19 +177,21 @@
     <section class="services">
         <span class="bg-word fixed-pos" data-pos="bg-word">GRAND</span>
         <div class="services__words-table fixed-pos" data-pos="services__words-table">
-            <div class="services__words-table__row">
+            <div class="services__words-table__row services__words-table__row--1">
                 <span>Exclusive Design</span>
                 <i class="v-line"></i>
                 <span>Inclusive Prices</span>
             </div>
             <div class="services__words-table__row services__words-table__row--separator"></div>
-            <div class="services__words-table__row">
+            <div class="services__words-table__row services__words-table__row--2">
                 <span>Simple Tools</span>
                 <i class="v-line"></i>
                 <span>Extraordinarely Results</span>
             </div>
         </div>
-        <h2 class="heading-secondary fixed-pos services__heading" data-pos="services__heading" id="services">SERVICES</h2>
+        <h2 class="heading-secondary fixed-pos services__heading" data-pos="services__heading" id="services">
+            <span>SERVICES</span>
+        </h2>
         <!-- Start Gips-deko -->
         <span class="services__gips-deko__heading-tertiary-Vline fixed-pos" data-pos="services__gips-deko__heading-tertiary-Vline"></span>
         <!-- Border Lines visible on Desktop screens Only -->
@@ -308,7 +314,9 @@
         <div class="services__p-line--mobile">
             <span class="services__line services__line--left"></span>
             <span class="services__line services__line--right"></span>
-            <h3 class="heading-tertiary services__visualising__heading fixed-pos" data-pos="services__visualising__heading">VISUALISIERUNG</h3>
+            <h3 class="heading-tertiary services__visualising__heading fixed-pos" data-pos="services__visualising__heading">
+                <span>VISUALISIERUNG</span>
+            </h3>
             <div class="services__visualising__item services__visualising__item--1 fixed-pos" data-pos="services__visualising__item--1">
                 <h4 class="red-badge">Innen</h4>
                 <div>
@@ -458,26 +466,30 @@
         <!-- End other 3D services -->
     </section>
     <section class="contact">
-        <h3 class="heading-tertiary contact__heading fixed-pos" data-pos="contact__heading">Contact Us</h3>
+        <h3 class="heading-tertiary contact__heading fixed-pos" data-pos="contact__heading">
+            <span>Contact Us</span>
+        </h3>
         <form action="#" class="form fixed-pos" data-pos="form" id="contact">
-            <div class="contact__name form-row col-6">
-                <input id="name" name="name" type="text" class="contact__text" />
-                <label for="name">Your name</label>
-            </div>
-            <div class="contact__email form-row col-6">
-                <input id="email" name="email" type="email" class="contact__text" />
-                <label for="email">Your Email</label>
-            </div>
-            <div class="contact__subject form-row col-12">
-                <input id="subject" name="subject" type="text" class="contact__text" />
-                <label for="subject">Subject</label>
-            </div>
-            <div class="contact__message form-row col-12">
-                <textarea name="message" id="message" cols="30" rows="10" class="contact__text"></textarea>
-                <label for="message">Your message</label>
-            </div>
-            <div class="form-row col-12">
-                <button class="btn">Submit</button>
+            <div>
+                <div class="contact__name form-row col-6">
+                    <input id="name" name="name" type="text" class="contact__text" />
+                    <label for="name">Your name</label>
+                </div>
+                <div class="contact__email form-row col-6">
+                    <input id="email" name="email" type="email" class="contact__text" />
+                    <label for="email">Your Email</label>
+                </div>
+                <div class="contact__subject form-row col-12">
+                    <input id="subject" name="subject" type="text" class="contact__text" />
+                    <label for="subject">Subject</label>
+                </div>
+                <div class="contact__message form-row col-12">
+                    <textarea name="message" id="message" cols="30" rows="10" class="contact__text"></textarea>
+                    <label for="message">Your message</label>
+                </div>
+                <div class="form-row col-12">
+                    <button class="btn">Submit</button>
+                </div>
             </div>
         </form>
     </section>
