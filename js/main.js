@@ -99,6 +99,10 @@ let dimensionsRef = {
         },
         'full-row': {
             top: 4870
+        },
+        'fixed-btns': {
+            bottom: 15,
+            right: 15
         }
     }
     /* ### Slider Variables ### */
@@ -142,6 +146,14 @@ window.onload = () => {
         document.querySelector('.other3d__gallery__arrow--right')
     );
 };
+document.addEventListener('scroll', () => {
+    if (window.scrollY < 30) {
+        document.querySelector('.fixed-btns').classList.remove('fixed-btns--active');
+    } else {
+        document.querySelector('.fixed-btns').classList.add('fixed-btns--active');
+    }
+});
+window.addEventListener
 fixedPos.forEach((elmnt) => {
     handleRatios(elmnt);
     window.addEventListener('resize', () => { handleRatios(elmnt) });
@@ -181,19 +193,19 @@ document.querySelector('.other3d__gallery-times-icon').addEventListener('click',
     document.body.style.overflow = '';
 });
 document.addEventListener('click', (e) => {
-    if (!e.target.closest('.shop__slider-view-icon') && !e.target.closest('.shop__gallery__slider__wrapper__slide') && !e.target.closest('.shop__gallery__arrow') && !e.target.closest('.shop__gallery__slider__wrapper__slide')) {
+    if (!e.target.closest('.shop__slider-view-icon') && !e.target.closest('.shop__gallery__slider__wrapper__slide') && !e.target.closest('.shop__gallery__arrow') && !e.target.closest('.shop__gallery__slider__wrapper__slide') && !e.target.closest('.overlay_hover_icon')) {
         document.querySelector('.shop__gallery').classList.remove('shop__gallery--active');
         document.body.style.overflow = '';
     }
-    if (!e.target.closest('.services__gips-deko__visual .heading-tertiary') && !e.target.closest('.gips-deko__gallery__slider__wrapper__slide') && !e.target.closest('.gips-deko__gallery__arrow') && !e.target.closest('.gips-deko__gallery__slider__wrapper__slide')) {
+    if (!e.target.closest('.services__gips-deko__visual .heading-tertiary') && !e.target.closest('.gips-deko__gallery__slider__wrapper__slide') && !e.target.closest('.gips-deko__gallery__arrow') && !e.target.closest('.gips-deko__gallery__slider__wrapper__slide') && !e.target.closest('.overlay_hover_icon')) {
         document.querySelector('.gips-deko__gallery').classList.remove('gips-deko__gallery--active');
         document.body.style.overflow = '';
     }
-    if (!e.target.closest('.services__visualising__heading') && !e.target.closest('.visualising__gallery__slider__wrapper__slide') && !e.target.closest('.visualising__gallery__arrow') && !e.target.closest('.visualising__gallery__slider__wrapper__slide')) {
+    if (!e.target.closest('.services__visualising__heading') && !e.target.closest('.visualising__gallery__slider__wrapper__slide') && !e.target.closest('.visualising__gallery__arrow') && !e.target.closest('.visualising__gallery__slider__wrapper__slide') && !e.target.closest('.overlay_hover_icon')) {
         document.querySelector('.visualising__gallery').classList.remove('visualising__gallery--active');
         document.body.style.overflow = '';
     }
-    if (!e.target.closest('.services__3d__heading') && !e.target.closest('.other3d__gallery__slider__wrapper__slide') && !e.target.closest('.other3d__gallery__arrow') && !e.target.closest('.other3d__gallery__slider__wrapper__slide')) {
+    if (!e.target.closest('.services__3d__heading') && !e.target.closest('.other3d__gallery__slider__wrapper__slide') && !e.target.closest('.other3d__gallery__arrow') && !e.target.closest('.other3d__gallery__slider__wrapper__slide') && !e.target.closest('.overlay_hover_icon')) {
         document.querySelector('.other3d__gallery').classList.remove('other3d__gallery--active');
         document.body.style.overflow = '';
     }
@@ -261,6 +273,28 @@ function showGallery(clickedElmnt) {
         console.log(clickedIndex, 'is undefiend');
     }
 }
+
+function showGlobalGallery(clickedElmnt) {
+    if (typeof clickedElmnt === 'undefined' || clickedElmnt.parentElement.parentElement.getAttribute('data-gallery') === null) return
+        // Show Gallery
+
+    let clickedElmntSelector = clickedElmnt.parentElement.parentElement.getAttribute('data-gallery');
+    document.querySelector(`.${clickedElmntSelector}`).classList.add(`${clickedElmntSelector}--active`);
+
+    // Scroll to clicked element [Exception]
+
+    if (typeof document.querySelector(`.${clickedElmntSelector}__slider__wrapper`) === 'undefined' || typeof document.querySelector(`.${clickedElmntSelector}__slider__wrapper__slide`) === 'undefined' || clickedElmnt.parentElement.parentElement.getAttribute('data-gallery-index') === null) return
+    const clickedIndex = parseFloat(clickedElmnt.parentElement.parentElement.getAttribute('data-gallery-index'));
+    const slideWrapper = document.querySelector(`.${clickedElmntSelector}__slider__wrapper`);
+    const slideWidth = parseFloat(getComputedStyle([...document.querySelectorAll(`.${clickedElmntSelector}__slider__wrapper__slide`)][0]).width);
+    console.log(`Eq: -1 * (index[${clickedIndex}] + 1) * slideWidth[${slideWidth}] = ${-1 * (clickedIndex + 1) * slideWidth}`);
+    slideWrapper.style.left = -1 * (clickedIndex + 1) * slideWidth + 'px';
+}
+[...document.querySelectorAll('.overlay_hover_icon')].forEach(elmnt => {
+    elmnt.addEventListener('click', () => {
+        showGlobalGallery(elmnt);
+    });
+});
 // Make Specified positioned elements in its place
 function handleRatios(elmnt) {
     // check if screen width is less than 600, then don't scale according to ratio and reset style
@@ -272,13 +306,9 @@ function handleRatios(elmnt) {
         document.querySelector('section.about').style.marginTop = `${380 * (window.screen.width / 390)}px`;
         return;
     }
-    // if (!elmnt.getAttribute('data-pos') || !dimensionsRef[elmnt.getAttribute('data-pos')]) {
-    //     console.log('You did not Add element in data object yet!, element is: ', elmnt);
-    //     return;
-    // }
     let magnifyingFactor = window.screen.width / dimensionsRef.width;
     let newLeft;
-    let newTop = magnifyingFactor * dimensionsRef[elmnt.getAttribute('data-pos')].top + 'px';
+    let newTop;
     if (typeof dimensionsRef[elmnt.getAttribute('data-pos')].left !== 'undefined') {
         newLeft = (window.screen.width * dimensionsRef[elmnt.getAttribute('data-pos')].left) / dimensionsRef.width + 'px';
         elmnt.style.left = newLeft;
@@ -288,7 +318,13 @@ function handleRatios(elmnt) {
     } else {
         console.log('Error in element', elmnt);
     }
-    elmnt.style.top = newTop;
+    if (typeof dimensionsRef[elmnt.getAttribute('data-pos')].top !== 'undefined') {
+        newTop = magnifyingFactor * dimensionsRef[elmnt.getAttribute('data-pos')].top + 'px'
+        elmnt.style.top = newTop;
+    } else if (typeof dimensionsRef[elmnt.getAttribute('data-pos')].bottom !== 'undefined') {
+        newTop = magnifyingFactor * dimensionsRef[elmnt.getAttribute('data-pos')].bottom + 'px'
+        elmnt.style.bottom = newTop;
+    } else { console.log('Error in element', elmnt) }
     elmnt.style.transform = `scale(${magnifyingFactor})`;
     // Exceptions
     if (elmnt.classList.contains('services__p-line')) {

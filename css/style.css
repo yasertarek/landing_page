@@ -288,6 +288,94 @@ nav.header__nav ul li a:active {
     transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
 }
 
+.overlay_hover_container {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay_hover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(167, 48, 48, 0.75);
+    transition: 0.2s transform ease-in-out, opacity 0.2s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+}
+
+.overlay_hover_container:hover .overlay_hover,
+.overlay_hover_container:active .overlay_hover {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.overlay_hover::before,
+.overlay_hover::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    transition: transform 0.5s ease-in-out 0.2s, opacity 0.5s ease-in-out 0.2s;
+    opacity: 0;
+}
+
+.overlay_hover::before {
+    left: 10px;
+    top: 10px;
+    border-top: 3px solid var(--color-light-white);
+    border-left: 3px solid var(--color-light-white);
+    transform: translate(40%, 40%);
+}
+
+.overlay_hover::after {
+    right: 10px;
+    bottom: 10px;
+    border-right: 3px solid var(--color-light-white);
+    border-bottom: 3px solid var(--color-light-white);
+    transform: translate(-40%, -40%);
+}
+
+.overlay_hover_icon {
+    fill: var(--color-t-white);
+    transition: transform 0.4s ease-in-out, fill 0.2s ease-in-out;
+    transform: scale(0);
+    z-index: 999;
+    cursor: pointer;
+}
+
+.overlay_hover_container:hover .overlay_hover_icon,
+.overlay_hover_container:active .overlay_hover_icon {
+    transform: scale(1);
+}
+
+.overlay_hover_icon:hover,
+.overlay_hover_icon:active {
+    /* animation: heartbeat 1s ease-in-out infinite; */
+    fill: var(--color-light-white);
+}
+
+.overlay_hover_container:hover .overlay_hover::after,
+.overlay_hover_container:hover .overlay_hover::before,
+.overlay_hover_container:active .overlay_hover::after,
+.overlay_hover_container:active .overlay_hover::before {
+    opacity: 1;
+    transform: translate(0);
+}
+
+.overlay_hover_container img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
 
 /* Big Desktop Media =>  *< 1800px */
 
@@ -977,6 +1065,10 @@ section.about .heading-secondary {
 @media only screen and (max-width: 37.5em) {
     .wer-sind {
         margin-bottom: 5rem;
+        margin-bottom: 5rem;
+        background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.75) 18% 84%, transparent);
+        padding: 2rem 0;
+        backdrop-filter: blur(2px);
     }
     section.about {
         /* margin-top: 104rem; */
@@ -1003,6 +1095,10 @@ section.about .heading-secondary {
     }
     .wer-sind__text span {
         font-size: 1.8rem;
+    }
+    .wer-sind .marker::after {
+        top: -5px;
+        padding: 4px 0;
     }
     .was-bieten ul {
         margin-left: 2rem;
@@ -1185,11 +1281,17 @@ section.about .heading-secondary {
     letter-spacing: 1px;
 }
 
-.services__gips-deko__visual img {
+.services__gips-deko__visual__img {
     max-width: 421px;
     margin-top: 60px;
     display: block;
     border-radius: 5px;
+}
+
+.services__gips-deko__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .services__gips-deko__separator-line {
@@ -1594,12 +1696,23 @@ section.about .heading-secondary {
 
 .fixed-btns {
     position: fixed;
-    right: 30px;
+    right: 10px;
     bottom: 30px;
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
     gap: 10px;
+    transform-origin: bottom right;
+    opacity: 0;
+    transform: translateY(100%);
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.fixed-btns--active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0)
 }
 
 .to-top {
@@ -1621,10 +1734,10 @@ section.about .heading-secondary {
 
 .contact-btn {
     background-color: var(--color-dark-red);
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1;
     color: var(--color-light-white);
-    padding: 4px 7px;
+    padding: 5px 10px;
     text-transform: uppercase;
     font-family: 'myriadPro';
 }
@@ -1748,6 +1861,7 @@ section.about .heading-secondary {
     .footer {
         flex-direction: column;
         gap: 2rem;
+        text-align: center;
     }
     .full-row {
         left: 0;
