@@ -1158,9 +1158,12 @@ section.about {
         margin: 0;
         max-width: none;
     }
+    .wer-sind .marker {
+        line-height: 0.6;
+        padding: 0 0 3px 0;
+    }
     .wer-sind .marker::after {
-        top: -5px;
-        padding: 3px 0 4px 0;
+        top: -6px;
     }
     .was-bieten ul {
         margin-left: 2rem;
@@ -2120,6 +2123,7 @@ section.about {
     backdrop-filter: blur(10px);
     z-index: 9999;
     transition: opacity 0.5s ease-in-out;
+    display: none;
 }
 
 .loading__container {
