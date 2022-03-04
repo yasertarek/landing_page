@@ -228,6 +228,9 @@ document.addEventListener('click', (e) => {
         }
     });
 });
+// document.querySelector('.header__checkbox').addEventListener('input', (e) => {
+//     if(e.currentTarget.checked === true){}
+// });
 // Contact form 
 // show border on focusin
 [...document.querySelectorAll('.contact__text')].forEach((elmnt) => {
