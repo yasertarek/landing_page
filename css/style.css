@@ -1862,8 +1862,8 @@ section.about {
 
 .to-top {
     background-color: var(--color-dark-red);
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     display: block;
     display: flex;
     justify-content: center;
@@ -1880,10 +1880,10 @@ section.about {
 
 .contact-btn {
     background-color: var(--color-dark-red);
-    font-size: 20px;
+    font-size: 25px;
     line-height: 1;
     color: var(--color-light-white);
-    padding: 5px 10px;
+    padding: 12.5px 10px;
     text-transform: uppercase;
     font-family: 'MyriadPro';
     border-radius: 100px;
