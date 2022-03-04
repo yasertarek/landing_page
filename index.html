@@ -12,20 +12,21 @@
 <body>
     <header class="header">
         <a href="./index.html" class="header__company-logo">Grandcontours.de</a>
-        <input class="header__checkbox" type="checkbox" id="navtoggle">
-        <label class="header__button" for="navtoggle">
-            <span class="header__icon">&nbsp;</span>
-        </label>
-        <div class="header__background"></div>
-        <nav class="header__nav">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#services">Leistungen</a></li>
-                <li><a href="#shop">shop</a></li>
-                <li><a href="#about">Über uns</a></li>
-                <li><a href="#contact">Kontakt</a></li>
-            </ul>
-        </nav>
+        <div class="header__test">
+            <div class="header__button" for="navtoggle">
+                <span class="header__icon">&nbsp;</span>
+            </div>
+            <div class="header__background"></div>
+            <nav class="header__nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#services">Leistungen</a></li>
+                    <li><a href="#shop">shop</a></li>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <section class="about" id="about">
@@ -294,8 +295,8 @@
             <div class="services__gips-deko__text">
                 <ul class="services__gips-deko__text-ul fixed-pos" data-pos="services__gips-deko__text-ul">
                     <li>Flexibel</li>
-                    <li class="active">Einfach</li>
-                    <li>Gunstig</li>
+                    <li>Einfach</li>
+                    <li class="active">Gunstig</li>
                     <li>Sicher</li>
                 </ul>
                 <p class="services__gips-deko__text-p fixed-pos" data-pos="services__gips-deko__text-p">
@@ -466,10 +467,10 @@
         <!-- End other 3D services -->
     </section>
     <section class="contact">
-        <h3 class="heading-tertiary contact__heading fixed-pos" data-pos="contact__heading">
+        <h3 class="heading-tertiary contact__heading fixed-pos" id="contact" data-pos="contact__heading">
             <span>Contact Us</span>
         </h3>
-        <form action="#" class="form fixed-pos" data-pos="form" id="contact">
+        <form action="#" class="form fixed-pos" data-pos="form">
             <div>
                 <div class="contact__name form-row col-6">
                     <input id="name" name="name" type="text" class="contact__text" />

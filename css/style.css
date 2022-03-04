@@ -88,7 +88,7 @@ body {
     /* min-height: 600rem; */
     line-height: 1.7;
     background-color: #000;
-    /* position: relative; */
+    position: relative;
     overflow-x: hidden;
 }
 
@@ -166,11 +166,15 @@ header.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* position: fixed; */
-    /* left: 0; */
-    /* top: 0; */
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     z-index: 99;
+}
+
+.header__test {
+    position: relative;
 }
 
 .header__company-logo {
@@ -429,6 +433,18 @@ nav.header__nav ul li a:active {
     .header__background {
         display: block;
     }
+    .header__test {
+        position: absolute !important;
+        width: 100vw;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+        z-index: -1;
+    }
+    header.header--active .header__test {
+        z-index: 1000;
+    }
     nav.header__nav ul {
         position: absolute;
         top: 50%;
@@ -458,26 +474,22 @@ nav.header__nav ul li a:active {
         transform: translateX(-1rem);
     }
     /*FUNCTIONALITY*/
-    .header__checkbox:checked~.header__background {
+    .header--active .header__background {
         transform: scale(80) !important;
-        position: fixed;
     }
-    .header__checkbox:checked~.header__nav {
+    .header--active .header__nav {
         opacity: 1 !important;
-        width: 100vw !important;
+        width: 100% !important;
         visibility: visible;
     }
-    .header__checkbox:checked+.header__button {
-        position: fixed;
-    }
-    .header__checkbox:checked+.header__button .header__icon {
+    .header--active .header__button .header__icon {
         background-color: transparent;
     }
-    .header__checkbox:checked+.header__button .header__icon::before {
+    .header--active .header__button .header__icon::before {
         top: 0;
         transform: rotate(135deg);
     }
-    .header__checkbox:checked+.header__button .header__icon::after {
+    .header--active .header__button .header__icon::after {
         top: 0;
         transform: rotate(-135deg);
     }
@@ -1083,7 +1095,12 @@ section.about {
 
 /* Tablet Media => 0 : 900px */
 
-@media only screen and (max-width: 56.25em) {}
+@media only screen and (max-width: 56.25em) {
+    section.about * {
+        z-index: 150;
+        transition: z-index 1s ease-out;
+    }
+}
 
 
 /*Mobile Media =>0 : 600px*/
@@ -1143,7 +1160,7 @@ section.about {
     }
     .wer-sind .marker::after {
         top: -5px;
-        padding: 4px 0;
+        padding: 3px 0 4px 0;
     }
     .was-bieten ul {
         margin-left: 2rem;
@@ -1417,8 +1434,8 @@ section.about {
     display: inline-block;
     color: inherit;
     background-color: #000;
-    padding: 0 5px;
-    line-height: 1.2;
+    padding: 3px 5px;
+    line-height: 1;
 }
 
 .services__gips-deko__text-ul li.active {

@@ -185,52 +185,59 @@ document.querySelector('.services__3d__heading').addEventListener('click', () =>
 // Hide Shops Gallery
 document.querySelector('.shop__gallery-times-icon').addEventListener('click', (e) => {
     document.querySelector('.shop__gallery').classList.remove('shop__gallery--active');
-    document.body.style.overflow = '';
+
 });
 // Hide Gips-deko Gallery
 document.querySelector('.gips-deko__gallery-times-icon').addEventListener('click', (e) => {
     document.querySelector('.gips-deko__gallery').classList.remove('gips-deko__gallery--active');
-    document.body.style.overflow = '';
+
 });
 // Hide visualising Gallery
 document.querySelector('.visualising__gallery-times-icon').addEventListener('click', (e) => {
     document.querySelector('.visualising__gallery').classList.remove('visualising__gallery--active');
-    document.body.style.overflow = '';
+
 });
 // Hide other3d Gallery
 document.querySelector('.other3d__gallery-times-icon').addEventListener('click', (e) => {
     document.querySelector('.other3d__gallery').classList.remove('other3d__gallery--active');
-    document.body.style.overflow = '';
+
 });
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.shop__slider-view-icon') && !e.target.closest('.shop__gallery__slider__wrapper__slide') && !e.target.closest('.shop__gallery__arrow') && !e.target.closest('.shop__gallery__slider__wrapper__slide') && !e.target.closest('.overlay_hover_icon')) {
         document.querySelector('.shop__gallery').classList.remove('shop__gallery--active');
-        document.body.style.overflow = '';
+
     }
     if (!e.target.closest('.services__gips-deko__visual .heading-tertiary') && !e.target.closest('.gips-deko__gallery__slider__wrapper__slide') && !e.target.closest('.gips-deko__gallery__arrow') && !e.target.closest('.gips-deko__gallery__slider__wrapper__slide') && !e.target.closest('.overlay_hover_icon')) {
         document.querySelector('.gips-deko__gallery').classList.remove('gips-deko__gallery--active');
-        document.body.style.overflow = '';
+
     }
     if (!e.target.closest('.services__visualising__heading') && !e.target.closest('.visualising__gallery__slider__wrapper__slide') && !e.target.closest('.visualising__gallery__arrow') && !e.target.closest('.visualising__gallery__slider__wrapper__slide') && !e.target.closest('.overlay_hover_icon')) {
         document.querySelector('.visualising__gallery').classList.remove('visualising__gallery--active');
-        document.body.style.overflow = '';
+
     }
     if (!e.target.closest('.services__3d__heading') && !e.target.closest('.other3d__gallery__slider__wrapper__slide') && !e.target.closest('.other3d__gallery__arrow') && !e.target.closest('.other3d__gallery__slider__wrapper__slide') && !e.target.closest('.overlay_hover_icon')) {
         document.querySelector('.other3d__gallery').classList.remove('other3d__gallery--active');
-        document.body.style.overflow = '';
+
     }
 });
 // Handle menu
 [...document.querySelectorAll('.header__nav ul li a')].forEach(elmnt => {
     elmnt.addEventListener('click', () => {
-        if (document.querySelector('.header__checkbox').checked == true) {
-            document.querySelector('.header__checkbox').checked = false;
-        }
+        document.querySelector('header.header').classList.remove('header--active');
+        document.body.style.overflow = 'auto';
+        S
     });
 });
-// document.querySelector('.header__checkbox').addEventListener('input', (e) => {
-//     if(e.currentTarget.checked === true){}
-// });
+document.querySelector('.header__button').addEventListener('click', () => {
+    document.querySelector('header.header').classList.toggle('header--active');
+    if (document.querySelector('header.header').classList.contains('header--active')) {
+        document.body.style.overflow = 'hidden';
+        [...document.querySelectorAll('section.about *')].forEach(elmnt => elmnt.style.zIndex = '-1');
+    } else {
+        document.body.style.overflow = 'auto';
+        S
+    }
+});
 // Contact form 
 // show border on focusin
 [...document.querySelectorAll('.contact__text')].forEach((elmnt) => {
@@ -271,7 +278,7 @@ function showGallery(clickedElmnt) {
     elesArr.pop();
     const clickedIndex = elesArr.indexOf(clickedElmnt);
     document.querySelector('.shop__gallery').classList.add('shop__gallery--active');
-    document.body.style.overflow = 'hidden';
+    // document.body.style.overflow = 'hidden';
     // Scroll to Clicked element
     if (typeof clickedIndex !== undefined) {
         let slideWidth = parseFloat(getComputedStyle([...document.querySelectorAll('.shop__gallery__slider__wrapper__slide')][0]).width);
