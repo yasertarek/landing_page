@@ -1311,9 +1311,12 @@ section.about .heading-secondary {
 
 .services__gips-deko__visual__img {
     max-width: 421px;
-    margin-top: 81px;
     display: block;
     border-radius: 5px;
+}
+
+.services__gips-deko__visual__img:not(:first-child) {
+    margin-top: 81px;
 }
 
 .services__gips-deko__visual__img:nth-child(1) {
@@ -1996,6 +1999,8 @@ section.about .heading-secondary {
     }
     .services__gips-deko__visual__gallery {
         left: auto;
+        flex-direction: column;
+        width: auto;
     }
     .services__gips-deko__visual img {
         margin: 5rem auto 0 auto;
@@ -2022,6 +2027,9 @@ section.about .heading-secondary {
     .services__gips-deko__sub-heading {
         overflow-wrap: break-word;
         hyphens: manual;
+    }
+    .services__gips-deko__visual__img:not(:first-child) {
+        margin-top: 3rem;
     }
     .services__gips-deko__text-p {
         font-size: 1.6rem;
