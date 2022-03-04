@@ -45,7 +45,7 @@
     --color-dark-red: #a73030;
     --color-light-white: #fffbeb;
     --color-dark-white: #aaa59d;
-    --color-t-white: rgba(255, 251, 235, 0.5);
+    --color-t-white: rgba(255, 251, 235, 0.61);
     --color-dark-gray: #363636;
     --color-purple: #8a3845;
     /* --color-dark-gray: rgb(54, 54, 54); */
@@ -104,7 +104,7 @@ body {
     font-family: "MyriadPro";
     font-size: 124px;
     color: var(--color-t-white);
-    font-weight: normal;
+    font-weight: bold;
     text-transform: uppercase;
     line-height: 1;
 }
@@ -122,7 +122,7 @@ body {
 .marker {
     position: relative;
     line-height: 0.7;
-    padding: 2px 0;
+    /* padding: 2px 0; */
     margin-right: 5px;
     display: inline-flex;
     justify-content: center;
@@ -133,7 +133,7 @@ body {
     content: "";
     position: absolute;
     left: 0;
-    top: 0;
+    top: 1px;
     width: 100%;
     height: 100%;
     background: var(--color-dark-red);
@@ -486,7 +486,8 @@ nav.header__nav ul li a:active {
 @media only screen and (max-width: 37.5em) {
     body {
         /* Optimization */
-        background-image: url(../imgs/background-mobile.png);
+        /* background-image: url(../imgs/background-mobile.png); */
+        background-image: linear-gradient(to top, transparent 0%, transparent 87%, rgba(0, 0, 0, 0.3) 87% 95%, transparent 96%), url(../imgs/background-mobile.png);
     }
     .header__background {
         top: 3rem;
@@ -1073,9 +1074,8 @@ section.about .heading-secondary {
     .wer-sind {
         margin-bottom: 5rem;
         margin-bottom: 5rem;
-        background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.75) 18% 84%, transparent);
+        /* background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.75) 18% 84%, transparent); */
         padding: 2rem 0;
-        backdrop-filter: blur(2px);
     }
     section.about {
         /* margin-top: 104rem; */
@@ -1305,6 +1305,7 @@ section.about .heading-secondary {
     left: 50%;
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
     padding: 0 20px;
     width: 1449.65px;
 }
@@ -1850,95 +1851,6 @@ section.about .heading-secondary {
 .fixed-btns>div a:hover::after {
     transform: scale(1.5);
     opacity: 0;
-}
-
-
-/* Animation on scroll */
-
-.wer-sind .wer-sind__content,
-.shop .red-badge,
-.shop .paragraph,
-.shop .shop__slider,
-.form>div {
-    transform: translateX(100px);
-    transition: transform 1s ease-in-out, opacity 0.2s ease-in-out;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.was-bieten .heading-secondary,
-.was-bieten .red-badge,
-.was-bieten .paragraph li,
-.our-vision .red-badge,
-.our-vision .paragraph,
-.each_place_is_unique span,
-.contact__heading span {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateX(-100px);
-    transition: transform 1s ease-in-out, opacity 0.2s ease-in-out;
-}
-
-.wer-sind--scrolled .wer-sind__content,
-.shop--scrolled .red-badge,
-.shop--scrolled .paragraph,
-.shop--scrolled .shop__slider,
-.was-bieten--scrolled .heading-secondary,
-.was-bieten--scrolled .red-badge,
-.was-bieten .paragraph li.li--scrolled,
-.our-vision--scrolled .red-badge,
-.our-vision--scrolled .paragraph,
-.each_place_is_unique--scrolled span,
-.contact__heading--scrolled span,
-.form--scrolled>div {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.services__words-table .services__words-table__row--1,
-.services__gips-deko__visual .heading-tertiary,
-.services__gips-deko__visual .services__gips-deko__sub-heading,
-.services__gips-deko__text,
-.services__visualising__heading span,
-.services__visualising__item .red-badge,
-.services__visualising__item .services__visualising__item__img,
-.services__3d__header .services__3d__heading,
-.services__3d__header .services__3d__sub-heading {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-100px);
-    transition: transform 1s ease-in-out, opacity 0.2s ease-in-out;
-}
-
-.services__words-table .services__words-table__row--2,
-.services__heading span,
-.services__gips-deko__visual__gallery>div,
-.services__visualising__item .services__visualising__item__text,
-.services__3d__imgs .services__3d__img {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(100px);
-    transition: transform 1s ease-in-out, opacity 0.2s ease-in-out;
-}
-
-.services__words-table--scrolled .services__words-table__row--1,
-.services__words-table--scrolled .services__words-table__row--2,
-.services__heading--scrolled span,
-.services__gips-deko__visual--scrolled .heading-tertiary,
-.services__gips-deko__visual--scrolled .services__gips-deko__sub-heading,
-.services__gips-deko__text--scrolled,
-.services__gips-deko__visual__gallery--scrolled>div,
-.services__visualising__heading--scrolled span,
-.services__visualising__item--scrolled .red-badge,
-.services__visualising__item--scrolled .services__visualising__item__img,
-.services__visualising__item--scrolled .services__visualising__item__text,
-.services__3d__header--scrolled .services__3d__heading,
-.services__3d__header--scrolled .services__3d__sub-heading,
-.services__3d__imgs--scrolled .services__3d__img {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
 }
 
 

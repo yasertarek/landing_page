@@ -178,72 +178,6 @@ document.addEventListener('scroll', () => {
     } else {
         document.querySelector('.fixed-btns').classList.add('fixed-btns--active');
     }
-    // Elements Animation
-    // wer-sind
-    if (window.scrollY > 235 * scrollFactor) {
-        document.querySelector('.wer-sind').classList.add('wer-sind--scrolled');
-    }
-    // was-bieten
-    if (window.scrollY > 400 * scrollFactor) {
-        document.querySelector('.was-bieten').classList.add('was-bieten--scrolled');
-    }
-    if (window.scrollY > 475 * scrollFactor) {
-        document.querySelector('.was-bieten .paragraph li:nth-child(1)').classList.add('li--scrolled');
-    }
-    if (window.scrollY > 550 * scrollFactor) {
-        document.querySelector('.was-bieten .paragraph li:nth-child(2)').classList.add('li--scrolled');
-    }
-    if (window.scrollY > 625 * scrollFactor) {
-        document.querySelector('.was-bieten .paragraph li:nth-child(3)').classList.add('li--scrolled');
-    }
-    if (window.scrollY > 700 * scrollFactor) {
-        document.querySelector('.was-bieten .paragraph li:nth-child(4)').classList.add('li--scrolled');
-    }
-    // our vision
-    if (window.scrollY > 850 * scrollFactor) {
-        document.querySelector('.our-vision').classList.add('our-vision--scrolled');
-    }
-    // shop slider
-    if (window.scrollY > 1000 * scrollFactor) {
-        document.querySelector('.shop').classList.add('shop--scrolled');
-    }
-    // each place is unique
-    if (window.scrollY > 1150 * scrollFactor) {
-        document.querySelector('.each_place_is_unique').classList.add('each_place_is_unique--scrolled');
-    }
-    // words-table
-    if (window.scrollY > 1250 * scrollFactor) {
-        document.querySelector('.services__words-table').classList.add('services__words-table--scrolled');
-    }
-    // services-heading
-    if (window.scrollY > 1600 * scrollFactor) {
-        document.querySelector('.services__heading').classList.add('services__heading--scrolled');
-    }
-    // services-gips-deko 
-    if (window.scrollY > 1750 * scrollFactor) {
-        document.querySelector('.services__gips-deko__visual').classList.add('services__gips-deko__visual--scrolled');
-        document.querySelector('.services__gips-deko__text').classList.add('services__gips-deko__text--scrolled');
-        document.querySelector('.services__gips-deko__visual__gallery').classList.add('services__gips-deko__visual__gallery--scrolled');
-    }
-    if (window.scrollY > 2300 * scrollFactor) {
-        document.querySelector('.services__visualising__heading').classList.add('services__visualising__heading--scrolled');
-    }
-    if (window.scrollY > 2400 * scrollFactor) {
-        [...document.querySelectorAll('.services__visualising__item')].forEach(elmnt => elmnt.classList.add('services__visualising__item--scrolled'));
-    }
-    if (window.scrollY > 2800 * scrollFactor) {
-        document.querySelector('.services__3d__header').classList.add('services__3d__header--scrolled');
-    }
-    if (window.scrollY > 3200 * scrollFactor) {
-        document.querySelector('.services__3d__imgs').classList.add('services__3d__imgs--scrolled');
-    }
-    if (window.scrollY > 3300 * scrollFactor) {
-        document.querySelector('.contact__heading').classList.add('contact__heading--scrolled');
-    }
-    if (window.scrollY > 3500 * scrollFactor) {
-        document.querySelector('.form').classList.add('form--scrolled');
-    }
-
 });
 fixedPos.forEach((elmnt) => {
     handleRatios(elmnt);
@@ -384,7 +318,7 @@ function handleRatios(elmnt) {
         elmnt.removeAttribute('style');
         [...elmnt.querySelectorAll('*')].forEach(elmnt => elmnt.removeAttribute('style'));
         // add margin-top to the whole content
-        document.querySelector('section.about').style.marginTop = `${380 * (window.screen.width / 390)}px`;
+        document.querySelector('body').style.paddingTop = `${380 * (window.screen.width / 390)}px`;
         return;
     }
     let magnifyingFactor = window.screen.width / dimensionsRef.width;
