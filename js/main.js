@@ -225,7 +225,6 @@ document.addEventListener('click', (e) => {
     elmnt.addEventListener('click', () => {
         document.querySelector('header.header').classList.remove('header--active');
         document.body.style.overflow = 'auto';
-        S
     });
 });
 document.querySelector('.header__button').addEventListener('click', () => {
@@ -235,7 +234,6 @@ document.querySelector('.header__button').addEventListener('click', () => {
         [...document.querySelectorAll('section.about *')].forEach(elmnt => elmnt.style.zIndex = '-1');
     } else {
         document.body.style.overflow = 'auto';
-        S
     }
 });
 // Contact form 

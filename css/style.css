@@ -1826,6 +1826,7 @@ section.about {
     transform: translateY(100%);
     visibility: hidden;
     transition: opacity 0.2s ease-in-out;
+    z-index: 3000;
 }
 
 .fixed-btns>div {
