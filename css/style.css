@@ -102,7 +102,7 @@ body {
 
 .heading-tertiary {
     font-family: "MyriadPro";
-    font-size: 124px;
+    font-size: 111px;
     color: var(--color-t-white);
     font-weight: bold;
     text-transform: uppercase;
@@ -122,7 +122,6 @@ body {
 .marker {
     position: relative;
     line-height: 0.7;
-    /* padding: 2px 0; */
     margin-right: 5px;
     display: inline-flex;
     justify-content: center;
@@ -167,9 +166,9 @@ header.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    left: 0;
-    top: 0;
+    /* position: fixed; */
+    /* left: 0; */
+    /* top: 0; */
     width: 100%;
     z-index: 99;
 }
@@ -228,7 +227,7 @@ nav.header__nav ul li a:active {
     background-color: #fff;
     height: 7rem;
     width: 7rem;
-    position: fixed;
+    position: absolute;
     top: 2.7rem;
     right: 1.5rem;
     border-radius: 50%;
@@ -282,7 +281,7 @@ nav.header__nav ul li a:active {
     height: 6rem;
     width: 6rem;
     border-radius: 50%;
-    position: fixed;
+    position: absolute;
     top: 6.5rem;
     right: 6.5rem;
     background-image: radial-gradient(rgb(233, 69, 69) 10%, rgb(167, 48, 48) 20%);
@@ -302,7 +301,7 @@ nav.header__nav ul li a:active {
     width: 100%;
     height: 100%;
     background-color: rgba(167, 48, 48, 0.75);
-    transition: 0.3s transform ease-in-out, opacity 0.2s ease-in-out;
+    transition: 0.5s transform ease-in-out, opacity 0.2s ease-in-out;
     opacity: 0;
     visibility: hidden;
     display: flex;
@@ -322,8 +321,8 @@ nav.header__nav ul li a:active {
 .overlay_hover::after {
     content: '';
     position: absolute;
-    width: 50%;
-    height: 50%;
+    width: 25%;
+    height: 25%;
     transition: transform 0.7s ease-in-out, opacity 0.5s ease-in-out;
     opacity: 0;
 }
@@ -333,7 +332,7 @@ nav.header__nav ul li a:active {
     top: 10px;
     border-top: 3px solid var(--color-light-white);
     border-left: 3px solid var(--color-light-white);
-    transform: translate(45%, 45%);
+    transform: translate(100%, 100%);
 }
 
 .overlay_hover::after {
@@ -341,7 +340,7 @@ nav.header__nav ul li a:active {
     bottom: 10px;
     border-right: 3px solid var(--color-light-white);
     border-bottom: 3px solid var(--color-light-white);
-    transform: translate(-45%, -45%);
+    transform: translate(-100%, -100%);
 }
 
 .overlay_hover_icon {
@@ -487,7 +486,7 @@ nav.header__nav ul li a:active {
     body {
         /* Optimization */
         /* background-image: url(../imgs/background-mobile.png); */
-        background-image: linear-gradient(to top, transparent 0%, transparent 87%, rgba(0, 0, 0, 0.3) 87% 95%, transparent 96%), url(../imgs/background-mobile.png);
+        background-image: linear-gradient(to top, transparent 0%, transparent 87%, rgba(0, 0, 0, 0.5) 89% 92%, transparent 96%), url(../imgs/background-mobile.png);
     }
     .header__background {
         top: 3rem;
@@ -504,7 +503,7 @@ nav.header__nav ul li a:active {
     }
     .heading-tertiary {
         font-family: "MyriadPro";
-        font-size: 6.3rem;
+        font-size: 5.3rem;
         overflow-wrap: break-word;
     }
     .red-badge {
@@ -512,9 +511,10 @@ nav.header__nav ul li a:active {
         padding: 0 1rem;
         margin-bottom: 1.5rem;
         text-align: center;
+        display: block;
     }
     .marker {
-        padding: 0.2rem 0;
+        padding: 0;
         margin-right: 0.5rem;
     }
     .paragraph {
@@ -532,13 +532,6 @@ section.about {
     /* margin-top: 72rem; */
 }
 
-section.about .heading-secondary {
-    font-family: "MyriadPro";
-    text-transform: uppercase;
-    white-space: nowrap;
-    line-height: 1.25;
-}
-
 .wer-sind {
     /* top: 825px;
     left: 1095px; */
@@ -551,27 +544,48 @@ section.about .heading-secondary {
 } */
 
 .wer-sind__content {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 400px;
+    grid-template-rows: auto auto auto;
+}
+
+.wer-sind__content .heading-secondary {
+    font-family: "MyriadPro";
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1.25;
+    flex-basis: 100%;
+    grid-row: 1/2;
+    grid-column: 1/3;
 }
 
 .wer-sind__img {
     margin-right: 20px;
+    grid-row: 2/4;
+    grid-column: 1/2;
 }
 
 .wer-sind__img img {
-    max-width: 75%;
+    max-width: 100%;
     display: block;
     margin-left: auto;
 }
 
-.wer-sind__text span {
+.wer-sind__sub-heading {
     color: var(--color-purple);
     font-size: 18px;
     font-family: "MyriadPro";
     font-weight: bold;
     text-transform: uppercase;
+    grid-row: 2/3;
+    grid-column: 2/3;
 }
+
+
+/* .wer-sind__text{
+    grid-row: 2/4;
+    grid-column: 2/3;
+} */
 
 .was-bieten {
     /* top: 905px; */
@@ -809,8 +823,8 @@ section.about .heading-secondary {
 .shop__slider-overlay::after {
     content: '';
     position: absolute;
-    width: 50%;
-    height: 50%;
+    width: 25%;
+    height: 25%;
     transition: transform 0.5s ease-in-out;
 }
 
@@ -1071,37 +1085,57 @@ section.about .heading-secondary {
 /*Mobile Media =>0 : 600px*/
 
 @media only screen and (max-width: 37.5em) {
+    section.about {
+        /* margin-top: 104rem; */
+        /* padding: 0 1.5rem; */
+    }
     .wer-sind {
         margin-bottom: 5rem;
         margin-bottom: 5rem;
         /* background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.75) 18% 84%, transparent); */
         padding: 2rem 0;
+        text-align: center;
     }
-    section.about {
-        /* margin-top: 104rem; */
-        /* padding: 0 1.5rem; */
+    .wer-sind__content {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto auto;
+        padding: 0 2rem;
+        gap: 2rem;
     }
-    section.about .heading-secondary {
+    .wer-sind__content .heading-secondary {
         font-size: 5.2rem;
         white-space: normal;
         line-height: 1;
-    }
-    .wer-sind__content {
-        /* flex-direction: r; */
-    }
-    .was-bieten .heading-secondary {
-        margin-left: 0;
+        grid-row: 3/4;
+        grid-column: 1/2;
     }
     .wer-sind__img {
         margin-right: 0;
-        margin-left: auto;
+        margin-left: 0;
+        /* margin: 0 0 2rem 0; */
+        grid-row: 1/2;
+    }
+    .wer-sind__sub-heading {
+        grid-row: 2/3;
+        grid-column: 1/2;
+        /* text-align: center; */
     }
     .wer-sind__img img {
         margin-left: auto;
         margin-right: auto;
     }
-    .wer-sind__text span {
+    .wer-sind__sub-heading {
         font-size: 1.8rem;
+        grid-column: 1/2;
+    }
+    .wer-sind__text {
+        grid-row: 4/5;
+        grid-column: 1/2;
+    }
+    .wer-sind__text .paragraph {
+        margin: 0;
+        max-width: none;
     }
     .wer-sind .marker::after {
         top: -5px;
@@ -1109,6 +1143,10 @@ section.about .heading-secondary {
     }
     .was-bieten ul {
         margin-left: 2rem;
+    }
+    .was-bieten .heading-secondary {
+        margin-left: 0;
+        font-size: 4.2rem;
     }
     .our-vision {
         text-align: center;
@@ -1177,10 +1215,11 @@ section.about .heading-secondary {
 .bg-word {
     font-size: 465px;
     text-transform: uppercase;
-    font-family: "myriadPro";
-    font-weight: normal;
+    font-family: "MyriadPro";
+    font-weight: bold;
     color: rgba(255, 255, 255, 0.05);
     z-index: -1;
+    left: -10px;
 }
 
 .services {}
@@ -1291,14 +1330,14 @@ section.about .heading-secondary {
     font-family: 'capoonPersonalUseLight';
     color: var(--color-light-white);
     font-weight: normal;
-    opacity: 0.6;
     letter-spacing: 5px;
 }
 
 .services__gips-deko__sub-heading--yellow {
-    color: #ff8400;
+    color: #b98b34;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: 5px;
+    font-family: 'MyriadPro';
 }
 
 .services__gips-deko__visual__gallery {
@@ -1364,7 +1403,7 @@ section.about .heading-secondary {
 
 .services__gips-deko__text-ul {
     list-style: none;
-    color: #ba8b32;
+    color: #b98b34;
     font-size: 26px;
     font-family: 'MyriadPro';
     font-weight: bold;
@@ -1480,7 +1519,7 @@ section.about .heading-secondary {
 .contact {
     /* left: 0; */
     /* width: 1536px; */
-    font-family: 'myriadPro';
+    font-family: 'MyriadPro';
     /* padding: 20px 200px; */
 }
 
@@ -1692,7 +1731,7 @@ section.about .heading-secondary {
     color: #fff;
     margin: 0 auto;
     display: block;
-    font-family: "myriadPro";
+    font-family: "MyriadPro";
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -1703,7 +1742,7 @@ section.about .heading-secondary {
 } */
 
 .footer {
-    font-family: 'myriadPro';
+    font-family: 'MyriadPro';
     font-size: 18px;
     color: var(--color-light-white);
     padding: 30px 0;
@@ -1821,8 +1860,18 @@ section.about .heading-secondary {
     color: var(--color-light-white);
     padding: 5px 10px;
     text-transform: uppercase;
-    font-family: 'myriadPro';
+    font-family: 'MyriadPro';
     border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contact-btn svg {
+    margin-right: 7px;
+    width: 20px;
+    height: 20px;
+    fill: var(--color-light-white);
 }
 
 .fixed-btns>div a:hover {
@@ -1846,22 +1895,17 @@ section.about .heading-secondary {
     z-index: -1;
     border-radius: 100px;
     transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    visibility: visible;
 }
 
 .fixed-btns>div a:hover::after {
     transform: scale(1.5);
     opacity: 0;
+    visibility: hidden;
 }
 
 
 /* Special cases */
-
-.services__heading::after {
-    visibility: hidden;
-    opacity: 0;
-    transform: translate(-50%, 100px);
-    transition: transform 1s ease-in-out, opacity 0.2s ease-in-out;
-}
 
 .services__heading--scrolled::after {
     visibility: visible;
@@ -1898,6 +1942,13 @@ section.about .heading-secondary {
     .services__heading {
         font-size: 5.2rem;
         display: block;
+    }
+    .services__heading::after {
+        top: calc(100% + 15px);
+        border-top: 15px solid var(--color-t-white);
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid transparent;
     }
     .services__p-line {
         display: none;
@@ -1939,6 +1990,7 @@ section.about .heading-secondary {
     .services__gips-deko__sub-heading {
         overflow-wrap: break-word;
         hyphens: manual;
+        font-size: 17px;
     }
     .services__gips-deko__visual__img:not(:first-child) {
         margin-top: 3rem;

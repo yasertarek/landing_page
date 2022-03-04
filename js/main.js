@@ -10,7 +10,7 @@ const fixedPos = [...document.querySelectorAll('.fixed-pos')];
 let dimensionsRef = {
         width: 1536,
         'wer-sind': {
-            left: 990,
+            left: 975,
             top: 755,
         },
         'was-bieten': {
@@ -58,7 +58,7 @@ let dimensionsRef = {
             left: 763
         },
         'services__gips-deko__text-p': {
-            top: 2300,
+            top: 2285,
             left: 763
         },
         'services__visualising': {
@@ -157,22 +157,7 @@ window.onload = () => {
         showGlobalGallery(elmnt);
     });
 });
-let scrollFactor = window.screen.width / 1536;
-updateScrollFactor();
-window.addEventListener('resize', updateScrollFactor);
-
-function updateScrollFactor() {
-    if (window.screen.width > 900) {
-        scrollFactor = window.screen.width / 1536;
-        console.log('Screen is Greater than 900 and equal', window.screen.width, 'and factor is = ', scrollFactor);
-    } else {
-        scrollFactor = (window.screen.width / 1536) / 2;
-        console.log('Screen is Less than 900 and equal', window.screen.width, 'and factor is = ', scrollFactor);
-        console.log()
-    }
-}
 document.addEventListener('scroll', () => {
-    console.log(window.scrollY);
     if (window.scrollY < 30) {
         document.querySelector('.fixed-btns').classList.remove('fixed-btns--active');
     } else {
@@ -318,7 +303,7 @@ function handleRatios(elmnt) {
         elmnt.removeAttribute('style');
         [...elmnt.querySelectorAll('*')].forEach(elmnt => elmnt.removeAttribute('style'));
         // add margin-top to the whole content
-        document.querySelector('body').style.paddingTop = `${380 * (window.screen.width / 390)}px`;
+        document.querySelector('section.about').style.paddingTop = `${310 * (window.screen.width / 390)}px`;
         return;
     }
     let magnifyingFactor = window.screen.width / dimensionsRef.width;
