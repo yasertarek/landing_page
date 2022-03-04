@@ -88,7 +88,7 @@ body {
     /* min-height: 600rem; */
     line-height: 1.7;
     background-color: #000;
-    position: relative;
+    /* position: relative; */
     overflow-x: hidden;
 }
 
@@ -464,7 +464,7 @@ nav.header__nav ul li a:active {
     }
     .header__checkbox:checked~.header__nav {
         opacity: 1 !important;
-        width: 100% !important;
+        width: 100vw !important;
         visibility: visible;
     }
     .header__checkbox:checked+.header__button {
