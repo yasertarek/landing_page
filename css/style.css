@@ -561,7 +561,7 @@ section.about {
 
 .wer-sind__content {
     display: grid;
-    grid-template-columns: auto 400px;
+    grid-template-columns: 95px 400px;
     grid-template-rows: auto auto auto;
 }
 
@@ -1237,7 +1237,7 @@ section.about {
 /* Services */
 
 .bg-word {
-    font-size: 465px;
+    font-size: 459px;
     text-transform: uppercase;
     font-family: "MyriadPro";
     font-weight: bold;

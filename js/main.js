@@ -8,7 +8,7 @@ const fixedPos = [...document.querySelectorAll('.fixed-pos')];
 // const services__gipsDeko__textUl = getComputedStyle(document.querySelector('.services__gips-deko__text-ul'));
 // Ratios of dimensions between window width and coordinates of element
 let dimensionsRef = {
-        width: 1536,
+        width: 1519.2,
         'wer-sind': {
             left: 975,
             top: 755,
@@ -306,22 +306,22 @@ function showGlobalGallery(clickedElmnt) {
 // Make Specified positioned elements in its place
 function handleRatios(elmnt) {
     // check if screen width is less than 600, then don't scale according to ratio and reset style
-    if (window.screen.width <= 600) {
+    if (parseFloat(getComputedStyle(document.body).width) <= 600) {
         // reset and clear style
         elmnt.removeAttribute('style');
         [...elmnt.querySelectorAll('*')].forEach(elmnt => elmnt.removeAttribute('style'));
         // add margin-top to the whole content
-        document.querySelector('section.about').style.paddingTop = `${310 * (window.screen.width / 390)}px`;
+        document.querySelector('section.about').style.paddingTop = `${310 * (parseFloat(getComputedStyle(document.body).width) / 390)}px`;
         return;
     }
-    let magnifyingFactor = window.screen.width / dimensionsRef.width;
+    let magnifyingFactor = parseFloat(getComputedStyle(document.body).width) / dimensionsRef.width;
     let newLeft;
     let newTop;
     if (typeof dimensionsRef[elmnt.getAttribute('data-pos')].left !== 'undefined') {
-        newLeft = (window.screen.width * dimensionsRef[elmnt.getAttribute('data-pos')].left) / dimensionsRef.width + 'px';
+        newLeft = (parseFloat(getComputedStyle(document.body).width) * dimensionsRef[elmnt.getAttribute('data-pos')].left) / dimensionsRef.width + 'px';
         elmnt.style.left = newLeft;
     } else if (typeof dimensionsRef[elmnt.getAttribute('data-pos')].right !== 'undefined') {
-        newLeft = (window.screen.width * dimensionsRef[elmnt.getAttribute('data-pos')].right) / dimensionsRef.width + 'px';
+        newLeft = (parseFloat(getComputedStyle(document.body).width) * dimensionsRef[elmnt.getAttribute('data-pos')].right) / dimensionsRef.width + 'px';
         elmnt.style.right = newLeft;
     } else {
         // console.log('Error in element', elmnt);
@@ -369,7 +369,7 @@ function handleRatios(elmnt) {
         elmnt.querySelector('.services__visualising__item__text').style.width = 399 * magnifyingFactor + 'px';
         elmnt.querySelector('.services__visualising__item__text').style.padding = 40 * magnifyingFactor + 'px ' + magnifyingFactor * 35 + 'px';
         elmnt.querySelector('.services__visualising__item__text').style.marginRight = 17 * magnifyingFactor + 'px';
-        elmnt.querySelector('.services__visualising__item__text .paragraph').style.fontSize = 16 * window.screen.width / 1536 + 'px';
+        elmnt.querySelector('.services__visualising__item__text .paragraph').style.fontSize = 16 * parseFloat(getComputedStyle(document.body).width) / 1536 + 'px';
         if (elmnt.classList.contains('services__visualising__item--2')) {
             elmnt.style.marginRight = 29 + document.querySelector('.shop').getBoundingClientRect().width - document.querySelector('.shop__slider').getBoundingClientRect().width + 'px';
         }
