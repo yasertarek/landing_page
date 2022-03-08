@@ -1644,11 +1644,11 @@ body,
 
 .contact__name.form-row::before,
 .contact__email.form-row::before {
-    background-image: linear-gradient(90deg, #fff 30px, transparent 30px, transparent 115px, #FFF 60px);
+    background-image: linear-gradient(90deg, #fff 30px, transparent 30px, transparent 97px, #FFF 60px);
 }
 
 .contact__subject.form-row::before {
-    background-image: linear-gradient(90deg, #fff 30px, transparent 30px, transparent 90px, #FFF 30px);
+    background-image: linear-gradient(90deg, #fff 30px, transparent 30px, transparent 79px, #FFF 30px);
 }
 
 .form-row::after {
@@ -1725,6 +1725,7 @@ body,
 .form-row--active label {
     top: 0;
     left: calc(30px + 2px);
+    font-size: 14px;
     /* transform: scale(0.8) translateY(-50%); */
 }
 
