@@ -1734,7 +1734,7 @@ body,
 }
 
 .contact__message.form-row::before {
-    background-image: linear-gradient(90deg, #fff 30px, transparent 30px, transparent 140px, #FFF 0);
+    background-image: linear-gradient(90deg, #fff 30px, transparent 30px, transparent 116px, #FFF 0);
 }
 
 .contact__message.form-row--active label {
