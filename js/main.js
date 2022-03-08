@@ -35,7 +35,7 @@ let dimensionsRef = {
             top: 1770
         },
         'services__words-table': {
-            left: 44,
+            left: 95.05,
             top: 1949
         },
         services__heading: {
