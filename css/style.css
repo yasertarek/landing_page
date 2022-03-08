@@ -1551,17 +1551,19 @@ body,
     transform: translateX(-50%);
 }
 
+.contact__icon {
+    fill: var(--color-light-white);
+    opacity: 0.6;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.2s ease-in-out;
+}
+
 .form {
-    /* background-color: #a73030; */
-    /* background-image: linear-gradient(to top, #661E1E, #a73030); */
-    /* padding: 45px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 45px;
-    border: 2px solid var(--color-t-white);
-    border-top: 0;
-    border-bottom: 0; */
-    /* transform-origin: top center; */
     max-width: 1050px;
     margin: 0 auto;
     transform-origin: top center;
@@ -1683,7 +1685,7 @@ body,
     font-size: inherit;
     width: 100%;
     height: 100%;
-    padding: 10px 0 10px 20px;
+    padding: 10px 0 10px 35px;
     font-family: inherit;
     border: none;
     outline: none;
@@ -1694,11 +1696,16 @@ body,
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
+.contact__message .contact__icon {
+    top: 12.5px;
+    transform: translateY(0);
+}
+
 .form-row label {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 20px;
+    left: 35px;
     color: #fff;
     opacity: 0.7;
     transition: top 0.5s ease-in-out, left 0.5s ease-in-out, opacity 0.5s ease-in-out;
@@ -1735,8 +1742,10 @@ body,
 }
 
 .form-row input:focus,
+.form-row input:focus~.contact__icon,
 .form-row input:focus~label,
 .form-row textarea:focus,
+.form-row textarea:focus~.contact__icon,
 .form-row textarea:focus~label {
     opacity: 1;
 }
