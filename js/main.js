@@ -45,10 +45,6 @@ let dimensionsRef = {
         'services__gips-deko': {
             top: 2190
         },
-        'services__gips-deko__heading-tertiary-Vline': {
-            top: 2225,
-            left: 700
-        },
         'services__gips-deko__visual': {
             top: 2225,
             left: 105
@@ -227,11 +223,12 @@ document.addEventListener('click', (e) => {
         document.body.style.overflow = 'auto';
     });
 });
+// Show Menu on click
 document.querySelector('.header__button').addEventListener('click', () => {
     document.querySelector('header.header').classList.toggle('header--active');
     if (document.querySelector('header.header').classList.contains('header--active')) {
         document.body.style.overflow = 'hidden';
-        [...document.querySelectorAll('section.about *')].forEach(elmnt => elmnt.style.zIndex = '-1');
+        // [...document.querySelectorAll('section.about *')].forEach(elmnt => elmnt.style.zIndex = '-1');
     } else {
         document.body.style.overflow = 'auto';
     }
@@ -445,6 +442,12 @@ function slideV(items, prev, next) {
     // Click events
     next.addEventListener('click', function() { shiftSlide(-1) });
     prev.addEventListener('click', function() { shiftSlide(1) });
+
+    // Wheel event
+    document.querySelector('.shop__slider').addEventListener('wheel', (e) => {
+        e.preventDefault();
+        e.deltaY > 0 ? shiftSlide(1) : shiftSlide(-1);
+    });
 
     // Transition events
     items.addEventListener('transitionend', checkIndex);

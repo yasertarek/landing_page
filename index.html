@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <header class="header">
+    <header class="header" id="header">
         <a href="./index.html" class="header__company-logo">Grandcontours.de</a>
         <div class="header__test">
             <div class="header__button" for="navtoggle">
@@ -72,7 +72,7 @@
             </div>
             <div class="we-design__text">
                 <p>We design it, visualise it and create it</p>
-                <p><span class="red-text">&copy; GRANDCONTOURS.DE</span> - Alle Rechte vorbehalten</p>
+                <p><span class="red-text">&copy; Grandcontours 2022</span>Alle Rechte vorbehalten</p>
             </div>
         </div>
     </section>
@@ -194,7 +194,6 @@
             <span>LEISTUNGEN</span>
         </h2>
         <!-- Start Gips-deko -->
-        <span class="services__gips-deko__heading-tertiary-Vline fixed-pos" data-pos="services__gips-deko__heading-tertiary-Vline"></span>
         <!-- Border Lines visible on Desktop screens Only -->
         <div class="services__p-line services__gips-deko fixed-pos" data-pos="services__gips-deko">
             <span class="services__line services__line--left services__gips-deko__line services__gips-deko__line--left"></span>
@@ -206,7 +205,7 @@
             <div class="services__gips-deko__visual fixed-pos" data-pos="services__gips-deko__visual">
                 <h3 class="heading-tertiary">Gips-Deko</h3>
                 <h4 class="services__gips-deko__sub-heading">Gips und Gipskartonplatten</h4>
-                <h4 class="services__gips-deko__sub-heading services__gips-deko__sub-heading--yellow">Unerer Entwurf , Unsere Aufsuhrung</h4>
+                <h4 class="services__gips-deko__sub-heading services__gips-deko__sub-heading--yellow">Unser Entwurf , Unsere Ausführung</h4>
             </div>
             <div class="services__gips-deko__visual__gallery fixed-pos" data-pos="services__gips-deko__visual__gallery">
                 <div class="services__gips-deko__visual__img overlay_hover_container" data-gallery="gips-deko__gallery" data-gallery-index="0">
@@ -402,7 +401,7 @@
             <span class="services__line services__line--left"></span>
             <span class="services__line services__line--right"></span>
             <header class="services__3d__header fixed-pos" data-pos="services__3d__header">
-                <h3 class="heading-tertiary services__3d__heading">Other 3D Services</h3>
+                <h3 class="heading-tertiary services__3d__heading">andere 3d services </h3>
                 <h5 class="services__3d__sub-heading">Idee Analyse , Diagrame und Produkten</h5>
             </header>
             <div class="services__3d__imgs fixed-pos" data-pos="services__3d__imgs">
@@ -468,7 +467,7 @@
     </section>
     <section class="contact">
         <h3 class="heading-tertiary contact__heading fixed-pos" id="contact" data-pos="contact__heading">
-            <span>Contact Us</span>
+            <span>kontakt</span>
         </h3>
         <form action="#" class="form fixed-pos" data-pos="form">
             <div>
@@ -489,7 +488,7 @@
                     <label for="message">Your message</label>
                 </div>
                 <div class="form-row col-12">
-                    <button class="btn">Submit</button>
+                    <button class="btn">Senden</button>
                 </div>
             </div>
         </form>
@@ -816,7 +815,7 @@
     </div>
     <div class="fixed-btns fixed-pos" data-pos="fixed-btns">
         <div>
-            <a href="#" class="to-top">
+            <a href="#header" class="to-top">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                     <path d="M13.25 10l-7.141-7.42c-0.268-0.27-0.268-0.707 0-0.979 0.268-0.27 0.701-0.27 0.969 0l7.83 7.908c0.268 0.271 0.268 0.709 0 0.979l-7.83 7.908c-0.268 0.271-0.701 0.27-0.969 0s-0.268-0.707 0-0.979l7.141-7.417z"></path>
                     </svg>
@@ -833,13 +832,26 @@
         </div>
     </div>
     <script src="./js/main.js"></script>
-    <!-- <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
     <script src="js/jquery.nicescroll.js"></script>
+    <script src="./js/jquery-ui.min.js"></script>
     <script>
-        $("html").niceScroll({
-            cursorcolor: "transparent" //Change the scroll bar color
+        // 2. Instance with object returned:
+        var nice = false;
+        $(function() {
+            nice = $("body").niceScroll();
         });
-    </script> -->
+        // $("#mydiv").getNiceScroll().hide();
+        $('.header__nav a').on('click', scrollToY);
+        $('.fixed-btns a').on('click', scrollToY);
+
+        function scrollToY(e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 1500, 'easeInOutExpo');
+        }
+    </script>
 </body>
 
 </html>
