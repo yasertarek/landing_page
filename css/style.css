@@ -662,7 +662,7 @@ section.about {
     content: '';
     position: absolute;
     left: -12px;
-    top: 9px;
+    top: 7px;
     width: 7px;
     height: 7px;
     border-radius: 50%;
@@ -1238,6 +1238,9 @@ body,
     .was-bieten ul {
         margin-left: 2rem;
     }
+    .was-bieten ul li::before {
+        top: 4px;
+    }
     .was-bieten .heading-secondary {
         margin-left: 0;
         font-size: 4.2rem;
@@ -1265,12 +1268,12 @@ body,
         margin-bottom: 8rem;
     }
     .shop .red-badge {
-        max-width: none;
+        margin: 0 auto;
         padding: 1rem;
         font-size: 1.95rem;
     }
     .shop .paragraph {
-        max-width: none;
+        margin: 0 auto;
     }
     .shop__slider {
         margin: 0 auto;
