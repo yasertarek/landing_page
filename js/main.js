@@ -270,6 +270,10 @@ document.querySelector('.header__button').addEventListener('click', () => {
         }
     });
 });
+// Focus on input when click on icon
+[...document.querySelectorAll('.contact__icon')].forEach(elmnt => {
+    elmnt.addEventListener('click', () => elmnt.parentElement.querySelector('.contact__text').focus());
+});
 /****** 
  * 
  * Main Functions
