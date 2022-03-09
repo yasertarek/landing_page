@@ -33,7 +33,7 @@
     <section class="about" id="about">
         <div class="wer-sind fixed-pos" data-pos="wer-sind">
             <div class="wer-sind__content">
-                <h2 class="heading-secondary">Wer Sind <span class="marker">Wir</span></h2>
+                <h2 class="heading-secondary">Wer Sind <span class="heading-secondary__red">Wir</span></h2>
                 <div class="wer-sind__img">
                     <img src="./imgs/Logo-big-final.png" alt="Logo photo" />
                 </div>
@@ -47,7 +47,7 @@
         </div>
 
         <div class="was-bieten fixed-pos" data-pos="was-bieten">
-            <h2 class="heading-secondary">Was Bieten wir an !</h2>
+            <h2 class="heading-secondary">Was Bieten <span class="heading-secondary__red">Wir</span> an !</h2>
             <span class="red-badge">we offer several services in the field of interior design</span>
             <ul class="paragraph">
                 <li>
@@ -60,7 +60,7 @@
         </div>
         <div class="our-vision fixed-pos" data-pos="our-vision">
             <span class="red-badge">Our vision</span>
-            <p class="paragraph">We design practical solutions that meet the goals of our customers, increase the value of the project . </p>
+            <p class="paragraph">We design practical solutions that meet the goals of our customers, increase the value of the project . We design practical solutions that meet the goals of our customers, increase the value of the project .</p>
         </div>
         <div class="each_place_is_unique fixed-pos" data-pos="each_place_is_unique">
             <span>
@@ -77,7 +77,10 @@
             </div>
         </div>
     </section>
-    <section class="shop fixed-pos" data-pos="shop" id="shop">
+    <h2 class="heading-secondary fixed-pos shop__heading" data-pos="shop__heading" id="shop">
+        Unser<br><span class="heading-secondary__red">Shop</span>
+    </h2>
+    <section class="shop fixed-pos" data-pos="shop">
         <span class="red-badge">Explore Home Decor Items Available Online</span>
         <p class="paragraph">Home decor products play a crucial role in setting up the mood and the environment of the space, which is why it isimportant to set up your interior space in line with what suits your character and personality.</p>
         <div class="shop__slider">
@@ -970,8 +973,8 @@
     </div>
     <script src="./js/main.js"></script>
     <script src="./js/jquery-3.6.0.min.js"></script>
-    <script src="js/jquery.nicescroll.js"></script>
     <script src="./js/jquery-ui.min.js"></script>
+    <script src="js/jquery.nicescroll.js"></script>
     <script>
         // 2. Instance with object returned:
         var nice = false;

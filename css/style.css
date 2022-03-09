@@ -100,6 +100,10 @@ body {
     font-weight: bold;
 }
 
+.heading-secondary__red {
+    color: var(--color-dark-red)
+}
+
 .heading-tertiary {
     font-family: "MyriadPro";
     font-size: 111px;
@@ -181,6 +185,7 @@ header.header {
     font-size: 1.8rem;
     letter-spacing: 3px;
     font-family: "OratorStd";
+    z-index: 1000;
 }
 
 
@@ -642,10 +647,18 @@ section.about {
     background-color: var(--color-red);
 }
 
+.our-vision .red-badge {
+    margin-bottom: 0;
+    border: 1px solid #fff;
+    padding: 0 18px;
+}
+
 .our-vision p {
-    margin-left: 61px;
-    max-width: 259px;
+    max-width: 283px;
     font-family: "Hornbill-Personal";
+    background-color: rgba(0, 0, 0, .5);
+    padding: 5px 10px;
+    border: 1px solid #fff;
 }
 
 .we-design {
@@ -711,6 +724,33 @@ section.about {
 
 .each_place_is_unique span {
     display: block;
+}
+
+.shop__heading {
+    font-size: 67px;
+    line-height: 0.7;
+    /* display: inline-block; */
+    text-align: center;
+    transform-origin: top right;
+}
+
+.shop__heading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 22px);
+    /* transform: translateX(-50%); */
+    border-top: 22px solid var(--color-dark-red);
+    border-right: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    border-left: 22px solid transparent;
+    font-size: 52px;
+}
+
+.shop__heading .heading-secondary__red {
+    font-size: 65px;
+    display: block;
+    margin-top: 8px;
 }
 
 .shop.fixed-pos {
@@ -1259,7 +1299,7 @@ body,
 .services__words-table {
     font-family: 'capoonPersonalUseLight';
     font-size: 12px;
-    max-width: 304px;
+    /* max-width: 304px; */
     color: rgba(255, 255, 255, 0.6);
     display: flex;
     flex-direction: column;
@@ -1269,7 +1309,11 @@ body,
 
 .services__words-table__row {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.services__words-table__row--1 span {
+    letter-spacing: 1px;
 }
 
 .services__words-table__row--separator {
@@ -1277,7 +1321,7 @@ body,
 }
 
 .services__words-table__row span {
-    padding: 0 5px;
+    padding: 0 3px;
 }
 
 .v-line {
@@ -1288,10 +1332,6 @@ body,
     font-size: 67px;
     line-height: 0.7;
     display: inline-block;
-}
-
-.services__heading--scrolled span {
-    display: block;
 }
 
 .services__heading::after {

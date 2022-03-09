@@ -18,7 +18,7 @@ let dimensionsRef = {
             top: 939,
         },
         'our-vision': {
-            left: 0,
+            left: 61,
             top: 1319,
         },
         shop: {
@@ -26,9 +26,13 @@ let dimensionsRef = {
             right: 0,
             top: 1296.47,
         },
+        shop__heading: {
+            top: 1130,
+            right: 65
+        },
         each_place_is_unique: {
             left: 34,
-            top: 1525
+            top: 1565
         },
         'we-design': {
             left: 704,
@@ -220,7 +224,9 @@ document.addEventListener('click', (e) => {
 [...document.querySelectorAll('.header__nav ul li a')].forEach(elmnt => {
     elmnt.addEventListener('click', () => {
         document.querySelector('header.header').classList.remove('header--active');
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        document.body.style.height = '';
     });
 });
 // Show Menu on click
@@ -228,9 +234,13 @@ document.querySelector('.header__button').addEventListener('click', () => {
     document.querySelector('header.header').classList.toggle('header--active');
     if (document.querySelector('header.header').classList.contains('header--active')) {
         document.body.style.overflow = 'hidden';
+        document.body.style.height = '100vh';
+        document.documentElement.style.overflow = 'hidden';
         // [...document.querySelectorAll('section.about *')].forEach(elmnt => elmnt.style.zIndex = '-1');
     } else {
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = '';
+        document.body.style.height = '';
+        document.documentElement.style.overflow = '';
     }
 });
 // Contact form 
@@ -272,6 +282,8 @@ function showGallery(clickedElmnt) {
     elesArr.pop();
     elesArr.pop();
     const clickedIndex = elesArr.indexOf(clickedElmnt);
+    console.log('element: ', clickedElmnt);
+    console.log(clickedIndex);
     document.querySelector('.shop__gallery').classList.add('shop__gallery--active');
     // document.body.style.overflow = 'hidden';
     // Scroll to Clicked element
