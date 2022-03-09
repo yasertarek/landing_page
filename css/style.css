@@ -1239,6 +1239,9 @@ body,
     .shop {
         text-align: center;
     }
+    .shop__heading {
+        margin-bottom: 8rem;
+    }
     .shop .red-badge {
         max-width: none;
         padding: 1rem;
@@ -1301,7 +1304,8 @@ body,
     font-size: 12px;
     /* max-width: 304px; */
     color: rgba(255, 255, 255, 0.6);
-    display: flex;
+    /* display: flex; */
+    display: table;
     flex-direction: column;
     flex-wrap: wrap;
     border: 1px solid rgba(255, 255, 265, 0.5);
