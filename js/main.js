@@ -11,14 +11,14 @@ let dimensionsRef = {
         width: 1519.2,
         'wer-sind': {
             left: 975,
-            top: 755,
+            top: 730,
         },
         'was-bieten': {
             left: 0,
             top: 939,
         },
         'our-vision': {
-            left: 61,
+            left: 45,
             top: 1319,
         },
         shop: {
@@ -28,7 +28,7 @@ let dimensionsRef = {
         },
         shop__heading: {
             top: 1130,
-            right: 65
+            right: 7
         },
         each_place_is_unique: {
             left: 34,
