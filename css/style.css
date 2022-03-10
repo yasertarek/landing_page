@@ -2369,7 +2369,7 @@ body.scrolled::-webkit-scrollbar-thumb {
     border: 1px solid #fff;
     background-color: transparent;
     border-radius: 500px;
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s linear;
     opacity: 0;
     -webkit-touch-callout: none;
     /* iOS Safari */
