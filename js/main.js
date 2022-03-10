@@ -47,65 +47,65 @@ let dimensionsRef = {
             top: 2017
         },
         'services__gips-deko': {
-            top: 2190
+            top: 2260
         },
         'services__gips-deko__visual': {
-            top: 2225,
+            top: 2295,
             left: 105
         },
         'services__gips-deko__text-ul': {
-            top: 2225,
+            top: 2295,
             left: 763
         },
         'services__gips-deko__text-p': {
-            top: 2285,
+            top: 2355,
             left: 763
         },
         'services__visualising': {
-            top: 2809,
-            left: 736
+            top: 2879,
+            // left: 736
         },
         'services__visualising__heading': {
-            top: 2820,
+            top: 2890,
             left: 76
         },
         'services__visualising__item--1': {
-            top: 2985,
+            top: 3055,
             left: 70
         },
         'services__visualising__item--2': {
-            top: 2985,
+            top: 3055,
             left: 780
         },
         'services__3d': {
-            top: 3383,
-            left: 76
+            top: 3473,
+            // left: 76
         },
         'services__3d__header': {
-            top: 3408,
+            top: 3478,
             left: 76
         },
         'services__3d__imgs': {
-            top: 3635
+            top: 3705
         },
         'contact__heading': {
-            top: 4045,
+            top: 4115,
         },
         'form': {
-            top: 4220,
+            top: 4290,
         },
         'footer__line': {
-            top: 4890
+            top: 4960
         },
         'full-row': {
-            top: 4890
+            top: 4960
         },
         'fixed-btns': {
             bottom: 15,
             right: 15
         },
         'services__gips-deko__visual__gallery': {
-            top: 2425
+            top: 2495
         },
         'bg-word': {
             top: 1737
@@ -274,6 +274,14 @@ document.querySelector('.header__button').addEventListener('click', () => {
 [...document.querySelectorAll('.contact__icon')].forEach(elmnt => {
     elmnt.addEventListener('click', () => elmnt.parentElement.querySelector('.contact__text').focus());
 });
+// Hide scrollbar when IDLE
+// window.addEventListener('wheel', (e) => {
+//     document.querySelector('body').classList.add('scrolled');
+//     // clearTimeout(timer);
+//     const timer = setTimeout(() => {
+//         document.body.classList.remove('scrolled');
+//     }, 2000);
+// });
 /****** 
  * 
  * Main Functions
@@ -352,8 +360,7 @@ function handleRatios(elmnt) {
     // Exceptions
     if (elmnt.classList.contains('services__p-line')) {
         elmnt.style.transform = ` scaleY(${magnifyingFactor}) translateX(-50%)`;
-        elmnt.style.left = '50%';
-        elmnt.style.width = document.body.offsetWidth - (2 * (document.querySelector('.shop').getBoundingClientRect().width - document.querySelector('.shop__slider').getBoundingClientRect().width)) + 'px';
+        // elmnt.style.width = document.body.offsetWidth - (2 * 43.18) + 'px';
         elmnt.style.borderLeft = `${1.77 * magnifyingFactor}px solid var(--color-t-white)`;
         elmnt.style.borderRight = `${1.77 * magnifyingFactor}px solid var(--color-t-white)`;
     }
@@ -370,7 +377,7 @@ function handleRatios(elmnt) {
         elmnt.style.transform = '';
         // elmnt.style.fontSize = (services__gipsDeko__textP.fontSize * magnifyingFactor) + 'px';
         elmnt.style.fontSize = (16 * magnifyingFactor) + 'px';
-        elmnt.style.paddingRight = document.querySelector('.shop').getBoundingClientRect().width - document.querySelector('.shop__slider').getBoundingClientRect().width + 20 * magnifyingFactor + 'px';
+        // elmnt.style.paddingRight = document.querySelector('.shop').getBoundingClientRect().width - document.querySelector('.shop__slider').getBoundingClientRect().width + 20 * magnifyingFactor + 'px';
     }
     [...document.querySelectorAll('.services__line')].forEach((elmnt) => elmnt.style.width = document.querySelector('.shop__slider').getBoundingClientRect().width * 2 / 3 + 'px');
     if (elmnt.classList.contains('services__visualising__item')) {
