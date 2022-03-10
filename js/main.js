@@ -282,6 +282,40 @@ document.querySelector('.header__button').addEventListener('click', () => {
 //         document.body.classList.remove('scrolled');
 //     }, 2000);
 // });
+// Custom Scrollbar
+const scrollbar = document.querySelector('.scrollbar');
+const scrollbarThumb = document.querySelector('.scrollbar__thumb');
+
+let contentHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
+let viewportHeight = window.innerHeight;
+let viewableRatio = viewportHeight / contentHeight;
+let scrollbarThumbSpace = viewableRatio * viewportHeight;
+
+let scrollJump = window.scrollY * viewableRatio;
+console.log(`Scroll Jump is: ${scrollJump}`);
+
+let scrollTrackSpace = contentHeight - viewportHeight;
+console.log(`viewport Height is ${viewportHeight}`);
+console.log(`content Height is: ${contentHeight}`);
+scrollbar.style.height = viewportHeight + 'px';
+scrollbarThumb.style.height = viewableRatio * viewportHeight + 'px';
+window.addEventListener('resize', () => {
+    viewportHeight = window.innerHeight;
+    viewableRatio = viewportHeight / contentHeight;
+    scrollTrackSpace = contentHeight - viewportHeight;
+    scrollbarThumbSpace = viewableRatio * viewportHeight;
+
+    scrollbar.style.height = viewportHeight + 'px';
+    scrollbarThumb.style.height = viewableRatio * viewportHeight + 'px';
+});
+document.addEventListener('scroll', () => {
+    scrollbarThumb.style.opacity = 1;
+    setTimeout(() => {
+        scrollbarThumb.style.opacity = '';
+    }, 1000)
+    scrollJump = window.scrollY * viewableRatio;
+    scrollbarThumb.style.top = scrollJump + 'px';
+});
 /****** 
  * 
  * Main Functions
@@ -681,5 +715,83 @@ function slideH(items, slides, prev, next) {
         }
 
         allowShift = true;
+    }
+}
+
+dragElement(scrollbarThumb, document);
+
+function dragElement(elmnt, cont, trigger = elmnt) {
+    let newY = 0,
+        oldY = 0,
+        y;
+    if (!trigger) {
+        trigger = elmnt;
+    }
+    trigger.addEventListener('mousedown', dragMouseDown);
+    trigger.addEventListener('touchstart', dragMouseDown);
+
+    function dragMouseDown(e) {
+        e = e || window.event;
+        // e.preventDefault();
+        e.stopPropagation();
+        scrollbarThumb.style.opacity = 1;
+        setTimeout(() => {
+                scrollbarThumb.style.opacity = '';
+            }, 1000)
+            // Get touch or click position
+        if (e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel') {
+            e.preventDefault();
+            let evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+            let touch = evt.touches[0] || evt.changedTouches[0];
+            y = touch.pageY;
+        } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover' || e.type == 'mouseout' || e.type == 'mouseenter' || e.type == 'mouseleave') {
+            y = e.clientY;
+        }
+        // get the mouse cursor or touch position
+        oldY = y;
+        cont.addEventListener('mouseup', closeDragElement);
+        cont.addEventListener('touchend', closeDragElement);
+        // call a function whenever the cursor moves:
+        cont.addEventListener('mousemove', elementDrag);
+        cont.addEventListener('touchmove', elementDrag);
+    }
+
+    function elementDrag(e) {
+        e = e || window.event;
+        // e.preventDefault();
+        e.stopPropagation();
+        // Get touch or click event
+        if (e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel') {
+            e.preventDefault();
+            let evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+            let touch = evt.touches[0] || evt.changedTouches[0];
+            y = touch.pageY;
+        } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover' || e.type == 'mouseout' || e.type == 'mouseenter' || e.type == 'mouseleave') {
+            y = e.clientY;
+        }
+        // check if element reached its endpoints
+        if (elmnt.offsetTop < 0) {
+            elmnt.style.top = 0 + 'px'
+        } else if (elmnt.offsetTop > parseFloat(getComputedStyle(scrollbar).height) - parseFloat(getComputedStyle(elmnt).height)) {
+            console.log(`elmnt.offsetTop: ${elmnt.offsetTop}`);
+            elmnt.style.top = parseFloat(getComputedStyle(scrollbar).height) - parseFloat(getComputedStyle(elmnt).height) + 'px';
+        } else {
+            // calculate the new cursor or touch position:
+            // console.log(elmnt.offsetTop);
+            newY = oldY - y;
+            // store new positions as old positions
+            oldY = y;
+            // set the element's new position:
+            elmnt.style.top = (elmnt.offsetTop - newY) + "px";
+            window.scrollTo(0, parseFloat(elmnt.offsetTop) / viewableRatio)
+        }
+    }
+
+    function closeDragElement() {
+        // stop moving when mouse button is released:
+        cont.removeEventListener('mouseup', closeDragElement);
+        cont.removeEventListener('mousemove', elementDrag);
+        cont.removeEventListener('touchend', closeDragElement);
+        cont.removeEventListener('touchmove', elementDrag);
     }
 }

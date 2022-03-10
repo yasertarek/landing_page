@@ -2350,6 +2350,42 @@ body.scrolled::-webkit-scrollbar-thumb {
     animation: waving 1.5s ease-in-out infinite
 }
 
+.scrollbar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 5px;
+    /* background-color: #fff; */
+}
+
+.scrollbar__thumb {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    /* background-color: #555; */
+    /* height: 10vh; */
+    border: 1px solid #fff;
+    background-color: transparent;
+    border-radius: 500px;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 @keyframes waving {
     0%,
     50%,
