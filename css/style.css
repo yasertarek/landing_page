@@ -587,6 +587,7 @@ section.about {
     flex-basis: 100%;
     grid-row: 1/2;
     grid-column: 1/3;
+    opacity: 0.5;
 }
 
 .wer-sind__img {
@@ -610,6 +611,7 @@ section.about {
     text-transform: uppercase;
     grid-row: 2/3;
     grid-column: 2/3;
+    opacity: 65%;
 }
 
 
@@ -1220,43 +1222,76 @@ body.scrolled::-webkit-scrollbar-thumb {
         /* background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.75) 18% 84%, transparent); */
         padding: 2rem 0;
         text-align: center;
+        overflow: visible;
     }
     .wer-sind__content {
         display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: auto auto auto auto;
-        padding: 0 2rem;
-        gap: 2rem;
+        /* grid-template-columns: auto; */
+        /* grid-template-rows: auto auto auto auto; */
+        grid-template-columns: 1fr 5fr;
+        grid-template-rows: auto auto auto;
+        padding: 0 0 0 2rem;
+        grid-column-gap: 2rem;
     }
     .wer-sind__content .heading-secondary {
-        font-size: 42px;
+        font-size: 40px;
         white-space: normal;
         line-height: 1;
-        grid-row: 3/4;
-        grid-column: 1/2;
+        /* grid-row: 3/4; */
+        /* grid-column: 1/2; */
+        grid-column: 2/3;
+        grid-row: 1/2;
+        margin-bottom: 0;
+        text-align: left;
+        /* display: flex; */
+        /* align-items: end; */
+        /* justify-content: space-evenly; */
+        opacity: 0.6;
+        padding-bottom: 7px;
     }
     .wer-sind__img {
         margin-right: 0;
         margin-left: 0;
         /* margin: 0 0 2rem 0; */
-        grid-row: 1/2;
+        grid-row: 1/3;
+        grid-column: 1/2;
+        margin-top: -33px;
     }
     .wer-sind__sub-heading {
+        /* grid-row: 2/3; */
+        /* grid-column: 1/2; */
+        text-align: left;
+        font-size: 1.8rem;
+        grid-column: 2/3;
         grid-row: 2/3;
-        grid-column: 1/2;
-        /* text-align: center; */
+        opacity: 1;
+    }
+    .wer-sind__sub-heading span {
+        display: block;
+        background-color: var(--color-dark-red);
+        border-top-left-radius: 100px;
+        border-bottom-left-radius: 100px;
+        padding-left: 5px;
+        color: #000;
+        line-height: 1;
+    }
+    .shop__heading::after {
+        top: calc(100% + 5px);
+        border-top: 10px solid var(--color-dark-red);
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid transparent;
     }
     .wer-sind__img img {
         margin-left: auto;
         margin-right: auto;
     }
-    .wer-sind__sub-heading {
-        font-size: 1.8rem;
-        grid-column: 1/2;
-    }
     .wer-sind__text {
-        grid-row: 4/5;
-        grid-column: 1/2;
+        /* grid-row: 4/5; */
+        /* grid-column: 1/2; */
+        grid-row: 3/4;
+        grid-column: 1/3;
+        margin-top: 20px;
     }
     .wer-sind__text .paragraph {
         margin: 0;
@@ -1294,12 +1329,18 @@ body.scrolled::-webkit-scrollbar-thumb {
         /* margin-bottom: 2rem; */
         text-align: center;
         display: block;
+        opacity: 60%;
+    }
+    .each_place_is_unique--red {
+        color: var(--color-dark-red);
+        /* opacity: 60%; */
     }
     .shop {
         text-align: center;
     }
     .shop__heading {
-        margin-bottom: 8rem;
+        /* margin-bottom: 8rem; */
+        position: absolute;
     }
     .shop .red-badge {
         margin: 0 auto;
@@ -2277,26 +2318,6 @@ body.scrolled::-webkit-scrollbar-thumb {
     }
 }
 
-
-/* Big Desktop Media =>  *< 1800px */
-
-@media only screen and (min-width: 112.5em) {}
-
-
-/* Tablet (landscape) Media => 0 : 1200px */
-
-@media only screen and (max-width: 75em) {}
-
-
-/* Tablet Media => 0 : 900px */
-
-@media only screen and (max-width: 56.25em) {}
-
-
-/*Mobile Media =>0 : 600px*/
-
-@media only screen and (max-width: 37.5em) {}
-
 .loading {
     position: fixed;
     left: 0;
@@ -2402,3 +2423,27 @@ body.scrolled::-webkit-scrollbar-thumb {
         transform: translateY(15px)
     }
 }
+
+
+/* Big Desktop Media =>  *< 1800px */
+
+@media only screen and (min-width: 112.5em) {}
+
+
+/* Tablet (landscape) Media => 0 : 1200px */
+
+@media only screen and (max-width: 75em) {}
+
+
+/* Tablet Media => 0 : 900px */
+
+@media only screen and (max-width: 56.25em) {
+    .scrollbar {
+        display: none;
+    }
+}
+
+
+/*Mobile Media =>0 : 600px*/
+
+@media only screen and (max-width: 37.5em) {}

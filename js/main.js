@@ -316,6 +316,13 @@ document.addEventListener('scroll', () => {
     scrollJump = window.scrollY * viewableRatio;
     scrollbarThumb.style.top = scrollJump + 'px';
 });
+// hidescrollbar if media is touch
+if (window.matchMedia("(pointer: coarse)").matches) {
+    // touchscreen
+    document.querySelector('.scrollbar').style.display = "none"
+} else {
+    document.querySelector('.scrollbar').style.display = ""
+}
 /****** 
  * 
  * Main Functions
@@ -366,7 +373,14 @@ function handleRatios(elmnt) {
         elmnt.removeAttribute('style');
         [...elmnt.querySelectorAll('*')].forEach(elmnt => elmnt.removeAttribute('style'));
         // add margin-top to the whole content
-        document.querySelector('section.about').style.paddingTop = `${310 * (parseFloat(getComputedStyle(document.body).width) / 390)}px`;
+        document.querySelector('section.about').style.paddingTop = `${535 * (parseFloat(getComputedStyle(document.body).width) / 390)}px`;
+        document.querySelector('.wer-sind__content .heading-secondary').style.fontSize = `${44 * parseFloat(parseFloat(getComputedStyle(document.body).width) / 390)}px`;
+        document.querySelector('.wer-sind__sub-heading').style.fontSize = `${18 * parseFloat(parseFloat(getComputedStyle(document.body).width) / 390)}px`;
+        document.querySelector('.wer-sind__text').style.fontSize = `${14 * parseFloat(parseFloat(getComputedStyle(document.body).width) / 390)}px`;
+        document.querySelector('.shop__heading').style.fontSize = `${24 * parseFloat(parseFloat(getComputedStyle(document.body).width) / 390)}px`;
+        document.querySelector('.shop__heading').style.left = `${290 * parseFloat(parseFloat(getComputedStyle(document.body).width) / 390)}px`;
+        document.querySelector('.shop__heading').style.top = `${190 * parseFloat(parseFloat(getComputedStyle(document.body).width) / 390)}px`;
+        document.querySelector('.shop__heading .heading-secondary__red').style.fontSize = `${26 * parseFloat(parseFloat(getComputedStyle(document.body).width) / 390)}px`;
         return;
     }
     let magnifyingFactor = parseFloat(getComputedStyle(document.body).width) / dimensionsRef.width;
@@ -774,7 +788,7 @@ function dragElement(elmnt, cont, trigger = elmnt) {
             elmnt.style.top = 0 + 'px'
         } else if (elmnt.offsetTop > parseFloat(getComputedStyle(scrollbar).height) - parseFloat(getComputedStyle(elmnt).height)) {
             console.log(`elmnt.offsetTop: ${elmnt.offsetTop}`);
-            elmnt.style.top = parseFloat(getComputedStyle(scrollbar).height) - parseFloat(getComputedStyle(elmnt).height) + 'px';
+            elmnt.style.top = parseFloat(getComputedStyle(scrollbar).height) - parseFloat(getComputedStyle(elmnt).height) - 2 + 'px';
         } else {
             // calculate the new cursor or touch position:
             // console.log(elmnt.offsetTop);
@@ -783,7 +797,7 @@ function dragElement(elmnt, cont, trigger = elmnt) {
             oldY = y;
             // set the element's new position:
             elmnt.style.top = (elmnt.offsetTop - newY) + "px";
-            window.scrollTo(0, parseFloat(elmnt.offsetTop) / viewableRatio)
+            window.scrollTo(0, parseFloat(elmnt.offsetTop) / viewableRatio);
         }
     }
 
