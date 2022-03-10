@@ -1648,6 +1648,7 @@ body.scrolled::-webkit-scrollbar-thumb {
 .services__3d__imgs {
     display: flex;
     transform-origin: top right;
+    right: 50px;
 }
 
 .services__3d__img {
@@ -2228,6 +2229,7 @@ body.scrolled::-webkit-scrollbar-thumb {
     }
     .services__3d__imgs {
         flex-direction: column;
+        right: auto;
     }
     .contact {
         margin-top: 4rem;

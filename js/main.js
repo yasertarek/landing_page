@@ -396,7 +396,7 @@ function handleRatios(elmnt) {
     }
     if (elmnt.classList.contains('services__3d__imgs')) {
         elmnt.style.transform = '';
-        elmnt.style.right = (29 * magnifyingFactor) + document.querySelector('.shop').getBoundingClientRect().width - document.querySelector('.shop__slider').getBoundingClientRect().width + 'px';
+        // elmnt.style.right = (29 * magnifyingFactor) + document.querySelector('.shop').getBoundingClientRect().width - document.querySelector('.shop__slider').getBoundingClientRect().width + 'px';
         [...elmnt.querySelectorAll('.services__3d__img')].forEach(elmnt => elmnt.style.maxWidth = 594 * magnifyingFactor + 'px');
     }
     // document.querySelector('.shop__gallery__slider').style.width = getComputedStyle([...document.querySelectorAll('.shop__gallery__slider__wrapper__slide')][0]).width;
