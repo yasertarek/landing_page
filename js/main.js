@@ -22,29 +22,28 @@ let dimensionsRef = {
             top: 1319,
         },
         shop: {
-            // left: 1285,
-            right: 0,
+            right: 40,
             top: 1296.47,
         },
         shop__heading: {
             top: 1130,
-            right: 7
+            right: 40
         },
         each_place_is_unique: {
             left: 34,
             top: 1565
         },
         'we-design': {
-            left: 704,
-            top: 1770
+            left: 707,
+            top: 1774
         },
         'services__words-table': {
             left: 95.05,
-            top: 1949
+            top: 2037
         },
         services__heading: {
             left: 57,
-            top: 2017
+            top: 2105
         },
         'services__gips-deko': {
             top: 2260
@@ -86,7 +85,8 @@ let dimensionsRef = {
             left: 76
         },
         'services__3d__imgs': {
-            top: 3705
+            top: 3705,
+            right: 69
         },
         'contact__heading': {
             top: 4115,
@@ -367,23 +367,38 @@ function showGlobalGallery(clickedElmnt) {
 
 // Make Specified positioned elements in its place
 function handleRatios(elmnt) {
+    let magnifyingFactor;
     // check if screen width is less than 600, then don't scale according to ratio and reset style
     if (parseFloat(getComputedStyle(document.body).width) <= 600) {
+        magnifyingFactor = parseFloat(parseFloat(getComputedStyle(document.body).width) / 390);
         // reset and clear style
         elmnt.removeAttribute('style');
         [...elmnt.querySelectorAll('*')].forEach(elmnt => elmnt.removeAttribute('style'));
         // add margin-top to the whole content
-        document.querySelector('section.about').style.paddingTop = `${535 * (parseFloat(getComputedStyle(document.body).width) / 390)}px`;
-        document.querySelector('.wer-sind__content .heading-secondary').style.fontSize = `${44 * parseFloat(parseFloat(getComputedStyle(document.body).width) / 390)}px`;
-        document.querySelector('.wer-sind__sub-heading').style.fontSize = `${18 * parseFloat(parseFloat(getComputedStyle(document.body).width) / 390)}px`;
-        document.querySelector('.wer-sind__text').style.fontSize = `${14 * parseFloat(parseFloat(getComputedStyle(document.body).width) / 390)}px`;
-        document.querySelector('.shop__heading').style.fontSize = `${24 * parseFloat(parseFloat(getComputedStyle(document.body).width) / 390)}px`;
-        document.querySelector('.shop__heading').style.left = `${290 * parseFloat(parseFloat(getComputedStyle(document.body).width) / 390)}px`;
-        document.querySelector('.shop__heading').style.top = `${190 * parseFloat(parseFloat(getComputedStyle(document.body).width) / 390)}px`;
-        document.querySelector('.shop__heading .heading-secondary__red').style.fontSize = `${26 * parseFloat(parseFloat(getComputedStyle(document.body).width) / 390)}px`;
+        document.querySelector('section.about').style.paddingTop = `${535 * magnifyingFactor}px`;
+        document.querySelector('.was-bieten .red-badge').style.fontSize = `${14 * magnifyingFactor}px`;
+        document.querySelector('.wer-sind__content .heading-secondary').style.fontSize = `${44 * magnifyingFactor}px`;
+        document.querySelector('.wer-sind__sub-heading').style.fontSize = `${18 * magnifyingFactor}px`;
+        document.querySelector('.wer-sind__text').style.fontSize = `${14 * magnifyingFactor}px`;
+        document.querySelector('.shop__heading').style.fontSize = `${27 * magnifyingFactor}px`;
+        document.querySelector('.shop__heading').style.left = `${290 * magnifyingFactor}px`;
+        document.querySelector('.shop__heading').style.right = '';
+        document.querySelector('.shop__heading').style.top = `${210 * magnifyingFactor}px`;
+        document.querySelector('.shop__heading__triangle').style.cssText = `
+            top: calc(100% + ${5 * magnifyingFactor}px);
+            border-top: ${8 * magnifyingFactor}px solid var(--color-dark-red);
+            border-right: ${8 * magnifyingFactor}px solid transparent;
+            border-bottom: ${8 * magnifyingFactor}px solid transparent;
+            border-left: ${8 * magnifyingFactor}px solid transparent;
+            left: ${46.5 * magnifyingFactor}px
+        `;
+        document.querySelector('.shop__heading .heading-secondary__red').style.fontSize = `${34 * magnifyingFactor}px`;
         return;
+    } else {
+        elmnt.removeAttribute('style');
+        [...elmnt.querySelectorAll('*')].forEach(elmnt => elmnt.removeAttribute('style'));
     }
-    let magnifyingFactor = parseFloat(getComputedStyle(document.body).width) / dimensionsRef.width;
+    magnifyingFactor = parseFloat(getComputedStyle(document.body).width) / dimensionsRef.width;
     let newLeft;
     let newTop;
     if (typeof dimensionsRef[elmnt.getAttribute('data-pos')].left !== 'undefined') {
@@ -408,13 +423,13 @@ function handleRatios(elmnt) {
     // Exceptions
     if (elmnt.classList.contains('services__p-line')) {
         elmnt.style.transform = ` scaleY(${magnifyingFactor}) translateX(-50%)`;
-        // elmnt.style.width = document.body.offsetWidth - (2 * 43.18) + 'px';
-        elmnt.style.borderLeft = `${1.77 * magnifyingFactor}px solid var(--color-t-white)`;
-        elmnt.style.borderRight = `${1.77 * magnifyingFactor}px solid var(--color-t-white)`;
+        elmnt.style.width = document.body.offsetWidth - (80 * magnifyingFactor) + 'px';
+        elmnt.style.borderLeft = `${1.77 * magnifyingFactor}px solid var(--color-light-white)`;
+        elmnt.style.borderRight = `${1.77 * magnifyingFactor}px solid var(--color-light-white)`;
     }
     if (elmnt.classList.contains('services__line')) {
-        elmnt.style.borderTop = `${1.77 * magnifyingFactor}px solid var(--color-t-white)`;
-        elmnt.style.borderBottom = `${1.77 * magnifyingFactor}px solid var(--color-t-white)`;
+        elmnt.style.borderTop = `${1.77 * magnifyingFactor}px solid var(--color-light-white)`;
+        elmnt.style.borderBottom = `${1.77 * magnifyingFactor}px solid var(--color-light-white)`;
     }
     if (elmnt.classList.contains('services__gips-deko__text-ul')) {
         elmnt.style.transform = '';
