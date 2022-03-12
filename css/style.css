@@ -22,7 +22,7 @@
 
 @font-face {
     font-family: "MyriadPro";
-    src: url("../webfonts/myriadPro/MyriadPro-Light.otf");
+    src: url("../webfonts/myriadPro/MyriadPro-Light.OTF");
     font-weight: lighter;
 }
 
@@ -708,7 +708,6 @@ section.about {
 .we-design__logo {
     max-width: 17px;
     display: flex;
-    margin-bottom: -3px;
 }
 
 .we-design__logo img {
@@ -721,12 +720,13 @@ section.about {
 }
 
 .we-design__text p {
-    font-size: 6px;
+    font-size: 7px;
 }
 
 .we-design__text span.red-text {
     color: var(--color-dark-red);
     letter-spacing: 1px;
+    margin-right: 3px;
 }
 
 .each_place_is_unique {
