@@ -393,6 +393,7 @@ function handleRatios(elmnt) {
             left: ${46.5 * magnifyingFactor}px
         `;
         document.querySelector('.shop__heading .heading-secondary__red').style.fontSize = `${34 * magnifyingFactor}px`;
+        document.querySelector('footer.footer p').style.fontSize = `${14 * magnifyingFactor}px`;
         return;
     } else {
         elmnt.removeAttribute('style');
@@ -479,7 +480,7 @@ function handleRatios(elmnt) {
     if (elmnt.classList.contains('full-row')) {
         elmnt.style.transform = 'translateX(-50%)';
         elmnt.style.width = document.body.offsetWidth - (2 * (document.querySelector('.shop').getBoundingClientRect().width - document.querySelector('.shop__slider').getBoundingClientRect().width)) + 'px'
-        elmnt.querySelector('p').style.fontSize = `${16 * magnifyingFactor}px`
+        elmnt.querySelector('p').style.fontSize = `${14 * magnifyingFactor}px`;
         elmnt.querySelector('.footer__social_icons').style.transform = `scale(${magnifyingFactor})`;
     }
 
