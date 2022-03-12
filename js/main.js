@@ -8,7 +8,7 @@ const fixedPos = [...document.querySelectorAll('.fixed-pos')];
 // const services__gipsDeko__textUl = getComputedStyle(document.querySelector('.services__gips-deko__text-ul'));
 // Ratios of dimensions between window width and coordinates of element
 let dimensionsRef = {
-        width: 1519.2,
+        width: 1519,
         'wer-sind': {
             left: 975,
             top: 730,
@@ -158,11 +158,55 @@ window.onload = () => {
     });
 });
 document.addEventListener('scroll', () => {
+    console.log(window.scrollY);
     if (window.scrollY < 30) {
         document.querySelector('.fixed-btns').classList.remove('fixed-btns--active');
     } else {
         document.querySelector('.fixed-btns').classList.add('fixed-btns--active');
     }
+    // Elements Animation
+    // wer-sind
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.wer-sind').offsetTop) {
+        document.querySelector('.wer-sind').classList.add('wer-sind--scrolled');
+    }
+    // was-bieten
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop) {
+        document.querySelector('.was-bieten').classList.add('was-bieten--scrolled');
+    }
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop + 100) {
+        document.querySelector('.was-bieten .paragraph li:nth-child(1)').classList.add('li--scrolled');
+    }
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop + 200) {
+        document.querySelector('.was-bieten .paragraph li:nth-child(2)').classList.add('li--scrolled');
+    }
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop + 300) {
+        document.querySelector('.was-bieten .paragraph li:nth-child(3)').classList.add('li--scrolled');
+    }
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop + 400) {
+        document.querySelector('.was-bieten .paragraph li:nth-child(4)').classList.add('li--scrolled');
+    }
+    // Shop
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.shop__heading').offsetTop) {
+        document.querySelector('.shop__heading').classList.add('shop__heading--scrolled');
+    }
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.shop').offsetTop + 100) {
+        document.querySelector('.shop .red-badge').classList.add('red-badge--scrolled');
+    }
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.shop').offsetTop + 200) {
+        document.querySelector('.shop .paragraph').classList.add('paragraph--scrolled');
+    }
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.shop').offsetTop + 300) {
+        document.querySelector('.shop .shop__slider').classList.add('shop__slider--scrolled');
+    }
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.each_place_is_unique').offsetTop + 300) {
+        document.querySelector('.each_place_is_unique').classList.add('each_place_is_unique--scrolled');
+    }
+
+    // our vision
+    if (window.scrollY > 850) {
+        document.querySelector('.our-vision').classList.add('our-vision--scrolled');
+    }
+
 });
 fixedPos.forEach((elmnt) => {
     handleRatios(elmnt);
