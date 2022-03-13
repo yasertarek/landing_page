@@ -164,7 +164,6 @@ body {
 .fixed-pos {
     position: absolute;
     transform-origin: top left;
-    overflow: hidden;
 }
 
 
