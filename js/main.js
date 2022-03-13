@@ -173,18 +173,19 @@ document.addEventListener('scroll', () => {
     if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop) {
         document.querySelector('.was-bieten').classList.add('was-bieten--scrolled');
     }
-    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop + 100) {
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop + 75) {
         document.querySelector('.was-bieten .paragraph li:nth-child(1)').classList.add('li--scrolled');
     }
-    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop + 200) {
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop + 150) {
         document.querySelector('.was-bieten .paragraph li:nth-child(2)').classList.add('li--scrolled');
     }
-    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop + 300) {
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop + 225) {
         document.querySelector('.was-bieten .paragraph li:nth-child(3)').classList.add('li--scrolled');
     }
-    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop + 400) {
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop + 300) {
         document.querySelector('.was-bieten .paragraph li:nth-child(4)').classList.add('li--scrolled');
     }
+
     // Shop
     if (window.scrollY + window.screen.height - 100 >= document.querySelector('.shop__heading').offsetTop) {
         document.querySelector('.shop__heading').classList.add('shop__heading--scrolled');
@@ -198,14 +199,70 @@ document.addEventListener('scroll', () => {
     if (window.scrollY + window.screen.height - 100 >= document.querySelector('.shop').offsetTop + 300) {
         document.querySelector('.shop .shop__slider').classList.add('shop__slider--scrolled');
     }
+
     if (window.scrollY + window.screen.height - 100 >= document.querySelector('.each_place_is_unique').offsetTop + 300) {
         document.querySelector('.each_place_is_unique').classList.add('each_place_is_unique--scrolled');
     }
 
     // our vision
-    if (window.scrollY > 850) {
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.our-vision').offsetTop + 100) {
         document.querySelector('.our-vision').classList.add('our-vision--scrolled');
     }
+
+    // table
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.services__words-table').offsetTop + 100) {
+        document.querySelector('.services__words-table').classList.add('services__words-table--scrolled');
+    }
+
+    // services heading
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.services__heading').offsetTop + 100) {
+        document.querySelector('.services__heading').classList.add('services__heading--scrolled');
+    }
+
+    // services Gips Deko
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.services__gips-deko__visual').offsetTop + 100) {
+        document.querySelector('.services__gips-deko__visual').classList.add('services__gips-deko__visual--scrolled');
+    }
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.services__gips-deko__visual__gallery').offsetTop + 200) {
+        document.querySelector('.services__gips-deko__visual__gallery').classList.add('services__gips-deko__visual__gallery--scrolled');
+    }
+
+    // Visualise
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.services__visualising__heading').offsetTop + 100) {
+        document.querySelector('.services__visualising__heading').classList.add('services__visualising__heading--scrolled');
+    }
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.services__visualising__item').offsetTop + 100) {
+        [...document.querySelectorAll('.services__visualising__item')].forEach(elmnt => elmnt.classList.add('services__visualising__item--scrolled'));
+    }
+    //special
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.services__gips-deko__text-ul').offsetTop + 100) {
+        document.querySelector('.services__gips-deko__text').classList.add('services__gips-deko__text--scrolled');
+    }
+
+
+
+    // 3D
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.services__3d__header').offsetTop + 100) {
+        document.querySelector('.services__3d__header').classList.add('services__3d__header--scrolled');
+    }
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.services__3d__imgs').offsetTop + 100) {
+        document.querySelector('.services__3d__imgs').classList.add('services__3d__imgs--scrolled');
+    }
+
+    // Contact
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.contact__heading').offsetTop) {
+        document.querySelector('.contact__heading').classList.add('contact__heading--scrolled');
+    }
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.form').offsetTop) {
+        document.querySelector('.form').classList.add('form--scrolled');
+    }
+
+    // Footer
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.footer').offsetTop) {
+        document.querySelector('.footer').classList.add('footer--scrolled');
+        document.querySelector('.footer__line').classList.add('footer__line--scrolled');
+    }
+
 
 });
 fixedPos.forEach((elmnt) => {
@@ -374,12 +431,12 @@ if (window.matchMedia("(pointer: coarse)").matches) {
 // Handle Showing Gallery
 function showGallery(clickedElmnt) {
     let elesArr = [...document.querySelectorAll('.shop__slider-img')];
+    console.log('Before Operating', elesArr);
     elesArr.shift();
     elesArr.shift();
     elesArr.pop();
     elesArr.pop();
-    const clickedIndex = elesArr.indexOf(clickedElmnt);
-    console.log('element: ', clickedElmnt);
+    const clickedIndex = parseInt(clickedElmnt.getAttribute('data-gallery-index'));
     console.log(clickedIndex);
     document.querySelector('.shop__gallery').classList.add('shop__gallery--active');
     // document.body.style.overflow = 'hidden';
@@ -437,7 +494,6 @@ function handleRatios(elmnt) {
             left: ${46.5 * magnifyingFactor}px
         `;
         document.querySelector('.shop__heading .heading-secondary__red').style.fontSize = `${34 * magnifyingFactor}px`;
-        document.querySelector('footer.footer p').style.fontSize = `${14 * magnifyingFactor}px`;
         return;
     } else {
         elmnt.removeAttribute('style');
@@ -478,13 +534,13 @@ function handleRatios(elmnt) {
     }
     if (elmnt.classList.contains('services__gips-deko__text-ul')) {
         elmnt.style.transform = '';
-        elmnt.style.paddingRight = document.querySelector('.shop').getBoundingClientRect().width - document.querySelector('.shop__slider').getBoundingClientRect().width + 20 * magnifyingFactor + 'px';
-        elmnt.style.fontSize = (26 * magnifyingFactor) + 'px';
+        elmnt.querySelector('ul').style.paddingRight = document.querySelector('.shop').getBoundingClientRect().width - document.querySelector('.shop__slider').getBoundingClientRect().width + 20 * magnifyingFactor + 'px';
+        elmnt.querySelector('ul').style.fontSize = (26 * magnifyingFactor) + 'px';
     }
     if (elmnt.classList.contains("services__gips-deko__text-p")) {
         elmnt.style.transform = '';
-        // elmnt.style.fontSize = (services__gipsDeko__textP.fontSize * magnifyingFactor) + 'px';
-        elmnt.style.fontSize = (16 * magnifyingFactor) + 'px';
+        // elmnt.querySelector('p').style.fontSize = (services__gipsDeko__textP.fontSize * magnifyingFactor) + 'px';
+        elmnt.querySelector('p').style.fontSize = (16 * magnifyingFactor) + 'px';
         // elmnt.style.paddingRight = document.querySelector('.shop').getBoundingClientRect().width - document.querySelector('.shop__slider').getBoundingClientRect().width + 20 * magnifyingFactor + 'px';
     }
     [...document.querySelectorAll('.services__line')].forEach((elmnt) => elmnt.style.width = document.querySelector('.shop__slider').getBoundingClientRect().width * 2 / 3 + 'px');

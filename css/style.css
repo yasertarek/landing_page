@@ -164,6 +164,7 @@ body {
 .fixed-pos {
     position: absolute;
     transform-origin: top left;
+    overflow: hidden;
 }
 
 
@@ -630,6 +631,7 @@ section.about {
 .was-bieten {
     /* top: 905px; */
     /* left: 5px; */
+    overflow: hidden;
 }
 
 .was-bieten .heading-secondary {
@@ -682,6 +684,10 @@ section.about {
     height: 7px;
     border-radius: 50%;
     background-color: var(--color-red);
+}
+
+.our-vision {
+    overflow: hidden;
 }
 
 .our-vision .red-badge {
@@ -740,12 +746,17 @@ section.about {
     font-weight: bold;
     line-height: 1;
     opacity: 0.5;
+    overflow: hidden;
     /* left: 34px; */
     /* top: 1525px; */
 }
 
 .each_place_is_unique span {
     display: block;
+}
+
+.shop {
+    overflow: hidden;
 }
 
 .shop__heading {
@@ -755,6 +766,7 @@ section.about {
     text-align: center;
     transform-origin: top right;
     opacity: 0.5;
+    overflow: hidden;
 }
 
 .shop__heading__triangle {
@@ -1444,6 +1456,10 @@ body.scrolled::-webkit-scrollbar-thumb {
     display: inline-block;
 }
 
+.services__heading span {
+    display: block;
+}
+
 .services__heading::after {
     content: '';
     position: absolute;
@@ -1589,6 +1605,10 @@ body.scrolled::-webkit-scrollbar-thumb {
 }
 
 .services__gips-deko__text-ul {
+    overflow: hidden;
+}
+
+.services__gips-deko__text-ul ul {
     list-style: none;
     color: #b98b34;
     font-size: 26px;
@@ -1596,7 +1616,7 @@ body.scrolled::-webkit-scrollbar-thumb {
     font-weight: bold;
 }
 
-.services__gips-deko__text-ul li {
+.services__gips-deko__text-ul ul li {
     display: inline-block;
     color: inherit;
     background-color: #000;
@@ -1604,12 +1624,16 @@ body.scrolled::-webkit-scrollbar-thumb {
     line-height: 1;
 }
 
-.services__gips-deko__text-ul li.active {
+.services__gips-deko__text-ul ul li.active {
     color: var(--color-light-white);
     background-color: var(--color-dark-red);
 }
 
 .services__gips-deko__text-p {
+    overflow: hidden;
+}
+
+.services__gips-deko__text-p p {
     font-size: 16px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
     color: var(--color-light-white);
@@ -1618,7 +1642,7 @@ body.scrolled::-webkit-scrollbar-thumb {
     font-style: italic;
     font-weight: lighter;
     /* margin-top: 35px; */
-    padding-right: 50px;
+    padding-right: 35px;
 }
 
 .services__visualising {
@@ -2165,18 +2189,6 @@ body.scrolled::-webkit-scrollbar-thumb {
 }
 
 
-/* Special cases */
-
-.services__heading--scrolled::after {
-    opacity: 1;
-    transform: translate(-50%, 0);
-}
-
-.contact__heading span {
-    display: block;
-}
-
-
 /* Big Desktop Media =>  *< 1800px */
 
 @media only screen and (min-width: 112.5em) {}
@@ -2251,11 +2263,11 @@ body.scrolled::-webkit-scrollbar-thumb {
     .services__gips-deko__visual__img:not(:first-child) {
         margin-top: 3rem;
     }
-    .services__gips-deko__text-p {
+    .services__gips-deko__text-p p {
         font-size: 14px;
         padding-right: 0;
     }
-    .services__gips-deko__text-ul {
+    .services__gips-deko__text-ul ul {
         font-size: 2.6rem;
         margin-bottom: 2rem;
     }
@@ -2321,6 +2333,13 @@ body.scrolled::-webkit-scrollbar-thumb {
     }
     .bg-word {
         display: none;
+    }
+    .footer {
+        margin-top: 8rem;
+        padding-top: 4rem;
+    }
+    .footer p {
+        font-size: 11px;
     }
 }
 
@@ -2420,51 +2439,43 @@ body.scrolled::-webkit-scrollbar-thumb {
 
 /* Animation on scroll */
 
-.wer-sind .wer-sind__content {
-    transform: translateX(100px);
-    transition: transform 0.8s ease;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.wer-sind--scrolled .wer-sind__content {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(0);
-}
-
 
 /* X Left */
 
+.our-vision .red-badge,
+.our-vision .paragraph,
 .was-bieten .heading-secondary,
 .was-bieten .red-badge,
 .was-bieten .paragraph li,
-.each_place_is_unique span {
+.each_place_is_unique span,
+.services__words-table__row--separator,
+.services__gips-deko__visual .heading-tertiary,
+.services__gips-deko__visual .services__gips-deko__sub-heading,
+.services__gips-deko__text-ul ul,
+.services__gips-deko__text-p p,
+.services__visualising__heading span,
+.services__3d__header .services__3d__heading,
+.services__3d__header .services__3d__sub-heading {
     visibility: hidden;
     transform: translateX(-200px);
-    transition: transform 0.8s ease;
+    transition: transform 0.8s ease-out;
 }
 
 
 /* X Right */
 
-.our-vision .red-badge,
-.our-vision .paragraph,
+.wer-sind .wer-sind__content,
 .shop .red-badge,
 .shop .paragraph,
-.shop .shop__slider {
+.shop .shop__slider,
+.services__gips-deko__text-ul ul,
+.services__gips-deko__text-p p {
     visibility: hidden;
     transform: translateX(200px);
-    transition: transform 0.8s ease;
+    transition: transform 0.8s ease-out;
 }
 
-
-/* {
-    visibility: hidden;
-    transform: translateX(-100%);
-    transition: transform 0.8s ease;
-} */
-
+.wer-sind--scrolled .wer-sind__content,
 .was-bieten--scrolled .heading-secondary,
 .was-bieten--scrolled .red-badge,
 .was-bieten .paragraph li.li--scrolled,
@@ -2473,7 +2484,15 @@ body.scrolled::-webkit-scrollbar-thumb {
 .shop .red-badge--scrolled,
 .shop .paragraph--scrolled,
 .shop .shop__slider--scrolled,
-.each_place_is_unique--scrolled span {
+.each_place_is_unique--scrolled span,
+.services__words-table--scrolled .services__words-table__row--separator,
+.services__gips-deko__visual--scrolled .heading-tertiary,
+.services__gips-deko__visual--scrolled .services__gips-deko__sub-heading,
+.services__gips-deko__text--scrolled .services__gips-deko__text-ul ul,
+.services__gips-deko__text--scrolled .services__gips-deko__text-p p,
+.services__visualising__heading--scrolled span,
+.services__3d__header--scrolled .services__3d__heading,
+.services__3d__header--scrolled .services__3d__sub-heading {
     visibility: visible;
     transform: translateX(0);
 }
@@ -2481,16 +2500,63 @@ body.scrolled::-webkit-scrollbar-thumb {
 
 /* Y Top */
 
-.shop__heading a {
-    display: block;
+.shop__heading a,
+.services__words-table__row--1,
+.services__visualising__item .red-badge,
+.services__visualising__item .services__visualising__item__text,
+footer.footer .footer__social_icons div,
+footer.footer p,
+.footer__line {
+    /* display: block; */
     visibility: hidden;
     transform: translateY(-100px);
-    transition: transform 0.8s ease;
+    transition: transform 0.8s ease-out;
 }
 
-.shop__heading--scrolled a {
+
+/* Y Bottom */
+
+.services__words-table__row--2,
+.services__heading span,
+.services__heading::after,
+.services__gips-deko__visual__gallery .services__gips-deko__visual__img,
+.services__visualising__item__img,
+.services__3d__imgs .services__3d__img,
+.contact__heading span,
+.form div {
+    visibility: hidden;
+    transform: translateY(100px);
+    transition: transform 0.8s ease-out;
+}
+
+.shop__heading--scrolled a,
+.services__words-table--scrolled .services__words-table__row--1,
+.services__words-table--scrolled .services__words-table__row--2,
+.services__heading--scrolled span,
+.services__heading--scrolled::after,
+.services__gips-deko__visual__gallery--scrolled .services__gips-deko__visual__img,
+.services__visualising__item--scrolled .services__visualising__item__text,
+.services__visualising__item--scrolled .services__visualising__item__img,
+.services__3d__imgs--scrolled .services__3d__img,
+.contact__heading--scrolled span,
+.form--scrolled div,
+footer.footer--scrolled .footer__social_icons div,
+footer.footer--scrolled p,
+.footer__line--scrolled {
     visibility: visible;
     transform: translateY(0);
+}
+
+
+/* Special cases */
+
+.services__heading--scrolled::after {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.contact__heading span {
+    display: block;
 }
 
 @keyframes waving {
