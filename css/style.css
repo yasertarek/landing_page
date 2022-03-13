@@ -2500,6 +2500,7 @@ body.scrolled::-webkit-scrollbar-thumb {
 
 /* Y Top */
 
+.we-design div,
 .shop__heading a,
 .services__words-table__row--1,
 .services__visualising__item .red-badge,
@@ -2529,6 +2530,7 @@ footer.footer p,
     transition: transform 0.8s ease-out;
 }
 
+.we-design--scrolled div,
 .shop__heading--scrolled a,
 .services__words-table--scrolled .services__words-table__row--1,
 .services__words-table--scrolled .services__words-table__row--2,

@@ -185,6 +185,10 @@ document.addEventListener('scroll', () => {
     if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop + 300) {
         document.querySelector('.was-bieten .paragraph li:nth-child(4)').classList.add('li--scrolled');
     }
+    // We design
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.we-design').offsetTop + 100) {
+        document.querySelector('.we-design').classList.add('we-design--scrolled');
+    }
 
     // Shop
     if (window.scrollY + window.screen.height - 100 >= document.querySelector('.shop__heading').offsetTop) {
