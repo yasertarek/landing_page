@@ -2532,6 +2532,7 @@ footer.footer p,
     transition: transform 0.8s ease-out;
 }
 
+.services__visualising__item--scrolled .red-badge,
 .we-design--scrolled div,
 .shop__heading--scrolled a,
 .services__words-table--scrolled .services__words-table__row--1,
