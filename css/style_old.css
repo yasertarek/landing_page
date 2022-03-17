@@ -1403,6 +1403,9 @@ body.scrolled::-webkit-scrollbar-thumb {
     }
 }
 
+
+/* Services */
+
 .bg-word {
     font-size: 459px;
     text-transform: uppercase;
@@ -1412,6 +1415,8 @@ body.scrolled::-webkit-scrollbar-thumb {
     z-index: -1;
     left: -10px;
 }
+
+.services {}
 
 .services__words-table {
     font-family: 'capoonPersonalUseLight';
@@ -1474,20 +1479,52 @@ body.scrolled::-webkit-scrollbar-thumb {
     margin-left: auto;
 } */
 
-
-/* Start Services */
-
-.services {}
-
-.services__service {
-    max-width: calc(100% - 80px);
-    margin: 0 auto;
+.services__p-line {
+    min-height: 575px;
+    border-left: 1.77px solid var(--color-light-white);
+    border-right: 1.77px solid var(--color-light-white);
+    left: 50%;
+    width: calc(100% - 80px);
+    opacity: 0.5;
 }
 
+.services__line {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 25%;
+    border-top: 1.77px solid var(--color-light-white);
+    border-bottom: 1.77px solid var(--color-light-white);
+}
 
-/* Gips-deko */
+.services__line--left {
+    left: 0;
+}
 
-.gips-deko__sub-heading {
+.services__line--right {
+    right: 0;
+}
+
+.services__p-line--mobile .services__line {
+    display: none;
+}
+
+.services__gips-deko__visual,
+.services__gips-deko__text {
+    flex: 1;
+}
+
+.services__gips-deko__visual .heading-tertiary {
+    position: relative;
+    font-size: 11rem;
+    text-align: center;
+    line-height: 1.2;
+    opacity: 61%;
+    color: var(--color-light-white);
+}
+
+.services__gips-deko__sub-heading {
     font-size: 21px;
     font-family: 'capoonPersonalUseLight';
     color: var(--color-light-white);
@@ -1499,7 +1536,7 @@ body.scrolled::-webkit-scrollbar-thumb {
     margin-bottom: 5px;
 }
 
-.gips-deko__sub-heading--yellow {
+.services__gips-deko__sub-heading--yellow {
     color: #b98b34;
     font-weight: bold;
     letter-spacing: 5px;
@@ -1508,12 +1545,72 @@ body.scrolled::-webkit-scrollbar-thumb {
     font-size: 21px !important;
 }
 
-.gips-deko__text {
+.services__gips-deko__visual__gallery {
+    left: 50%;
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
+    padding: 0 20px;
+    width: 1449.65px;
 }
 
-.gips-deko__ul {
+.services__gips-deko__visual__img {
+    max-width: 421px;
+    display: block;
+    border-radius: 5px;
+}
+
+.services__gips-deko__visual__img:not(:first-child) {
+    margin-top: 81px;
+}
+
+.services__gips-deko__visual__img:nth-child(1) {
+    transform-origin: left bottom;
+}
+
+.services__gips-deko__visual__img:nth-child(2) {
+    transform-origin: center bottom;
+}
+
+.services__gips-deko__visual__img:nth-child(3) {
+    transform-origin: right bottom;
+}
+
+.services__gips-deko__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.services__gips-deko__separator-line {
+    height: 125px;
+    width: 2px;
+    background-color: var(--color-light-white);
+    margin: 0 30px;
+    /* display: block; */
+}
+
+.services__gips-deko__visual {
+    transform-origin: left top;
+    /* max-width: 50%; */
+    /* position: relative; */
+    left: 0;
+    top: 0;
+}
+
+.services__gips-deko__text {
+    /* transform-origin: right top; */
+    /* position: relative; */
+    /* max-width: 50%; */
+    /* right: 0; */
+    /* top: 0; */
+}
+
+.services__gips-deko__text-ul {
+    overflow: hidden;
+}
+
+.services__gips-deko__text-ul ul {
     list-style: none;
     color: #b98b34;
     font-size: 26px;
@@ -1521,7 +1618,7 @@ body.scrolled::-webkit-scrollbar-thumb {
     font-weight: bold;
 }
 
-.gips-deko__ul li {
+.services__gips-deko__text-ul ul li {
     display: inline-block;
     color: inherit;
     background-color: #000;
@@ -1529,34 +1626,111 @@ body.scrolled::-webkit-scrollbar-thumb {
     line-height: 1;
 }
 
-.gips-deko__ul li.active {
+.services__gips-deko__text-ul ul li.active {
     color: var(--color-light-white);
     background-color: var(--color-dark-red);
 }
 
-.gips-deko__text .paragraph {
-    max-width: auto;
+.services__gips-deko__text-p {
+    overflow: hidden;
 }
 
-.gips-deko__photos {
+.services__gips-deko__text-p p {
+    font-size: 16px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+    color: var(--color-light-white);
+    opacity: 85%;
+    font-family: 'Hornbill-Personal';
+    font-style: italic;
+    font-weight: lighter;
+    /* margin-top: 35px; */
+    padding-right: 35px;
+}
+
+.services__visualising {
+    /* min-height: 530px; */
+    min-height: 550px;
+}
+
+.services__visualising__heading span {
+    display: block;
+}
+
+.services__visualising__item .red-badge {
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0px 40px;
+    font-family: 'capoonPersonalUseLight';
+    font-weight: lighter;
+    line-height: 1.2;
+}
+
+.services__visualising__item>div:nth-child(2) {
     display: flex;
     justify-content: space-between;
+    margin-top: -2px;
 }
 
-.gips-deko__photo {
-    max-width: 421px;
-    display: block;
-    border-radius: 5px;
+.services__visualising__item__text {
+    background-color: rgba(167, 48, 48, 0.3);
+    padding: 40px 35px;
+    margin-right: 17px;
+    /* width: 393px; */
 }
 
-.gips-deko__photo img {
-    width: 100%;
+.services__visualising__item__text .paragraph {
+    max-width: none;
+    font-size: 16px;
+}
+
+.services__visualising__item__img {
+    /* max-width: 245px; */
+}
+
+.services__visualising__item img {
     height: 100%;
+    width: 100%;
     object-fit: cover;
 }
 
+.services__visualising__item--2 {
+    /* transform-origin: top right; */
+}
 
-/* End Services */
+.services__3d {
+    min-height: 625px;
+}
+
+.services__3d__header {
+    white-space: nowrap;
+}
+
+.services__3d__heading {
+    text-transform: capitalize;
+}
+
+.services__3d__sub-heading {
+    font-size: 21px;
+    font-family: 'capoonPersonalUseLight';
+    color: var(--color-light-white);
+    font-weight: normal;
+    opacity: 0.6;
+    letter-spacing: 5px;
+}
+
+.services__3d__imgs {
+    display: flex;
+    transform-origin: top right;
+    right: 50px;
+}
+
+.services__3d__img {
+    max-width: 594px;
+}
+
+.services__3d__img img {
+    max-width: 100%;
+}
 
 .contact {
     /* left: 0; */
@@ -2049,12 +2223,74 @@ body.scrolled::-webkit-scrollbar-thumb {
         border-bottom: 15px solid transparent;
         border-left: 15px solid transparent;
     }
-    /* Services */
-    /* Gips-deko */
-    .gips-deko__sub-heading {
+    .services__p-line {
+        display: none;
+    }
+    .services__gips-deko__visual .heading-tertiary {
+        font-size: 11rem;
+        text-align: center;
+    }
+    .services__gips-deko__visual__gallery {
+        left: auto;
+        flex-direction: column;
+        width: auto;
+    }
+    .services__gips-deko__visual img {
+        margin: 5rem auto 0 auto;
+        max-width: 100%;
+    }
+    .services__gips-deko--mobile {
+        padding: 30px;
+        margin: 30px
+    }
+    .services__gips-deko--mobile .services__gips-deko__line {
+        display: block;
+    }
+    .services__p-line--mobile {
+        position: relative;
+        padding: 4rem 2rem 2rem 2rem;
+        margin: 9rem 2rem 0 2rem;
+        border-left: 1px solid var(--color-light-white);
+        border-right: 1px solid var(--color-light-white);
+        text-align: center;
+    }
+    .services__p-line--mobile .services__line {
+        display: block;
+    }
+    .services__gips-deko__sub-heading {
         overflow-wrap: break-word;
         hyphens: manual;
         font-size: 17px;
+    }
+    .services__gips-deko__visual__img:not(:first-child) {
+        margin-top: 3rem;
+    }
+    .services__gips-deko__text-p p {
+        font-size: 14px;
+        padding-right: 0;
+    }
+    .services__gips-deko__text-ul ul {
+        font-size: 2.6rem;
+        margin-bottom: 2rem;
+    }
+    .services__visualising__item>div:nth-child(2) {
+        flex-direction: column;
+    }
+    .services__visualising__item__text {
+        margin-right: 0;
+        padding: 2rem 2.5rem;
+    }
+    .services__3d__header {
+        white-space: normal;
+    }
+    .services__3d__sub-heading {
+        font-size: 1.8rem;
+        overflow-wrap: break-word;
+        hyphens: manual;
+    }
+    .services__3d__imgs {
+        flex-direction: column;
+        right: auto;
     }
     .contact {
         margin-top: 4rem;

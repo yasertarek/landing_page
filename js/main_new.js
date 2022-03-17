@@ -45,7 +45,6 @@ let dimensionsRef = {
             left: 57,
             top: 2105
         },
-        services: {},
         'services__gips-deko': {
             top: 2260
         },
@@ -274,17 +273,6 @@ fixedPos.forEach((elmnt) => {
     handleRatios(elmnt);
     window.addEventListener('resize', () => { handleRatios(elmnt) });
 });
-window.addEventListener('resize', handleRatiosV2);
-handleRatiosV2();
-
-function handleRatiosV2() {
-    if (parseFloat(getComputedStyle(document.body).width) > 600) {
-        let magnifyingFactor = parseFloat(parseFloat(getComputedStyle(document.body).width) / 1519);
-        document.body.style.paddingTop = `${parseFloat(magnifyingFactor * 2265)}px`
-    } else {
-        document.body.style.paddingTop = ''
-    }
-}
 // Show shops Gallery
 // [...document.querySelectorAll('.shop__slider-view-icon')].forEach(elmnt => elmnt.addEventListener('click', ()=>showGallery(elmnt.parentElement.parentElement)));
 // Show Gips-deko Gallery
@@ -492,7 +480,7 @@ function handleRatios(elmnt) {
         elmnt.removeAttribute('style');
         [...elmnt.querySelectorAll('*')].forEach(elmnt => elmnt.removeAttribute('style'));
         // add margin-top to the whole content
-        // selectElmnt('section.about').style.paddingTop = `${535 * magnifyingFactor}px`;
+        selectElmnt('section.about').style.paddingTop = `${535 * magnifyingFactor}px`;
         selectElmnt('.was-bieten .red-badge').style.fontSize = `${14 * magnifyingFactor}px`;
         selectElmnt('.wer-sind__content .heading-secondary').style.fontSize = `${44 * magnifyingFactor}px`;
         selectElmnt('.wer-sind__sub-heading').style.fontSize = `${18 * magnifyingFactor}px`;
