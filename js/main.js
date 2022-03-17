@@ -278,11 +278,14 @@ window.addEventListener('resize', handleRatiosV2);
 handleRatiosV2();
 
 function handleRatiosV2() {
+    let magnifyingFactor;
     if (parseFloat(getComputedStyle(document.body).width) > 600) {
         let magnifyingFactor = parseFloat(parseFloat(getComputedStyle(document.body).width) / 1519);
         document.body.style.paddingTop = `${parseFloat(magnifyingFactor * 2265)}px`
     } else {
+        magnifyingFactor = parseFloat(parseFloat(getComputedStyle(document.body).width) / 390);
         document.body.style.paddingTop = ''
+        document.body.style.paddingTop = `${535 * magnifyingFactor}px`;
     }
 }
 // Show shops Gallery

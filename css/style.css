@@ -109,7 +109,7 @@ body {
 
 .heading-tertiary {
     font-family: "MyriadPro";
-    font-size: 111px;
+    font-size: 11.1rem;
     color: var(--color-light-white);
     font-weight: bold;
     text-transform: uppercase;
@@ -150,7 +150,7 @@ body {
 
 .paragraph {
     max-width: 400px;
-    font-size: 14px;
+    font-size: 1.4rem;
     color: var(--color-light-white);
     font-family: "Hornbill-Personal";
     font-style: italic;
@@ -400,6 +400,12 @@ nav.header__nav ul li a:active {
         font-size: 75%;
         /* 12px */
     }
+    .heading-tertiary {
+        font-size: 14rem;
+    }
+    /* .paragraph{
+        font-size: ;
+    } */
 }
 
 
@@ -409,6 +415,9 @@ nav.header__nav ul li a:active {
     html {
         font-size: 56.25%;
         /* 9px */
+    }
+    .heading-tertiary {
+        font-size: 8rem;
     }
     nav.header__nav ul li:not(:last-child) {
         margin-right: 2rem;
@@ -519,8 +528,7 @@ nav.header__nav ul li a:active {
     }
     body {
         /* Optimization */
-        /* background-image: url(../imgs/background-mobile.png); */
-        background-image: linear-gradient(to top, transparent 0%, transparent 87%, rgba(0, 0, 0, 0.5) 89% 92%, transparent 96%), url(../imgs/background-mobile.png);
+        background-image: url(../imgs/background-mobile.png);
     }
     .header__background {
         top: 24px;
@@ -1480,8 +1488,32 @@ body.scrolled::-webkit-scrollbar-thumb {
 .services {}
 
 .services__service {
-    max-width: calc(100% - 80px);
+    /* max-width: calc(100% - 80px); */
+    max-width: 94.7%;
     margin: 0 auto;
+    padding: 2rem 4rem;
+    position: relative;
+    border-left: 1px solid var(--color-light-white);
+    border-right: 1px solid var(--color-light-white);
+}
+
+.services__service::after,
+.services__service::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 20%;
+    height: 100%;
+    border-top: 1px solid var(--color-light-white);
+    border-bottom: 1px solid var(--color-light-white);
+}
+
+.services__service::before {
+    left: -1px;
+}
+
+.services__service::after {
+    right: -1px;
 }
 
 
@@ -1511,6 +1543,11 @@ body.scrolled::-webkit-scrollbar-thumb {
 .gips-deko__text {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.gips-deko__text>div {
+    flex: 1;
 }
 
 .gips-deko__ul {
@@ -1519,6 +1556,7 @@ body.scrolled::-webkit-scrollbar-thumb {
     font-size: 26px;
     font-family: 'MyriadPro';
     font-weight: bold;
+    margin-bottom: 2rem;
 }
 
 .gips-deko__ul li {
@@ -1535,7 +1573,8 @@ body.scrolled::-webkit-scrollbar-thumb {
 }
 
 .gips-deko__text .paragraph {
-    max-width: auto;
+    max-width: none;
+    margin-bottom: 2rem;
 }
 
 .gips-deko__photos {
