@@ -765,7 +765,10 @@ section.about {
     text-align: center;
     transform-origin: top right;
     opacity: 0.5;
-    overflow: hidden;
+}
+
+.shop__heading a {
+    display: block;
 }
 
 .shop__heading__triangle {
