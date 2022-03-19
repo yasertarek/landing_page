@@ -115,6 +115,7 @@ body {
     text-transform: uppercase;
     line-height: 1;
     opacity: 38%;
+    margin-bottom: 30px;
 }
 
 .red-badge {
@@ -200,7 +201,7 @@ header.header {
 
 nav.header__nav ul {
     list-style: none;
-    font-size: 1.6rem;
+    font-size: 15px;
     font-family: 'capoonPersonalUseLight';
 }
 
@@ -215,7 +216,7 @@ nav.header__nav ul li:not(:last-child) {
 
 nav.header__nav ul li a {
     font-weight: 300;
-    padding: 1rem 2rem;
+    padding: 5px 10px;
     text-decoration: none;
     background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
     background-size: 250%;
@@ -397,7 +398,7 @@ nav.header__nav ul li a:active {
 
 @media only screen and (min-width: 112.5em) {
     html {
-        font-size: 75%;
+        /* font-size: 75%; */
         /* 12px */
     }
     .heading-tertiary {
@@ -406,6 +407,9 @@ nav.header__nav ul li a:active {
     /* .paragraph{
         font-size: ;
     } */
+    nav.header__nav ul {
+        font-size: 26px;
+    }
 }
 
 
@@ -413,7 +417,7 @@ nav.header__nav ul li a:active {
 
 @media only screen and (max-width: 75em) {
     html {
-        font-size: 56.25%;
+        /* font-size: 56.25%; */
         /* 9px */
     }
     .heading-tertiary {
@@ -429,7 +433,7 @@ nav.header__nav ul li a:active {
 
 @media only screen and (max-width: 56.25em) {
     html {
-        font-size: 50%;
+        /* font-size: 50%; */
         /* 8px */
     }
     header.header {
@@ -551,6 +555,8 @@ nav.header__nav ul li a:active {
         font-family: "MyriadPro";
         font-size: 4rem;
         overflow-wrap: break-word;
+        text-align: center;
+        margin-bottom: 4rem;
     }
     .red-badge {
         font-size: 1.84rem;
@@ -976,9 +982,7 @@ section.about {
 }
 
 .shop__gallery,
-.gips-deko__gallery,
-.visualising__gallery,
-.other3d__gallery {
+.gallery {
     position: fixed;
     left: 0;
     top: 0;
@@ -998,18 +1002,14 @@ section.about {
 }
 
 .shop__gallery--active,
-.gips-deko__gallery--active,
-.visualising__gallery--active,
-.other3d__gallery--active {
+.gallery--active {
     visibility: visible;
     opacity: 1;
     transform: scale(1);
 }
 
 .shop__gallery__slider,
-.gips-deko__gallery__slider,
-.visualising__gallery__slider,
-.other3d__gallery__slider {
+.gallery__slider {
     width: 65vw;
     height: 100vh;
     overflow-x: hidden;
@@ -1023,9 +1023,7 @@ section.about {
 html::-webkit-scrollbar,
 body::-webkit-scrollbar,
 .shop__gallery__slider::-webkit-scrollbar,
-.gips-deko__gallery__slider::-webkit-scrollbar,
-.visualising__gallery__slider::-webkit-scrollbar,
-.other3d__gallery__slider::-webkit-scrollbar,
+.gallery__slider::-webkit-scrollbar,
 .shop__slider::-webkit-scrollbar {
     display: none;
 }
@@ -1036,49 +1034,14 @@ body::-webkit-scrollbar,
 html,
 body,
 .shop__gallery__slider,
-.gips-deko__gallery__slider,
-.visualising__gallery__slider,
-.other3d__gallery__slider,
+.gallery__slider,
 .shop__slider {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-
-/* width */
-
-
-/* body::-webkit-scrollbar {
-    width: 5px;
-} */
-
-
-/* Track */
-
-
-/* body::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px transparent;
-    border-radius: 10px;
-} */
-
-
-/* Handle */
-
-
-/* body::-webkit-scrollbar-thumb {
-    background: transparent;
-    border: 1px solid #fff;
-    border-radius: 10px;
-}
-
-body.scrolled::-webkit-scrollbar-thumb {
-    border: 1px solid transparent;
-} */
-
 .shop__gallery__slider__wrapper,
-.gips-deko__gallery__slider__wrapper,
-.visualising__gallery__slider__wrapper,
-.other3d__gallery__slider__wrapper {
+.gallery__slider__wrapper {
     /* transition: transform 0.2s ease-in-out; */
     white-space: nowrap;
     display: flex;
@@ -1089,16 +1052,12 @@ body.scrolled::-webkit-scrollbar-thumb {
 }
 
 .shop__gallery__slider__wrapper.shifting,
-.gips-deko__gallery__slider__wrapper.shifting,
-.visualising__gallery__slider__wrapper.shifting,
-.other3d__gallery__slider__wrapper.shifting {
+.gallery__slider__wrapper.shifting {
     transition: left 0.2s ease-in-out;
 }
 
 .shop__gallery__slider__wrapper__slide,
-.gips-deko__gallery__slider__wrapper__slide,
-.visualising__gallery__slider__wrapper__slide,
-.other3d__gallery__slider__wrapper__slide {
+.gallery__slider__wrapper__slide {
     width: 65vw;
     display: flex;
     flex-direction: column;
@@ -1108,9 +1067,7 @@ body.scrolled::-webkit-scrollbar-thumb {
 }
 
 .shop__gallery__slider__wrapper__slide p,
-.gips-deko__gallery__slider__wrapper__slide p,
-.visualising__gallery__slider__wrapper__slide p,
-.other3d__gallery__slider__wrapper__slide p {
+.gallery__slider__wrapper__slide p {
     color: var(--color-light-white);
     font-size: 1.4rem;
     font-family: 'MyriadPro';
@@ -1118,9 +1075,7 @@ body.scrolled::-webkit-scrollbar-thumb {
 }
 
 .shop__gallery__slider__wrapper__slide img,
-.gips-deko__gallery__slider__wrapper__slide img,
-.visualising__gallery__slider__wrapper__slide img,
-.other3d__gallery__slider__wrapper__slide img {
+.gallery__slider__wrapper__slide img {
     opacity: 0;
     transform: scale(0);
     transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
@@ -1131,17 +1086,13 @@ body.scrolled::-webkit-scrollbar-thumb {
 }
 
 .shop__gallery--active .shop__gallery__slider__wrapper__slide img,
-.gips-deko__gallery--active .gips-deko__gallery__slider__wrapper__slide img,
-.visualising__gallery--active .visualising__gallery__slider__wrapper__slide img,
-.other3d__gallery--active .other3d__gallery__slider__wrapper__slide img {
+.gallery--active .gallery__slider__wrapper__slide img {
     opacity: 1;
     transform: scale(1);
 }
 
 .shop__gallery__arrow,
-.gips-deko__gallery__arrow,
-.visualising__gallery__arrow,
-.other3d__gallery__arrow {
+.gallery__arrow {
     fill: var(--color-light-white);
     position: fixed;
     top: 50%;
@@ -1152,27 +1103,21 @@ body.scrolled::-webkit-scrollbar-thumb {
 }
 
 .shop__gallery__arrow--left,
-.gips-deko__gallery__arrow--left,
-.visualising__gallery__arrow--left,
-.other3d__gallery__arrow--left {
+.gallery__arrow--left {
     left: 5rem;
     transform: translateY(-50%) rotate(180deg);
 }
 
 .shop__gallery__arrow--right,
-.gips-deko__gallery__arrow--right,
-.visualising__gallery__arrow--right,
-.other3d__gallery__arrow--right {
+.gallery__arrow--right {
     right: 5rem;
 }
 
 .shop__gallery-times-icon,
-.gips-deko__gallery-times-icon,
-.visualising__gallery-times-icon,
-.other3d__gallery-times-icon {
+.gallery-times-icon {
     position: fixed;
     top: 2.5%;
-    right: 10rem;
+    right: 15px;
     color: var(--color-light-white);
     font-size: 60px;
     cursor: pointer;
@@ -1181,9 +1126,7 @@ body.scrolled::-webkit-scrollbar-thumb {
 }
 
 .shop__gallery-times-icon:hover,
-.gips-deko__gallery-times-icon:hover,
-.visualising__gallery-times-icon:hover,
-.other3d__gallery-times-icon:hover {
+.gallery-times-icon:hover {
     color: var(--color-dark-red);
 }
 
@@ -1385,28 +1328,20 @@ body.scrolled::-webkit-scrollbar-thumb {
         justify-content: center;
     }
     .shop__gallery__slider__wrapper,
-    .gips-deko__gallery__slider__wrapper,
-    .visualising__gallery__slider__wrapper,
-    .other3d__gallery__slider__wrapper {
+    .gallery__slider__wrapper {
         /* top: 50%;
         transform: translateY(-50%); */
     }
     .shop__gallery__slider__wrapper__slide img,
-    .gips-deko__gallery__slider__wrapper__slide img,
-    .visualising__gallery__slider__wrapper__slide img,
-    .other3d__gallery__slider__wrapper__slide img {
+    .gallery__slider__wrapper__slide img {
         max-width: 100%;
     }
     .shop__gallery__arrow--left,
-    .gips-deko__gallery__arrow--left,
-    .visualising__gallery__arrow--left,
-    .other3d__gallery__arrow--left {
+    .gallery__arrow--left {
         left: 1rem;
     }
     .shop__gallery__arrow--right,
-    .gips-deko__gallery__arrow--right,
-    .visualising__gallery__arrow--right,
-    .other3d__gallery__arrow--right {
+    .gallery__arrow--right {
         right: 1rem;
     }
 }
@@ -1495,6 +1430,7 @@ body.scrolled::-webkit-scrollbar-thumb {
     position: relative;
     border-left: 1px solid var(--color-light-white);
     border-right: 1px solid var(--color-light-white);
+    overflow: hidden;
 }
 
 .services__service::after,
@@ -1506,6 +1442,7 @@ body.scrolled::-webkit-scrollbar-thumb {
     height: 100%;
     border-top: 1px solid var(--color-light-white);
     border-bottom: 1px solid var(--color-light-white);
+    z-index: -1;
 }
 
 .services__service::before {
@@ -1518,6 +1455,10 @@ body.scrolled::-webkit-scrollbar-thumb {
 
 
 /* Gips-deko */
+
+.gips-deko {
+    /* transform-origin: top center; */
+}
 
 .gips-deko__sub-heading {
     font-size: 21px;
@@ -1537,7 +1478,6 @@ body.scrolled::-webkit-scrollbar-thumb {
     letter-spacing: 5px;
     font-family: 'MyriadPro';
     opacity: 100%;
-    font-size: 21px !important;
 }
 
 .gips-deko__text {
@@ -1557,10 +1497,13 @@ body.scrolled::-webkit-scrollbar-thumb {
     font-family: 'MyriadPro';
     font-weight: bold;
     margin-bottom: 2rem;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .gips-deko__ul li {
-    display: inline-block;
+    /* display: inline-block; */
     color: inherit;
     background-color: #000;
     padding: 3px 5px;
@@ -1580,6 +1523,7 @@ body.scrolled::-webkit-scrollbar-thumb {
 .gips-deko__photos {
     display: flex;
     justify-content: space-between;
+    transform-origin: top center;
 }
 
 .gips-deko__photo {
@@ -1595,7 +1539,92 @@ body.scrolled::-webkit-scrollbar-thumb {
 }
 
 
+/* End Gips-Deko */
+
+
+/* Start Visualising */
+
+.visualising__content {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.visualising__item {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.visualising__text {
+    background-color: rgba(167, 48, 48, 0.3);
+    padding: 40px 35px;
+    /* margin-right: 17px; */
+    /* width: 393px; */
+    flex: 3;
+    position: relative;
+}
+
+.visualising__photo {
+    flex: 2;
+}
+
+.visualising__text .red-badge {
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0px 40px;
+    font-family: 'capoonPersonalUseLight';
+    font-weight: lighter;
+    line-height: 1.2;
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+}
+
+.visualising__text .paragraph {
+    max-width: none;
+    font-size: 14px;
+}
+
+
+/* End Visualising */
+
+
+/* Start Other 3D Service */
+
+.other_3d__heading {
+    margin-bottom: 0;
+}
+
+.other_3d__sub-heading {
+    color: var(--color-light-white);
+    opacity: 38%;
+    font-size: 26px;
+    font-family: 'capoonPersonalUseLight';
+    font-weight: lighter;
+    margin-bottom: 20px;
+}
+
+.other_3d__photos {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.other_3d__photos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* End Other 3D Service */
+
+
 /* End Services */
+
+
+/* Start contact here */
 
 .contact {
     /* left: 0; */
@@ -1604,10 +1633,7 @@ body.scrolled::-webkit-scrollbar-thumb {
     /* padding: 20px 200px; */
 }
 
-.contact__heading {
-    left: 50%;
-    transform: translateX(-50%);
-}
+.contact__heading {}
 
 .contact__icon {
     fill: var(--color-light-white);
@@ -1621,47 +1647,13 @@ body.scrolled::-webkit-scrollbar-thumb {
     transition: opacity 0.2s ease-in-out;
 }
 
-.form {
-    max-width: 1050px;
-    margin: 0 auto;
-    transform-origin: top center;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.form>div {
-    padding: 45px;
+.contact__form {
     display: flex;
     flex-wrap: wrap;
-    gap: 45px;
-    border: 2px solid var(--color-t-white);
-    border-top: 0;
-    border-bottom: 0;
-    /* transform-origin: top center; */
-    max-width: 1050px;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1000px;
     margin: 0 auto;
-    transform-origin: top center;
-    justify-content: space-evenly;
-}
-
-.form>div::before,
-.form>div::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 25%;
-    height: 100%;
-    border: 2px solid var(--color-t-white);
-    border-right: 0;
-    border-left: 0;
-}
-
-.form>div::before {
-    left: 0;
-}
-
-.form>div::after {
-    right: 0;
 }
 
 .col-12 {
@@ -1876,15 +1868,7 @@ body.scrolled::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-.footer__line {
     border-top: 1px solid var(--color-light-white);
-    width: 100%;
-}
-
-.full-row {
-    left: 50%;
 }
 
 .footer__social_icons__icon a {
@@ -2095,6 +2079,27 @@ body.scrolled::-webkit-scrollbar-thumb {
         hyphens: manual;
         font-size: 17px;
     }
+    .gips-deko__photos {
+        gap: 15px;
+    }
+    .gips-deko__photos,
+    .gips-deko__text {
+        flex-direction: column;
+        text-align: center;
+    }
+    .visualising__item,
+    .visualising__content {
+        flex-direction: column;
+    }
+    .visualising__item {
+        gap: 0;
+    }
+    .visualising__content {
+        gap: 45px;
+    }
+    .other_3d__photos {
+        flex-direction: column;
+    }
     .contact {
         margin-top: 4rem;
     }
@@ -2123,18 +2128,11 @@ body.scrolled::-webkit-scrollbar-thumb {
     .col-12 {
         flex-basis: 100%;
     }
-    .footer__line {
-        margin-top: 8rem;
-        margin-bottom: 2rem;
-    }
     .footer {
         /* flex-direction: column; */
         gap: 2rem;
         text-align: center;
         padding: 2px 0 114px 0;
-    }
-    .full-row {
-        left: 0;
     }
     .bg-word {
         display: none;
@@ -2220,7 +2218,7 @@ body.scrolled::-webkit-scrollbar-thumb {
     border: 1px solid #fff;
     background-color: transparent;
     border-radius: 500px;
-    transition: opacity 0.2s linear;
+    transition: opacity 1.5s ease-out;
     opacity: 0;
     -webkit-touch-callout: none;
     /* iOS Safari */
@@ -2254,13 +2252,8 @@ body.scrolled::-webkit-scrollbar-thumb {
 .was-bieten .paragraph li,
 .each_place_is_unique span,
 .services__words-table__row--separator,
-.services__gips-deko__visual .heading-tertiary,
-.services__gips-deko__visual .services__gips-deko__sub-heading,
-.services__gips-deko__text-ul ul,
-.services__gips-deko__text-p p,
-.services__visualising__heading span,
-.services__3d__header .services__3d__heading,
-.services__3d__header .services__3d__sub-heading {
+.gips-deko__text div:first-child,
+.visualising__heading {
     visibility: hidden;
     transform: translateX(-200px);
     transition: transform 0.8s ease-out;
@@ -2273,8 +2266,7 @@ body.scrolled::-webkit-scrollbar-thumb {
 .shop .red-badge,
 .shop .paragraph,
 .shop .shop__slider,
-.services__gips-deko__text-ul ul,
-.services__gips-deko__text-p p {
+.gips-deko__text div:last-child {
     visibility: hidden;
     transform: translateX(200px);
     transition: transform 0.8s ease-out;
@@ -2291,15 +2283,10 @@ body.scrolled::-webkit-scrollbar-thumb {
 .shop .shop__slider--scrolled,
 .each_place_is_unique--scrolled span,
 .services__words-table--scrolled .services__words-table__row--separator,
-.services__gips-deko__visual--scrolled .heading-tertiary,
-.services__gips-deko__visual--scrolled .services__gips-deko__sub-heading,
-.services__gips-deko__text--scrolled .services__gips-deko__text-ul ul,
-.services__gips-deko__text--scrolled .services__gips-deko__text-p p,
-.services__visualising__heading--scrolled span,
-.services__3d__header--scrolled .services__3d__heading,
-.services__3d__header--scrolled .services__3d__sub-heading {
-    visibility: visible;
-    transform: translateX(0);
+.gips-deko__text--scrolled div,
+.visualising--scrolled .visualising__heading {
+    visibility: visible !important;
+    transform: translateX(0) !important;
 }
 
 
@@ -2308,11 +2295,7 @@ body.scrolled::-webkit-scrollbar-thumb {
 .we-design div,
 .shop__heading a,
 .services__words-table__row--1,
-.services__visualising__item .red-badge,
-.services__visualising__item .services__visualising__item__text,
-footer.footer .footer__social_icons div,
-footer.footer p,
-.footer__line {
+.visualising__text {
     /* display: block; */
     visibility: hidden;
     transform: translateY(-100px);
@@ -2325,11 +2308,8 @@ footer.footer p,
 .services__words-table__row--2,
 .services__heading span,
 .services__heading::after,
-.services__gips-deko__visual__gallery .services__gips-deko__visual__img,
-.services__visualising__item__img,
-.services__3d__imgs .services__3d__img,
-.contact__heading span,
-.form div {
+.gips-deko__photos,
+.visualising__photo {
     visibility: hidden;
     transform: translateY(100px);
     transition: transform 0.8s ease-out;
@@ -2342,15 +2322,9 @@ footer.footer p,
 .services__words-table--scrolled .services__words-table__row--2,
 .services__heading--scrolled span,
 .services__heading--scrolled::after,
-.services__gips-deko__visual__gallery--scrolled .services__gips-deko__visual__img,
-.services__visualising__item--scrolled .services__visualising__item__text,
-.services__visualising__item--scrolled .services__visualising__item__img,
-.services__3d__imgs--scrolled .services__3d__img,
-.contact__heading--scrolled span,
-.form--scrolled div,
-footer.footer--scrolled .footer__social_icons div,
-footer.footer--scrolled p,
-.footer__line--scrolled {
+.gips-deko__photos--scrolled,
+.visualising--scrolled .visualising__text,
+.visualising--scrolled .visualising__photo {
     visibility: visible;
     transform: translateY(0);
 }
