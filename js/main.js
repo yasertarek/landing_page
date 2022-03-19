@@ -212,6 +212,45 @@ document.addEventListener('scroll', () => {
             elmnt.classList.add('visualising--scrolled');
         }
     });
+    [...document.querySelectorAll('.visualising__text')].forEach((elmnt) => {
+        if (window.scrollY + window.screen.height - 100 >= scrollYPos(elmnt)) {
+            elmnt.classList.add('visualising__text--scrolled');
+        }
+    });
+    [...document.querySelectorAll('.visualising__photo')].forEach((elmnt) => {
+        if (window.scrollY + window.screen.height - 100 >= scrollYPos(elmnt)) {
+            elmnt.classList.add('visualising__photo--scrolled');
+        }
+    });
+    // servicees Other3D Animation
+    [...document.querySelectorAll('.other_3d')].forEach((elmnt) => {
+        if (window.scrollY + window.screen.height - 100 >= scrollYPos(elmnt)) {
+            elmnt.classList.add('other_3d--scrolled');
+        }
+    });
+    [...document.querySelectorAll('.other_3d__photo')].forEach((elmnt) => {
+        if (window.scrollY + window.screen.height - 100 >= scrollYPos(elmnt)) {
+            elmnt.classList.add('other_3d__photo--scrolled');
+        }
+    });
+    // Contact Animation
+    [...document.querySelectorAll('.contact')].forEach((elmnt) => {
+        if (window.scrollY + window.screen.height - 100 >= scrollYPos(elmnt)) {
+            elmnt.classList.add('contact--scrolled');
+        }
+    });
+    [...document.querySelectorAll('.contact__form')].forEach((elmnt) => {
+        if (window.scrollY + window.screen.height - 100 >= scrollYPos(elmnt)) {
+            elmnt.classList.add('contact__form--scrolled');
+        }
+    });
+    // Footer Animation
+    [...document.querySelectorAll('.footer')].forEach((elmnt) => {
+        if (window.scrollY + window.screen.height - 100 >= scrollYPos(elmnt)) {
+            elmnt.classList.add('footer--scrolled');
+        }
+    });
+
 });
 
 function scrollYPos(selector, rectifier = 100) {

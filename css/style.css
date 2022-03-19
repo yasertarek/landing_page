@@ -1666,10 +1666,11 @@ body,
     max-width: 50%;
 }
 
-.contact .heading-tertiary {
+.contact__heading {
     text-align: center;
     white-space: nowrap;
     margin-bottom: 40px;
+    font-size: 80px;
 }
 
 .form-row {
@@ -2103,23 +2104,24 @@ body,
     .contact {
         margin-top: 4rem;
     }
-    .contact .heading-tertiary {
+    .contact__heading {
         white-space: normal;
+        font-size: 35px;
     }
     .contact {
         left: auto;
         width: auto;
         padding: 0;
     }
-    .form {
+    .contact__form {
         /* flex-wrap: wrap; */
         margin: 0 2rem;
         transform: translateX(0);
         left: auto;
+        gap: 15px;
     }
-    .form>div {
-        /* flex-wrap: wrap; */
-        gap: 3rem;
+    .form-row {
+        font-size: 14px;
     }
     .col-6 {
         flex-basis: 100%;
@@ -2253,7 +2255,10 @@ body,
 .each_place_is_unique span,
 .services__words-table__row--separator,
 .gips-deko__text div:first-child,
-.visualising__heading {
+.visualising__heading,
+.other_3d__heading,
+.other_3d__sub-heading,
+.contact__heading {
     visibility: hidden;
     transform: translateX(-200px);
     transition: transform 0.8s ease-out;
@@ -2284,7 +2289,10 @@ body,
 .each_place_is_unique--scrolled span,
 .services__words-table--scrolled .services__words-table__row--separator,
 .gips-deko__text--scrolled div,
-.visualising--scrolled .visualising__heading {
+.visualising--scrolled .visualising__heading,
+.other_3d--scrolled .other_3d__heading,
+.other_3d--scrolled .other_3d__sub-heading,
+.contact--scrolled .contact__heading {
     visibility: visible !important;
     transform: translateX(0) !important;
 }
@@ -2295,7 +2303,10 @@ body,
 .we-design div,
 .shop__heading a,
 .services__words-table__row--1,
-.visualising__text {
+.visualising__text,
+.other_3d__photo,
+.contact__form,
+.footer {
     /* display: block; */
     visibility: hidden;
     transform: translateY(-100px);
@@ -2323,8 +2334,11 @@ body,
 .services__heading--scrolled span,
 .services__heading--scrolled::after,
 .gips-deko__photos--scrolled,
-.visualising--scrolled .visualising__text,
-.visualising--scrolled .visualising__photo {
+.visualising__text--scrolled,
+.visualising__photo--scrolled,
+.other_3d__photo--scrolled,
+.contact__form--scrolled,
+.footer--scrolled {
     visibility: visible;
     transform: translateY(0);
 }
