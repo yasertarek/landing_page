@@ -511,10 +511,6 @@ function handleRatios(elmnt) {
         document.querySelector('.wer-sind__content .heading-secondary').style.fontSize = `${44 * magnifyingFactor}px`;
         document.querySelector('.wer-sind__sub-heading').style.fontSize = `${18 * magnifyingFactor}px`;
         document.querySelector('.wer-sind__text').style.fontSize = `${14 * magnifyingFactor}px`;
-        // document.querySelector('.shop__heading').style.fontSize = `${27 * magnifyingFactor}px`;
-        // document.querySelector('.shop__heading').style.left = `${290 * magnifyingFactor}px`;
-        // document.querySelector('.shop__heading').style.right = '';
-        // document.querySelector('.shop__heading').style.top = `${210 * magnifyingFactor}px`;
         document.querySelector('.shop__heading__triangle').style.cssText = `
             top: calc(100% + ${5 * magnifyingFactor}px);
             border-top: ${8 * magnifyingFactor}px solid var(--color-dark-red);
