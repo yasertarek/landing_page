@@ -13,29 +13,17 @@ let dimensionsRef = {
         left: 975,
         top: 730,
     },
-    'was-bieten': {
+    'the_power_of_design': {
         left: 0,
-        top: 939,
+        top: 1565,
     },
-    'our-vision': {
-        left: 45,
-        top: 1319,
+    'was-bieten': {
+        left: 35,
+        top: 865,
     },
     shop: {
-        right: 40,
-        top: 1296.47,
-    },
-    shop__heading: {
-        top: 1130,
-        right: 40
-    },
-    each_place_is_unique: {
-        left: 34,
-        top: 1565
-    },
-    'we-design': {
-        left: 707,
-        top: 1774
+        right: 42,
+        top: 1200,
     },
     'services__words-table': {
         left: 95.05,
@@ -90,7 +78,6 @@ window.onload = () => {
 [...document.querySelectorAll('.overlay_hover_icon')].forEach(elmnt => {
     elmnt.addEventListener('click', () => {
         showGlobalGallery(elmnt);
-        console.log('Gallery is shown using showGlobalGallery() function')
     });
 });
 // Show Gallery when click on its corresponding Heading
@@ -158,33 +145,21 @@ document.addEventListener('scroll', () => {
     if (window.scrollY + window.screen.height - 100 >= document.querySelector('.was-bieten').offsetTop + 300) {
         document.querySelector('.was-bieten .paragraph li:nth-child(4)').classList.add('li--scrolled');
     }
-    // We design
-    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.we-design').offsetTop + 100) {
-        document.querySelector('.we-design').classList.add('we-design--scrolled');
-    }
 
     // Shop
-    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.shop__heading').offsetTop) {
-        document.querySelector('.shop__heading').classList.add('shop__heading--scrolled');
-    }
-    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.shop').offsetTop + 100) {
-        document.querySelector('.shop .red-badge').classList.add('red-badge--scrolled');
-    }
+    // if (window.scrollY + window.screen.height - 100 >= document.querySelector('.shop__heading').offsetTop) {
+    //     document.querySelector('.shop__heading').classList.add('shop__heading--scrolled');
+    // }
     if (window.scrollY + window.screen.height - 100 >= document.querySelector('.shop').offsetTop + 200) {
         document.querySelector('.shop .paragraph').classList.add('paragraph--scrolled');
     }
     if (window.scrollY + window.screen.height - 100 >= document.querySelector('.shop').offsetTop + 300) {
         document.querySelector('.shop .shop__slider').classList.add('shop__slider--scrolled');
     }
-
-    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.each_place_is_unique').offsetTop + 300) {
-        document.querySelector('.each_place_is_unique').classList.add('each_place_is_unique--scrolled');
+    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.shop').offsetTop + 300) {
+        document.querySelector('.shop .red-badge').classList.add('red-badge--scrolled');
     }
 
-    // our vision
-    if (window.scrollY + window.screen.height - 100 >= document.querySelector('.our-vision').offsetTop + 100) {
-        document.querySelector('.our-vision').classList.add('our-vision--scrolled');
-    }
 
     // table
     if (window.scrollY + window.screen.height - 100 >= document.querySelector('.services__words-table').offsetTop + 100) {
@@ -274,11 +249,15 @@ handleRatiosV2();
 
 function handleRatiosV2() {
     let magnifyingFactor;
-    // Condition for Element sTaking different styles in mobile and desktop
+    // Condition for Elements Taking different styles in mobile and desktop
     if (parseFloat(getComputedStyle(document.body).width) > 600) {
         magnifyingFactor = parseFloat(parseFloat(getComputedStyle(document.body).width) / 1519);
         // resize body padding
         document.body.style.paddingTop = `${parseFloat(magnifyingFactor * 2265)}px`;
+
+        // resize fixed-pos elments
+        [...document.querySelectorAll('.was-bieten .heading-secondary')].forEach(elmnt => elmnt.style.fontSize = '');
+
         // resize service padding
         [...document.querySelectorAll('.services__service')].forEach(elmnt => elmnt.style.padding = `${20 * magnifyingFactor}px ${40 * magnifyingFactor}px`);
         // Gips-deko Style
@@ -286,13 +265,14 @@ function handleRatiosV2() {
             // resize gips-deko heading font size
             [...document.querySelectorAll('.gips-deko__heading')].forEach(elmnt => elmnt.style.fontSize = `${105 * magnifyingFactor}px`);
             // resize list items in gips-deko font-size
-            [...document.querySelectorAll('.gips-deko__ul li')].forEach(elmnt => elmnt.style.fontSize = `${26 * magnifyingFactor}px`);
+            [...document.querySelectorAll('.gips-deko__ul li')].forEach(elmnt => elmnt.style.fontSize = `${18 * magnifyingFactor}px`);
         }
 
         // Visualising 
         if (document.querySelector('.visualising')) {
             // resize Visualising Heading font size
             [...document.querySelectorAll('.visualising__heading')].forEach(elmnt => elmnt.style.fontSize = `${100 * magnifyingFactor}px`);
+            [...document.querySelectorAll('.visualising__heading')].forEach(elmnt => elmnt.style.marginBottom = `${45 * magnifyingFactor}px`);
             // resize Visualising Paragraph font size
             [...document.querySelectorAll('.visualising__text .paragraph')].forEach(elmnt => elmnt.style.fontSize = `${14 * magnifyingFactor}px`);
         }
@@ -306,6 +286,8 @@ function handleRatiosV2() {
     } else {
         // document.querySelector('.gips-deko__heading').style.fontSize = ''
         magnifyingFactor = parseFloat(parseFloat(getComputedStyle(document.body).width) / 390);
+        // resize fixed-pos elements
+        [...document.querySelectorAll('.was-bieten .heading-secondary')].forEach(elmnt => elmnt.style.fontSize = `${40 * magnifyingFactor}px`);
         // resize body padding
         document.body.style.paddingTop = `${parseFloat(magnifyingFactor * 535)}px`;
         // resize service padding
@@ -338,7 +320,7 @@ function handleRatiosV2() {
     // resize service margin
     [...document.querySelectorAll('.services__service')].forEach(elmnt => elmnt.style.marginBottom = `${50 * magnifyingFactor}px`);
     // resize services heading font-size, margin-bottom
-    [...document.querySelectorAll('.services__heading')].forEach(elmnt => elmnt.style.fontSize = `${51 * magnifyingFactor}px`);
+    // [...document.querySelectorAll('.services__heading')].forEach(elmnt => elmnt.style.fontSize = `${69 * magnifyingFactor}px`);
     [...document.querySelectorAll('.services__heading')].forEach(elmnt => elmnt.style.marginBottom = `${51 * magnifyingFactor}px`);
     // Gips-deko Style
     if (document.querySelector('.gips-deko')) {
@@ -353,7 +335,13 @@ function handleRatiosV2() {
         // resize list in gips-deko marginBottom
         [...document.querySelectorAll('.gips-deko__ul')].forEach(elmnt => elmnt.style.marginBottom = `${20 * magnifyingFactor}px`);
         // resize list items in gips-deko Padding
-        [...document.querySelectorAll('.gips-deko__ul li')].forEach(elmnt => elmnt.style.padding = `${3 * magnifyingFactor}px ${5 * magnifyingFactor}px`);
+        [...document.querySelectorAll('.gips-deko__ul li')].forEach((elmnt, elmntI) => {
+            if(elmntI === 0) {
+                elmnt.style.padding = `${3 * magnifyingFactor}px ${15 * magnifyingFactor}px ${3 * magnifyingFactor}px ${5 * magnifyingFactor}px`
+            }else {
+                elmnt.style.padding = `${3 * magnifyingFactor}px ${15 * magnifyingFactor}px`
+            }
+        });
         // resize paragraph in gips-deko Font-size
         [...document.querySelectorAll('.gips-deko__text .paragraph')].forEach(elmnt => elmnt.style.fontSize = `${14 * magnifyingFactor}px`);
         // resize photo in gips-deko max-width
@@ -523,10 +511,10 @@ function handleRatios(elmnt) {
         document.querySelector('.wer-sind__content .heading-secondary').style.fontSize = `${44 * magnifyingFactor}px`;
         document.querySelector('.wer-sind__sub-heading').style.fontSize = `${18 * magnifyingFactor}px`;
         document.querySelector('.wer-sind__text').style.fontSize = `${14 * magnifyingFactor}px`;
-        document.querySelector('.shop__heading').style.fontSize = `${27 * magnifyingFactor}px`;
-        document.querySelector('.shop__heading').style.left = `${290 * magnifyingFactor}px`;
-        document.querySelector('.shop__heading').style.right = '';
-        document.querySelector('.shop__heading').style.top = `${210 * magnifyingFactor}px`;
+        // document.querySelector('.shop__heading').style.fontSize = `${27 * magnifyingFactor}px`;
+        // document.querySelector('.shop__heading').style.left = `${290 * magnifyingFactor}px`;
+        // document.querySelector('.shop__heading').style.right = '';
+        // document.querySelector('.shop__heading').style.top = `${210 * magnifyingFactor}px`;
         document.querySelector('.shop__heading__triangle').style.cssText = `
             top: calc(100% + ${5 * magnifyingFactor}px);
             border-top: ${8 * magnifyingFactor}px solid var(--color-dark-red);
@@ -564,11 +552,6 @@ function handleRatios(elmnt) {
     }
     // Resize element according to window size
     elmnt.style.transform = `scale(${magnifyingFactor})`;
-    // Resetting styles
-    // reset services heading transform
-    if (elmnt.classList.contains('services__heading')) {
-        elmnt.style.transform = ''
-    }
 }
 /* ### Slider Functions ### */
 function slideV(items, prev, next) {
