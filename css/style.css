@@ -688,7 +688,7 @@ section.about {
 .was-bieten {
   /* top: 905px; */
   /* left: 5px; */
-  --width: 2px;
+  --width: 1px;
   overflow: hidden;
   --border-color: rgba(167, 48, 48, 0.5);
   border-left: var(--width) solid var(--border-color);
