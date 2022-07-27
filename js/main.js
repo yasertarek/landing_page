@@ -1,12 +1,5 @@
 // Class of Specified positioned elements
 const fixedPos = [...document.querySelectorAll('.fixed-pos')];
-// Old values
-// const services__gipsDeko__textP_selector = getComputedStyle(document.querySelector('.services__gips-deko__text-p'));
-// const services__gipsDeko__textP = {
-//   fontSize: parseInt(services__gipsDeko__textP_selector.fontSize) 
-// }
-// const services__gipsDeko__textUl = getComputedStyle(document.querySelector('.services__gips-deko__text-ul'));
-// Ratios of dimensions between window width and coordinates of element
 let dimensionsRef = {
     width: 1519,
     'wer-sind': {
@@ -18,11 +11,11 @@ let dimensionsRef = {
         top: 1565,
     },
     'was-bieten': {
-        left: 35,
-        top: 865,
+        left: 25,
+        top: 855,
     },
     shop: {
-        right: 42,
+        right: 35,
         top: 1200,
     },
     'services__words-table': {
@@ -41,74 +34,11 @@ let dimensionsRef = {
         top: 1737
     }
 }
-let cursorFixed = true
+let cursorFixed = true;
     /****** 
      * 
      * Main Flow and events
      * ******/
-    // Handle Fixed ratios
-    // Trigger Sliders
-window.onload = () => {
-    // Add slide functionality to Gallery of Shop
-    slideH(document.querySelector('.shop__gallery__slider__wrapper'),
-        document.getElementsByClassName('shop__gallery__slider__wrapper__slide'),
-        document.querySelector('.shop__gallery__arrow--left'),
-        document.querySelector('.shop__gallery__arrow--right')
-    );
-    // Add slide functionality to Galleries of Services
-    [...document.querySelectorAll('.gallery')].forEach((elmnt) => {
-        slideH(
-            elmnt.querySelector('.gallery__slider__wrapper'),
-            elmnt.getElementsByClassName('gallery__slider__wrapper__slide'),
-            elmnt.querySelector('.gallery__arrow--left'),
-            elmnt.querySelector('.gallery__arrow--right'),
-
-        )
-    });
-};
-
-
-/* ### Handle showing gallery ### */
-// Show Corresponding Gallery when click on eye icon
-[...document.querySelectorAll('.overlay_hover_icon')].forEach(elmnt => {
-    elmnt.addEventListener('click', () => {
-        showGlobalGallery(elmnt);
-    });
-});
-// Show Gallery when click on its corresponding Heading
-[...document.querySelectorAll('.gallery__trigger')].forEach((elmnt) => {
-    elmnt.addEventListener('click', () => {
-        document.getElementById(elmnt.getAttribute('data-gallery')).classList.add('gallery--active')
-    });
-});
-/* ### Handle showing gallery ### */
-/* ### ###################### ### */
-
-/* ### Handle Hiding gallery ### */
-
-// Hide on clicking on X icon
-// Hide Shops Gallery
-document.querySelector('.shop__gallery-times-icon').addEventListener('click', (e) => {
-    document.querySelector('.shop__gallery').classList.remove('shop__gallery--active');
-});
-
-// Hide on clicking anywhere outside Gallery
-
-document.addEventListener('click', (e) => {
-    // Hide Shops Gallery
-    if (!e.target.closest('.shop__slider-view-icon') && !e.target.closest('.shop__gallery__slider__wrapper__slide') && !e.target.closest('.shop__gallery__arrow') && !e.target.closest('.shop__gallery__slider__wrapper__slide') && !e.target.closest('.overlay_hover_icon') && document.querySelector('.shop__gallery').classList.contains('shop__gallery--active') && cursorFixed) {
-        document.querySelector('.shop__gallery').classList.remove('shop__gallery--active');
-    }
-    // Hide any Gallery when click anyway outside gallery
-    if (!e.target.closest('.gallery__trigger') && !e.target.closest('.gallery__slider__wrapper__slide') && !e.target.closest('.gallery__arrow') && !e.target.closest('.overlay_hover_icon') && cursorFixed) {
-        [...document.querySelectorAll('.gallery')].forEach((elmnt) => {
-            if (elmnt.classList.contains('gallery--active')) elmnt.classList.remove('gallery--active');
-        });
-    }
-});
-/* ### Handle Hiding gallery ### */
-/* ### ###################### ### */
-
 // Listen for scroll on document
 document.addEventListener('scroll', () => {
     // Check If window scroll is < 30
@@ -409,6 +339,37 @@ document.querySelector('.header__button').addEventListener('click', () => {
 [...document.querySelectorAll('.contact__icon')].forEach(elmnt => {
     elmnt.addEventListener('click', () => elmnt.parentElement.querySelector('.contact__text').focus());
 });
+/*
+****** 
+Handle Visualising Gallery
+******
+*/
+// Show Corresponding Gallery when click on eye icon
+[...document.querySelectorAll('.overlay_hover_icon')].forEach(elmnt => {
+    elmnt.addEventListener('click', (e) => {
+    // Get Gallery
+    let gallery = document.getElementById(e.currentTarget.parentElement.parentElement.getAttribute('data-gallery'));
+    // Exit if element is not deifned in any gallery
+    // if (e.target === null || e.target.parentElement.parentElement.getAttribute('data-gallery') === null || gallery === null) return
+        // Show Selected Gallery
+    gallery.classList.add('visualising__gallery--active');
+
+    // Slide to clicked element [Exception]
+    });
+});
+
+// Hide Visualising Gallery
+[...document.querySelectorAll('.visualising__close')].forEach(icon => {
+    icon.addEventListener('click',(e)=>{
+        e.target.parentElement.parentElement.classList.remove('visualising__gallery--active')
+    });
+});
+
+/*
+****** 
+******
+*/
+
 // Custom Scrollbar
 const scrollbar = document.querySelector('.scrollbar');
 const scrollbarThumb = document.querySelector('.scrollbar__thumb');
@@ -452,45 +413,6 @@ if (window.matchMedia("(pointer: coarse)").matches) {
  * 
  * Main Functions
  * ******/
-// Handle Showing Gallery
-// Show shop Gallery
-function showGallery(clickedElmnt) {
-    let elesArr = [...document.querySelectorAll('.shop__slider-img')];
-    console.log('Before Operating', elesArr);
-    elesArr.shift();
-    elesArr.shift();
-    elesArr.pop();
-    elesArr.pop();
-    const clickedIndex = parseInt(clickedElmnt.getAttribute('data-gallery-index'));
-    console.log(clickedIndex);
-    document.querySelector('.shop__gallery').classList.add('shop__gallery--active');
-    // document.body.style.overflow = 'hidden';
-    // Scroll to Clicked element
-    if (typeof clickedIndex !== undefined) {
-        let slideWidth = parseFloat(getComputedStyle([...document.querySelectorAll('.shop__gallery__slider__wrapper__slide')][0]).width);
-        document.querySelector('.shop__gallery__slider__wrapper').style.left = -(clickedIndex + 1) * slideWidth + 'px';
-    } else {}
-}
-// Show Corresponding gallery when click on eye icon
-function showGlobalGallery(clickedElmnt) {
-    // Get Gallery
-    let gallery = document.getElementById(clickedElmnt.parentElement.parentElement.getAttribute('data-gallery'));
-    // Exit if element is not deifned in any gallery
-    if (clickedElmnt === null || clickedElmnt.parentElement.parentElement.getAttribute('data-gallery') === null || gallery === null) return
-        // Show Selected Gallery
-    gallery.classList.add('gallery--active');
-
-    // Slide to clicked element [Exception]
-
-    // Exit if element is not indexed according to gallery
-    if (gallery.querySelector(`.gallery__slider__wrapper`) === null || gallery.querySelector(`.gallery__slider__wrapper__slide`) === null || clickedElmnt.parentElement.parentElement.getAttribute('data-gallery-index') === null) return
-        // Store element index, wrapper[the Gallery bar] and  the slide width[visible area of slider]
-    const clickedIndex = parseFloat(clickedElmnt.parentElement.parentElement.getAttribute('data-gallery-index'));
-    const slideWrapper = gallery.querySelector(`.gallery__slider__wrapper`);
-    const slideWidth = parseFloat(getComputedStyle([...gallery.querySelectorAll(`.gallery__slider__wrapper__slide`)][0]).width);
-    // Slide to clicked element
-    slideWrapper.style.left = -1 * (clickedIndex + 1) * slideWidth + 'px';
-}
 
 // Make Specified positioned elements in its place
 function handleRatios(elmnt) {
