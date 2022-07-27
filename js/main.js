@@ -49,11 +49,6 @@ let cursorFixed = true
     // Handle Fixed ratios
     // Trigger Sliders
 window.onload = () => {
-    // Add Vertical Slide Functionality to Vertical Carousel of Shop
-    slideV(document.querySelector('.shop__slider-slide'),
-        document.querySelector('.shop__slider-arrow--down'),
-        document.querySelector('.shop__slider-arrow--up')
-    );
     // Add slide functionality to Gallery of Shop
     slideH(document.querySelector('.shop__gallery__slider__wrapper'),
         document.getElementsByClassName('shop__gallery__slider__wrapper__slide'),
@@ -176,9 +171,9 @@ document.addEventListener('scroll', () => {
         if (window.scrollY + window.screen.height - 100 >= scrollYPos(elmnt.querySelector('.gips-deko__text'))) {
             elmnt.querySelector('.gips-deko__text').classList.add('gips-deko__text--scrolled');
         }
-        if (window.scrollY + window.screen.height - 100 >= scrollYPos(elmnt.querySelector('.gips-deko__photos'))) {
-            elmnt.querySelector('.gips-deko__photos').classList.add('gips-deko__photos--scrolled');
-        }
+        // if (window.scrollY + window.screen.height - 100 >= scrollYPos(elmnt.querySelector('.gips-deko__swiper'))) {
+        //     elmnt.querySelector('.gips-deko__swiper').classList.add('gips-deko__swiper--scrolled');
+        // }
 
     });
     // servicees Visualising Animation
@@ -507,19 +502,9 @@ function handleRatios(elmnt) {
         elmnt.removeAttribute('style');
         [...elmnt.querySelectorAll('*')].forEach(elmnt => elmnt.removeAttribute('style'));
         // Prevent red-badge in was bieten from wrapping
-        document.querySelector('.was-bieten .red-badge').style.fontSize = `${14 * magnifyingFactor}px`;
         document.querySelector('.wer-sind__content .heading-secondary').style.fontSize = `${44 * magnifyingFactor}px`;
         document.querySelector('.wer-sind__sub-heading').style.fontSize = `${18 * magnifyingFactor}px`;
         document.querySelector('.wer-sind__text').style.fontSize = `${14 * magnifyingFactor}px`;
-        document.querySelector('.shop__heading__triangle').style.cssText = `
-            top: calc(100% + ${5 * magnifyingFactor}px);
-            border-top: ${8 * magnifyingFactor}px solid var(--color-dark-red);
-            border-right: ${8 * magnifyingFactor}px solid transparent;
-            border-bottom: ${8 * magnifyingFactor}px solid transparent;
-            border-left: ${8 * magnifyingFactor}px solid transparent;
-            left: ${46.5 * magnifyingFactor}px
-        `;
-        document.querySelector('.shop__heading .heading-secondary__red').style.fontSize = `${34 * magnifyingFactor}px`;
         return;
     } else {
         elmnt.removeAttribute('style');
@@ -550,147 +535,6 @@ function handleRatios(elmnt) {
     elmnt.style.transform = `scale(${magnifyingFactor})`;
 }
 /* ### Slider Functions ### */
-function slideV(items, prev, next) {
-    let posX1 = 0,
-        posX2 = 0,
-        posInitial,
-        posFinal,
-        slides = [...document.querySelectorAll('.shop__slider-img')],
-        threshold = slides[0].offsetHeight / 8,
-        slidesLength = slides.length,
-        slideSize = slides[0].offsetHeight + parseInt(getComputedStyle(slides[0]).marginBottom),
-        firstSlide = slides[0],
-        secondSlide = slides[1],
-        bLastSlide = slides[slidesLength - 2],
-        lastSlide = slides[slidesLength - 1],
-        cloneFirst = firstSlide.cloneNode(true),
-        cloneSecond = secondSlide.cloneNode(true),
-        cloneBLast = bLastSlide.cloneNode(true),
-        cloneLast = lastSlide.cloneNode(true),
-        index = 0,
-        allowShift = true;
-    // Clone first and last slide
-    items.appendChild(cloneFirst);
-    items.appendChild(cloneSecond);
-    items.insertBefore(cloneLast, firstSlide);
-    items.insertBefore(cloneBLast, cloneLast);
-    items.style.top = -2 * slideSize + 'px';
-    //   wrapper.classList.add('loaded');
-
-    // Mouse events
-    items.onmousedown = dragStart;
-
-    // Touch events
-    items.addEventListener('touchstart', dragStart);
-    items.addEventListener('touchend', dragEnd);
-    items.addEventListener('touchmove', dragAction);
-
-    // Click events
-    next.addEventListener('click', function() { shiftSlide(-1) });
-    prev.addEventListener('click', function() { shiftSlide(1) });
-
-    // Wheel event
-    document.querySelector('.shop__slider').addEventListener('wheel', (e) => {
-        e.preventDefault();
-        e.deltaY > 0 ? shiftSlide(1) : shiftSlide(-1);
-    });
-
-    // Transition events
-    items.addEventListener('transitionend', checkIndex);
-
-    function dragStart(e) {
-        e = e || window.event;
-        e.preventDefault();
-        posInitial = items.offsetTop;
-
-        if (e.type == 'touchstart') {
-            posX1 = e.touches[0].clientY;
-        } else {
-            posX1 = e.clientY;
-            document.onmouseup = dragEnd;
-            document.onmousemove = dragAction;
-        }
-    }
-
-    function dragAction(e) {
-        e = e || window.event;
-
-        if (e.type == 'touchmove') {
-            posX2 = posX1 - e.touches[0].clientY;
-            posX1 = e.touches[0].clientY;
-        } else {
-            posX2 = posX1 - e.clientY;
-            posX1 = e.clientY;
-        }
-        items.style.top = (items.offsetTop - posX2) + "px";
-    }
-
-    function dragEnd(e) {
-        posFinal = items.offsetTop;
-        if (posFinal - posInitial < -threshold) {
-            shiftSlide(1, 'drag');
-            slides.forEach((elmnt) => elmnt.classList.remove('shop__slider-img--hover'));
-        } else if (posFinal - posInitial > threshold) {
-            shiftSlide(-1, 'drag');
-            slides.forEach((elmnt) => elmnt.classList.remove('shop__slider-img--hover'));
-        } else {
-            items.style.top = (posInitial) + "px";
-            // Hover Effect
-            document.querySelectorAll('.shop__slider-img').forEach((elmnt) => elmnt.classList.remove('shop__slider-img--hover'));
-            // if clicked Touched element is container, then simulate hover state(add hover class)
-            if (e.target.parentElement.classList.contains('shop__slider-img')) {
-
-                e.target.parentElement.classList.add('shop__slider-img--hover')
-
-            } else if (e.target.classList.contains('shop__slider-view-icon')) {
-                showGallery(e.target.parentElement.parentElement);
-            } else if (e.target.parentElement.classList.contains('shop__slider-view-icon')) {
-                showGallery(e.target.parentElement.parentElement.parentElement);
-            } else if (e.target.parentElement.parentElement.classList.contains('shop__slider-view-icon')) {
-                showGallery(e.target.parentElement.parentElement.parentElement.parentElement);
-            } else if (e.target.parentElement.parentElement.parentElement.classList.contains('shop__slider-view-icon')) {
-                showGallery(e.target.parentElement.parentElement.parentElement.parentElement.parentElement);
-            }
-        }
-
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
-
-    function shiftSlide(dir, action) {
-        items.classList.add('shifting');
-
-        if (allowShift) {
-            if (!action) { posInitial = items.offsetTop; }
-
-            if (dir == 1) {
-                items.style.top = (posInitial - slideSize) + "px";
-                index++;
-            } else if (dir == -1) {
-                items.style.top = (posInitial + slideSize) + "px";
-                index--;
-            }
-        };
-
-        allowShift = false;
-    }
-
-    function checkIndex() {
-        items.classList.remove('shifting');
-        if (index == -1) {
-            items.style.top = -(slidesLength * slideSize) + "px";
-            index = slidesLength - 1;
-        }
-
-        if (index == slidesLength) {
-            items.style.top = -(1 * slideSize) + "px";
-            index = 0;
-        }
-
-        allowShift = true;
-    }
-}
-/* ###### */
 function slideH(items, slides, prev, next) {
     let posX1 = 0,
         posX2 = 0,
