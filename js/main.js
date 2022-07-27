@@ -16,22 +16,22 @@ let dimensionsRef = {
     },
     shop: {
         right: 35,
-        top: 1200,
+        top: 1135,
     },
     'services__words-table': {
         left: 95.05,
-        top: 2037
+        top: 1910
     },
     services__heading: {
         left: 57,
-        top: 2105
+        top: 1985
     },
     'fixed-btns': {
         bottom: 15,
         right: 15
     },
     'bg-word': {
-        top: 1737
+        top: 1710
     }
 }
 let cursorFixed = true;
@@ -178,7 +178,7 @@ function handleRatiosV2() {
     if (parseFloat(getComputedStyle(document.body).width) > 600) {
         magnifyingFactor = parseFloat(parseFloat(getComputedStyle(document.body).width) / 1519);
         // resize body padding
-        document.body.style.paddingTop = `${parseFloat(magnifyingFactor * 2265)}px`;
+        document.body.style.paddingTop = `${parseFloat(magnifyingFactor * 2125)}px`;
 
         // resize fixed-pos elments
         [...document.querySelectorAll('.was-bieten .heading-secondary')].forEach(elmnt => elmnt.style.fontSize = '');
@@ -352,7 +352,7 @@ Handle Visualising Gallery
     // Exit if element is not deifned in any gallery
     // if (e.target === null || e.target.parentElement.parentElement.getAttribute('data-gallery') === null || gallery === null) return
         // Show Selected Gallery
-    gallery.classList.add('visualising__gallery--active');
+    gallery.classList.add('visualising_gallery--active');
 
     // Slide to clicked element [Exception]
     });
@@ -361,7 +361,7 @@ Handle Visualising Gallery
 // Hide Visualising Gallery
 [...document.querySelectorAll('.visualising__close')].forEach(icon => {
     icon.addEventListener('click',(e)=>{
-        e.target.parentElement.parentElement.classList.remove('visualising__gallery--active')
+        e.target.parentElement.parentElement.classList.remove('visualising_gallery--active')
     });
 });
 
@@ -457,126 +457,6 @@ function handleRatios(elmnt) {
     elmnt.style.transform = `scale(${magnifyingFactor})`;
 }
 /* ### Slider Functions ### */
-function slideH(items, slides, prev, next) {
-    let posX1 = 0,
-        posX2 = 0,
-        posInitial,
-        posFinal,
-        threshold = 100,
-        slidesLength = slides.length,
-        slideSize = parseFloat(getComputedStyle(slides[0]).width),
-        firstSlide = slides[0],
-        lastSlide = slides[slidesLength - 1],
-        cloneFirst = firstSlide.cloneNode(true),
-        cloneLast = lastSlide.cloneNode(true),
-        index = 0,
-        allowShift = true;
-    // Clone first and last slide
-    items.appendChild(cloneFirst);
-    items.insertBefore(cloneLast, firstSlide);
-    items.style.left = -slideSize + 'px';
-    window.addEventListener('resize', () => {
-        slideSize = slides[0].offsetWidth;
-        items.style.left = -slideSize + 'px';
-    });
-    // Mouse events
-    // items.onmousedown = dragStart;
-    items.addEventListener('mousedown', dragStart);
-
-    // Touch events
-    items.addEventListener('touchstart', dragStart);
-    items.addEventListener('touchend', dragEnd);
-    items.addEventListener('touchmove', dragAction);
-
-    // Click events
-    prev.addEventListener('click', function() { shiftSlide(-1) });
-    next.addEventListener('click', function() { shiftSlide(1) });
-
-    // Transition events
-    items.addEventListener('transitionend', checkIndex);
-
-    function dragStart(e) {
-        cursorFixed = false
-        e = e || window.event;
-        e.preventDefault();
-        posInitial = items.offsetLeft;
-
-        if (e.type == 'touchstart') {
-            posX1 = e.touches[0].clientX;
-        } else {
-            posX1 = e.clientX;
-            document.onmouseup = dragEnd;
-            document.onmousemove = dragAction;
-        }
-    }
-
-    function dragAction(e) {
-        e = e || window.event;
-
-        if (e.type == 'touchmove') {
-            posX2 = posX1 - e.touches[0].clientX;
-            posX1 = e.touches[0].clientX;
-        } else {
-            posX2 = posX1 - e.clientX;
-            posX1 = e.clientX;
-        }
-        items.style.left = (items.offsetLeft - posX2) + "px";
-    }
-
-    function dragEnd(e) {
-        setTimeout(() => {
-            cursorFixed = true
-        }, 0)
-        posFinal = items.offsetLeft;
-        if (posFinal - posInitial < -threshold) {
-            shiftSlide(1, 'drag');
-        } else if (posFinal - posInitial > threshold) {
-            shiftSlide(-1, 'drag');
-        } else {
-            items.style.left = (posInitial) + "px";
-        }
-
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
-
-    function shiftSlide(dir, action) {
-        items.classList.add('shifting');
-
-        if (allowShift) {
-            if (!action) {
-                posInitial = items.offsetLeft;
-            }
-
-            if (dir == 1) {
-                // console.log(`posInitial[${posInitial}] - slideSize[${slideSize}] = items.left[${posInitial - slideSize}]`);
-                items.style.left = (posInitial - slideSize) + "px";
-                index++;
-            } else if (dir == -1) {
-                items.style.left = (posInitial + slideSize) + "px";
-                index--;
-            }
-        };
-
-        allowShift = false;
-    }
-
-    function checkIndex() {
-        items.classList.remove('shifting');
-
-        if (index == -1) {
-            items.style.left = -(slidesLength * slideSize) + "px";
-            index = slidesLength - 1;
-        }
-
-        if (index == slidesLength) {
-            items.style.left = -(1 * slideSize) + "px";
-            index = 0;
-        }
-
-        allowShift = true;
-    }
-}
 
 dragElement(scrollbarThumb, document);
 

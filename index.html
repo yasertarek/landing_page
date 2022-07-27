@@ -108,7 +108,12 @@
       </div>
     </section>
     <section class="shop fixed-pos" data-pos="shop" id="shop">
-      <h2 class="shop__heading">Shop</h2>
+      <header>
+        <h2 class="shop__heading">Shop</h2>
+        <div class="shop__cart">
+          <img src="./imgs/cart.svg" alt="">
+        </div>
+      </header>
       <p class="red-badge">Deko&Wohnen</p>
       <!-- <span class="red-badge">Explore Home Decor Items Available Online</span> -->
       <p class="paragraph">
@@ -178,7 +183,7 @@
           <div>
             <h2
               class="gips-deko__heading heading-tertiary gallery__trigger"
-              data-gallery="gips-deko__gallery--1"
+              data-gallery="gips-deko__gallery--0"
             >
               Gips-Deko
             </h2>
@@ -208,7 +213,7 @@
             </p>
           </div>
         </div>
-        <div class="gips-deko__swiper">
+        <div class="gips-deko__swiper gips-deko__swiper--0">
           <div class="swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
@@ -235,7 +240,7 @@
       <div class="visualising services__service">
         <h2
           class="visualising__heading heading-tertiary gallery__trigger"
-          data-gallery="visualising__gallery--1"
+          data-gallery="visualising_gallery--0"
         >
           Visualisierung
         </h2>
@@ -253,7 +258,7 @@
             </div>
             <div
               class="visualising__photo overlay_hover_container"
-              data-gallery="visualising__gallery--1"
+              data-gallery="visualising_gallery--0"
               data-gallery-index="0"
             >
               <img src="./imgs/visualising-1.png" alt="photo" />
@@ -329,8 +334,8 @@
             </div>
             <div
               class="visualising__photo overlay_hover_container"
-              data-gallery="visualising__gallery--1"
-              data-gallery-index="1"
+              data-gallery="visualising_gallery--0"
+              data-gallery-index="0"
             >
               <img src="./imgs/visualising-2.png" alt="photo" />
               <span class="overlay_hover">
@@ -400,14 +405,14 @@
       <div class="other_3d services__service">
         <h2
           class="heading-tertiary gallery__trigger other_3d__heading"
-          data-gallery="other_3d__gallery--1"
+          data-gallery="other_3d__gallery--0"
         >
           Other 3D Services
         </h2>
         <h4 class="other_3d__sub-heading">
           Idee Analyse , Diagrame und Produkten
         </h4>
-        <div class="other_3d_swiper">
+        <div class="other_3d_swiper other_3d_swiper--0">
           <div class="swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
@@ -846,20 +851,51 @@
     </footer>
     <!-- End Footer Here -->
     <!-- Visualising Gallery -->
-    <div class="visualising_gallery" id="visualising__gallery--1">
-      <div>
+    <div class="visualising_gallery" id="visualising_gallery--0">
+      <div class="visualising_gallery__swiper">
         <div class="swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="./imgs/visualising-1.png" alt="" /></div>
-            <div class="swiper-slide"><img src="./imgs/visualising-2.png" alt="" /></div>
-            <div class="swiper-slide"><img src="./imgs/slider-1.png" alt="" /></div>
-            <div class="swiper-slide"><img src="./imgs/slider-2.png" alt="" /></div>
-            <div class="swiper-slide"><img src="./imgs/slider-3.png" alt="" /></div>
+            <div class="swiper-slide">
+              <img src="./imgs/visualising-1.png" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./imgs/visualising-2.png" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./imgs/slider-1.png" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./imgs/slider-2.png" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./imgs/slider-3.png" alt="" />
+            </div>
           </div>
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
         <div class="visualising__close">&times;</div>
+      </div>
+      <div class="visualising_gallery__thumbs" thumbsSlider="">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="./imgs/visualising-1.png" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./imgs/visualising-2.png" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./imgs/slider-1.png" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./imgs/slider-2.png" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./imgs/slider-3.png" alt="" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="loading">
@@ -917,13 +953,55 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="./js/main.js"></script>
     <script>
-      // Swiper
+      // Initialize gipsDeko Swipers
+      const gipsDekoSwipers = [];
+      [...document.querySelectorAll(".gips-deko__swiper")].forEach(
+        (swiper, swiperI) => {
+          gipsDekoSwipers[swiperI] = new Swiper(
+            `.gips-deko__swiper--${swiperI} .swiper`,
+            {
+              // Optional parameters
+              loop: true,
+              slidesPerView: 1,
+              spaceBetween: 10,
+              observer: true,
+              observeParents: true,
+              breakpoints: {
+                // when window width is >= 320px
+                900: {
+                  slidesPerView: 3,
+                  spaceBetween: 50,
+                },
+              },
+
+              // If we need pagination
+              // pagination: {
+              //   el: ".shop__slider .swiper-pagination",
+              // },
+
+              // Navigation arrows
+              navigation: {
+                nextEl: `.gips-deko__swiper--${swiperI} .swiper-button-next`,
+                prevEl: `.gips-deko__swiper--${swiperI} .swiper-button-prev`,
+              },
+
+              // And if we need scrollbar
+              // scrollbar: {
+              //   el: ".swiper-scrollbar",
+              // },
+            }
+          );
+        }
+      );
+      // Intialize Shop Swiper
       const shopSwiper = new Swiper(".shop__slider .swiper", {
         // Optional parameters
         direction: "vertical",
         loop: true,
         slidesPerView: 3,
         spaceBetween: 22,
+        observer: true,
+        observeParents: true,
 
         mousewheel: {
           invert: false,
@@ -944,106 +1022,83 @@
         //   el: ".swiper-scrollbar",
         // },
       });
-      const gipsDekoSwiper = new Swiper(".gips-deko__swiper .swiper", {
-        // Optional parameters
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 10,
-        breakpoints: {
-          // when window width is >= 320px
-          900: {
-            slidesPerView: 3,
-            spaceBetween: 50,
-          },
-        },
+      const other3dSwipers = [];
+      [...document.querySelectorAll(".other_3d_swiper")].forEach(
+        (swiper, swiperI) => {
+          other3dSwipers[swiperI] = new Swiper(
+            `.other_3d_swiper--${swiperI} .swiper`,
+            {
+              // Optional parameters
+              loop: true,
+              slidesPerView: 1,
+              spaceBetween: 10,
+              observer: true,
+              observeParents: true,
+              breakpoints: {
+                // when window width is >= 320px
+                900: {
+                  slidesPerView: 3,
+                  spaceBetween: 50,
+                },
+              },
+              // If we need pagination
+              // pagination: {
+              //   el: ".shop__slider .swiper-pagination",
+              // },
 
-        // If we need pagination
-        // pagination: {
-        //   el: ".shop__slider .swiper-pagination",
-        // },
+              // Navigation arrows
+              navigation: {
+                nextEl: `.other_3d_swiper--${swiperI} .swiper-button-next`,
+                prevEl: `.other_3d_swiper--${swiperI} .swiper-button-prev`,
+              },
 
-        // Navigation arrows
-        navigation: {
-          nextEl: ".gips-deko__swiper .swiper-button-next",
-          prevEl: ".gips-deko__swiper .swiper-button-prev",
-        },
-
-        // And if we need scrollbar
-        // scrollbar: {
-        //   el: ".swiper-scrollbar",
-        // },
-      });
-      const other3dSwiper = new Swiper(".other_3d_swiper .swiper", {
-        // Optional parameters
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 10,
-        breakpoints: {
-          // when window width is >= 320px
-          900: {
-            slidesPerView: 3,
-            spaceBetween: 50,
-          },
-        },
-        // If we need pagination
-        // pagination: {
-        //   el: ".shop__slider .swiper-pagination",
-        // },
-
-        // Navigation arrows
-        navigation: {
-          nextEl: ".other_3d_swiper .swiper-button-next",
-          prevEl: ".other_3d_swiper .swiper-button-prev",
-        },
-
-        // And if we need scrollbar
-        // scrollbar: {
-        //   el: ".swiper-scrollbar",
-        // },
-      });
-      const visualisingGallery = new Swiper(".visualising_gallery .swiper", {
-        // Optional parameters
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 10,
-        breakpoints: {
-        },
-        // If we need pagination
-        // pagination: {
-        //   el: ".shop__slider .swiper-pagination",
-        // },
-
-        // Navigation arrows
-        navigation: {
-          nextEl: ".visualising_gallery .swiper-button-next",
-          prevEl: ".visualising_gallery .swiper-button-prev",
-        },
-
-        // And if we need scrollbar
-        // scrollbar: {
-        //   el: ".swiper-scrollbar",
-        // },
-      });
-      const visualisingGalleryThumbs = new Swiper(".visualising_gallery__thumbs .swiper", {
-        // Optional parameters
-        loop: true,
-        slidesPerView: 4,
-        // If we need pagination
-        // pagination: {
-        //   el: ".shop__slider .swiper-pagination",
-        // },
-
-        // Navigation arrows
-        navigation: {
-          nextEl: ".visualising_gallery .swiper-button-next",
-          prevEl: ".visualising_gallery .swiper-button-prev",
-        },
-
-        // And if we need scrollbar
-        // scrollbar: {
-        //   el: ".swiper-scrollbar",
-        // },
-      });
+              // And if we need scrollbar
+              // scrollbar: {
+              //   el: ".swiper-scrollbar",
+              // },
+            }
+          );
+        }
+      );
+      // const visualisingGalleries = { galleries: [], thumbs: [] };
+      const visualisingThumbs = [];
+      const visualisingGalleries = [];
+      [...document.querySelectorAll(".visualising_gallery")].forEach(
+        (swiper, swiperI) => {
+          visualisingThumbs[swiperI] = new Swiper(
+            `#visualising_gallery--${swiperI} .visualising_gallery__thumbs .swiper`,
+            {
+              // Optional parameters
+              loop: true,
+              spaceBetween: 10,
+              slidesPerView: 4,
+              observer: true,
+              observeParents: true,
+              freeMode: true,
+              watchSlidesProgress: true,
+            }
+          );
+          visualisingGalleries[swiperI] = new Swiper(`#visualising_gallery--${swiperI} .visualising_gallery__swiper .swiper`,{
+              // Optional parameters
+              loop: true,
+              slidesPerView: 1,
+              spaceBetween: 10,
+              observer: true,
+              observeParents: true,
+              thumbs: {
+                swiper: visualisingThumbs[swiperI],
+              },
+              // Navigation arrows
+              navigation: {
+                nextEl: `#visualising_gallery--${swiperI} .swiper-button-next`,
+                prevEl: `#visualising_gallery--${swiperI} .swiper-button-prev`,
+              },
+            }
+          );
+        }
+      );
+      // const visualisingGalleryThumbs =
+      // const visualisingGallery =
 
       $(".header__nav a").on("click", scrollToY);
       $(".fixed-btns a").on("click", scrollToY);
