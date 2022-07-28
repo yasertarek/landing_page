@@ -528,7 +528,7 @@ document.addEventListener("click", (e) => {
     if (!gallery) return;
     gallery.classList.add("gallery--active");
     // Prevent Scrolling
-    document.body.style = `overflowY: hidden`;
+    // document.body.style = `overflow-y: hidden`;
   }
   if (e.target.closest(".gallery__close")) {
     e.target
