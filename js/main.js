@@ -352,7 +352,7 @@ Handle Visualising Gallery
     // Exit if element is not deifned in any gallery
     // if (e.target === null || e.target.parentElement.parentElement.getAttribute('data-gallery') === null || gallery === null) return
         // Show Selected Gallery
-    gallery.classList.add('visualising_gallery--active');
+    gallery.classList.add('gallery--active');
 
     // Slide to clicked element [Exception]
     });

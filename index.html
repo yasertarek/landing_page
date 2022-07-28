@@ -27,7 +27,7 @@
             <li><a href="#">Home</a></li>
             <li><a href="#services">Leistungen</a></li>
             <li><a href="#shop">shop</a></li>
-            <li><a href="#about">Über uns</a></li>
+            <li><a href="#wer-sind">Über uns</a></li>
             <li><a href="#contact">Kontakt</a></li>
           </ul>
         </nav>
@@ -35,7 +35,7 @@
     </header>
 
     <section class="about" id="about">
-      <div class="wer-sind fixed-pos" data-pos="wer-sind">
+      <div class="wer-sind fixed-pos" data-pos="wer-sind" id="wer-sind">
         <div class="wer-sind__content">
           <h2 class="heading-secondary">
             Wer Sind <span class="heading-secondary__red">Wir</span>
@@ -1699,10 +1699,16 @@
       </div>
     </div>
 
-    <div class="gallery" id="shop_gallery--0">
+    <div class="gallery shop_gallery" id="shop_gallery--0">
       <div class="gallery__container">
         <div class="swiper">
           <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="./imgs/visualising-1.png" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./imgs/visualising-2.png" alt="" />
+            </div>
             <div class="swiper-slide">
               <img src="./imgs/slider-1.png" alt="" />
             </div>
@@ -1740,15 +1746,21 @@
         </div>
       </div>
     </div>
-    <div class="gallery" id="gips-deko_gallery--0">
+    <div class="gallery gips-deko_gallery" id="gips-deko_gallery--0">
       <div class="gallery__container">
         <div class="swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
+              <img src="./imgs/visualising-1.png" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./imgs/3d_2.png" alt="" />
+            </div>
+            <div class="swiper-slide">
               <img src="./imgs/slider-1.png" alt="" />
             </div>
             <div class="swiper-slide">
-              <img src="./imgs/slider-2.png" alt="" />
+              <img src="./imgs/3d_1.png" alt="" />
             </div>
             <div class="swiper-slide">
               <img src="./imgs/slider-3.png" alt="" />
@@ -1759,7 +1771,7 @@
         <div class="swiper-button-prev"></div>
         <div class="gallery__close">&times;</div>
       </div>
-      <div class="gips-deko__thumbs gallery__thumbs" thumbsSlider="">
+      <div class="gips-deko_gallery__thumbs gallery__thumbs" thumbsSlider="">
         <div class="swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -1781,15 +1793,21 @@
         </div>
       </div>
     </div>
-    <div class="gallery" id="other_3d_gallery--0">
+    <div class="gallery other_3d_gallery" id="other_3d_gallery--0">
       <div class="gallery__container">
         <div class="swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
+              <img src="./imgs/visualising-1.png" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./imgs/3d_2.png" alt="" />
+            </div>
+            <div class="swiper-slide">
               <img src="./imgs/slider-1.png" alt="" />
             </div>
             <div class="swiper-slide">
-              <img src="./imgs/slider-2.png" alt="" />
+              <img src="./imgs/3d_1.png" alt="" />
             </div>
             <div class="swiper-slide">
               <img src="./imgs/slider-3.png" alt="" />
@@ -1800,7 +1818,7 @@
         <div class="swiper-button-prev"></div>
         <div class="gallery__close">&times;</div>
       </div>
-      <div class="gips-deko__thumbs gallery__thumbs" thumbsSlider="">
+      <div class="other_3d_gallery__thumbs gallery__thumbs" thumbsSlider="">
         <div class="swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -1899,22 +1917,50 @@
                   spaceBetween: 50,
                 },
               },
-
-              // If we need pagination
-              // pagination: {
-              //   el: ".shop__slider .swiper-pagination",
-              // },
-
               // Navigation arrows
               navigation: {
                 nextEl: `.gips-deko__swiper--${swiperI} .swiper-button-next`,
                 prevEl: `.gips-deko__swiper--${swiperI} .swiper-button-prev`,
               },
-
-              // And if we need scrollbar
-              // scrollbar: {
-              //   el: ".swiper-scrollbar",
-              // },
+            }
+          );
+        }
+      );
+      // Inner Gips Deko Gallery
+            // Inner Gallery
+      const gipsDekoGalleries = { galleries: [], thumbs: [] };
+      [...document.querySelectorAll(".gips-deko_gallery")].forEach(
+        (swiper, swiperI) => {
+          gipsDekoGalleries.thumbs[swiperI] = new Swiper(
+            `#gips-deko_gallery--${swiperI} .gips-deko_gallery__thumbs .swiper`,
+            {
+              // Optional parameters
+              loop: true,
+              spaceBetween: 10,
+              slidesPerView: 4,
+              observer: true,
+              observeParents: true,
+              freeMode: true,
+              watchSlidesProgress: true,
+            }
+          );
+          gipsDekoGalleries.galleries[swiperI] = new Swiper(
+            `#gips-deko_gallery--${swiperI} .gallery__container .swiper`,
+            {
+              // Optional parameters
+              loop: true,
+              slidesPerView: 1,
+              spaceBetween: 10,
+              observer: true,
+              observeParents: true,
+              thumbs: {
+                swiper: gipsDekoGalleries.thumbs[swiperI],
+              },
+              // Navigation arrows
+              navigation: {
+                nextEl: `#gips-deko_gallery--${swiperI} .swiper-button-next`,
+                prevEl: `#gips-deko_gallery--${swiperI} .swiper-button-prev`,
+              },
             }
           );
         }
@@ -1948,7 +1994,47 @@
         //   el: ".swiper-scrollbar",
         // },
       });
+      // Inner Gallery
+      const shopGalleries = { galleries: [], thumbs: [] };
+      [...document.querySelectorAll(".shop_gallery")].forEach(
+        (swiper, swiperI) => {
+          shopGalleries.thumbs[swiperI] = new Swiper(
+            `#shop_gallery--${swiperI} .shop_gallery__thumbs .swiper`,
+            {
+              // Optional parameters
+              loop: true,
+              spaceBetween: 10,
+              slidesPerView: 4,
+              observer: true,
+              observeParents: true,
+              freeMode: true,
+              watchSlidesProgress: true,
+            }
+          );
+          shopGalleries.galleries[swiperI] = new Swiper(
+            `#shop_gallery--${swiperI} .gallery__container .swiper`,
+            {
+              // Optional parameters
+              loop: true,
+              slidesPerView: 1,
+              spaceBetween: 10,
+              observer: true,
+              observeParents: true,
+              thumbs: {
+                swiper: shopGalleries.thumbs[swiperI],
+              },
+              // Navigation arrows
+              navigation: {
+                nextEl: `#shop_gallery--${swiperI} .swiper-button-next`,
+                prevEl: `#shop_gallery--${swiperI} .swiper-button-prev`,
+              },
+            }
+          );
+        }
+      );
+      // Other 3d 
       const other3dSwipers = [];
+      // External Other 3d Swiper
       [...document.querySelectorAll(".other_3d_swiper")].forEach(
         (swiper, swiperI) => {
           other3dSwipers[swiperI] = new Swiper(
@@ -1986,7 +2072,46 @@
           );
         }
       );
-      // const visualisingGalleries = { galleries: [], thumbs: [] };
+      // Inner Other 3d Swiper
+      // Other 3d Gallery
+      const other3dGalleries = { galleries: [], thumbs: [] };
+      [...document.querySelectorAll(".other_3d_gallery")].forEach(
+        (swiper, swiperI) => {
+          other3dGalleries.thumbs[swiperI] = new Swiper(
+            `#other_3d_gallery--${swiperI} .other_3d_gallery__thumbs .swiper`,
+            {
+              // Optional parameters
+              loop: true,
+              spaceBetween: 10,
+              slidesPerView: 4,
+              observer: true,
+              observeParents: true,
+              freeMode: true,
+              watchSlidesProgress: true,
+            }
+          );
+          other3dGalleries.galleries[swiperI] = new Swiper(
+            `#other_3d_gallery--${swiperI} .gallery__container .swiper`,
+            {
+              // Optional parameters
+              loop: true,
+              slidesPerView: 1,
+              spaceBetween: 10,
+              observer: true,
+              observeParents: true,
+              thumbs: {
+                swiper: other3dGalleries.thumbs[swiperI],
+              },
+              // Navigation arrows
+              navigation: {
+                nextEl: `#other_3d_gallery--${swiperI} .swiper-button-next`,
+                prevEl: `#other_3d_gallery--${swiperI} .swiper-button-prev`,
+              },
+            }
+          );
+        }
+      );
+      // Visualising Gallery
       const visualisingThumbs = [];
       const visualisingGalleries = [];
       [...document.querySelectorAll(".visualising_gallery")].forEach(
@@ -2005,7 +2130,7 @@
             }
           );
           visualisingGalleries[swiperI] = new Swiper(
-            `#visualising_gallery--${swiperI} .visualising_gallery__swiper .swiper`,
+            `#visualising_gallery--${swiperI} .gallery__container .swiper`,
             {
               // Optional parameters
               loop: true,
@@ -2025,9 +2150,6 @@
           );
         }
       );
-      // const visualisingGalleryThumbs =
-      // const visualisingGallery =
-
       $(".header__nav a").on("click", scrollToY);
       $(".fixed-btns a").on("click", scrollToY);
       $(".shop__heading a").on("click", scrollToY);
