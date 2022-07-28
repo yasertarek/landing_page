@@ -345,13 +345,13 @@ Handle Visualising Gallery
 ******
 */
 // Show Corresponding Gallery when click on eye icon
-[...document.querySelectorAll('.overlay_hover_icon')].forEach(elmnt => {
+[...document.querySelectorAll('.overlay_hover')].forEach(elmnt => {
     elmnt.addEventListener('click', (e) => {
     // Get Gallery
-    let gallery = document.getElementById(e.currentTarget.parentElement.parentElement.getAttribute('data-gallery'));
+    let gallery = document.getElementById(e.currentTarget.parentElement.getAttribute('data-gallery'));
     // Exit if element is not deifned in any gallery
     // if (e.target === null || e.target.parentElement.parentElement.getAttribute('data-gallery') === null || gallery === null) return
-        // Show Selected Gallery
+    // Show Selected Gallery
     gallery.classList.add('gallery--active');
 
     // Slide to clicked element [Exception]
