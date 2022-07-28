@@ -810,9 +810,7 @@ section.about {
 }
 .the_power_of_design h3 {
   color: var(--color-light-white);
-  opacity: 38%;
-  background-color: var(--color-dark-red);
-  opacity: 60%;
+  background-color: #a7303040;
   padding: 0 5px 0 10px;
   position: relative;
   line-height: inherit;
@@ -825,6 +823,7 @@ section.about {
 }
 
 .the_power_of_design__text {
+  opacity: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -837,12 +836,14 @@ section.about {
   height: 100%;
   width: 100%;
   background-image: linear-gradient(to left, #000 0, #000 5%, transparent 9%);
-  opacity: 65%;
+  opacity: 60%;
 }
-.the_power_of_design .design_word {
+.the_power_of_design .design_word{
+  margin-left: 10px;
+}
+.the_power_of_design .design_word > span {
   color: var(--color-dark-red);
   opacity: 40%;
-  margin-left: 10px;
 }
 
 .the_power_of_design .design_word p {
@@ -851,18 +852,21 @@ section.about {
   font-weight: normal;
   letter-spacing: 1px;
   display: flex;
-  gap: 15px;
+  gap: 6px;
   padding-left: 10px;
   justify-content: flex-start;
   text-transform: capitalize;
-  opacity: 60%;
+  opacity: 100%;
 }
 
 .the_power_of_design .design_word span.red-text {
   color: var(--color-dark-red);
   letter-spacing: 1px;
-  margin-right: 3px;
 }
+.the_power_of_design .design_word p span:not(:first-child) {
+  opacity: 40%;
+}
+
 .our-vision {
   overflow: hidden;
 }
