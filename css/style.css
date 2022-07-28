@@ -84,7 +84,8 @@ a:active {
 }
 body {
   box-sizing: border-box;
-  background-image: url(../imgs/background.jpg);
+  /* background-image: url(../imgs/background.jpg); */
+  background-image: url(../imgs/background_l.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: top;
