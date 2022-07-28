@@ -810,7 +810,7 @@ section.about {
 }
 .the_power_of_design h3 {
   color: var(--color-light-white);
-  background-color: #a7303040;
+  background-color: #a7303060;
   padding: 0 5px 0 10px;
   position: relative;
   line-height: inherit;
@@ -823,7 +823,7 @@ section.about {
 }
 
 .the_power_of_design__text {
-  opacity: 40%;
+  opacity: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
