@@ -747,7 +747,6 @@ function dragElement(elmnt, cont, trigger = elmnt) {
       parseFloat(getComputedStyle(scrollbar).height) -
         parseFloat(getComputedStyle(elmnt).height)
     ) {
-      console.log(`elmnt.offsetTop: ${elmnt.offsetTop}`);
       elmnt.style.top =
         parseFloat(getComputedStyle(scrollbar).height) -
         parseFloat(getComputedStyle(elmnt).height) -

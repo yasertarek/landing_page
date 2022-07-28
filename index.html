@@ -2167,10 +2167,10 @@
       // Slide on click on slide to its corresponding slide
       [...document.querySelectorAll('.swiper-slide')].forEach((slide, SI) => {
         slide.addEventListener('click', (e) => {
+          if(!e.currentTarget.parentElement.parentElement.parentElement.getAttribute('data-gallery')) return
           const galleryName = e.currentTarget.parentElement.parentElement.parentElement.getAttribute('data-gallery').split("--")[0];
           const galleryIndex = e.currentTarget.parentElement.parentElement.parentElement.getAttribute('data-gallery').split("--")[1];
           const slideIndex = e.currentTarget.getAttribute('data-swiper-slide-index');
-          console.log(galleryName, galleryIndex)
           if(galleryName === 'shop_gallery') {
             shopGalleries.galleries[galleryIndex].slideToLoop(slideIndex)
           }else if (galleryName === 'other_3d_gallery') {
@@ -2185,9 +2185,6 @@
           const galleryName = slide.getAttribute('data-visu-gallery-index').split('--')[0];
           const galleryIndex = slide.getAttribute('data-visu-gallery-index').split('--')[1].split('/')[0];
           const slideIndex = slide.getAttribute('data-visu-gallery-index').split('--')[1].split('/')[1];
-          console.log(galleryName)
-          console.log(galleryIndex)
-          console.log(slideIndex)
           visualisingGalleries[galleryIndex].slideToLoop(slideIndex);
         });
       });

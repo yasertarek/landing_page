@@ -810,7 +810,7 @@ section.about {
 }
 .the_power_of_design h3 {
   color: var(--color-light-white);
-  background-color: #a7303060;
+  background-color: #a7303077;
   padding: 0 5px 0 10px;
   position: relative;
   line-height: inherit;
@@ -1594,10 +1594,15 @@ section.about {
   top: 50%;
   transform: translateY(-50%);
 }
+/* S  W  I  P  E  R */
 .swiper-button-next::after,
 .swiper-button-prev::after {
   font-size: 28px;
   color: var(--color-light-white);
+  transition: color 0.2s ease-in-out;
+}
+.swiper-button-next:hover {
+ color: var(--color-dark-red); 
 }
 /* End Other 3D Service */
 
