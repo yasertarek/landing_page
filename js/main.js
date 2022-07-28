@@ -365,6 +365,27 @@ Handle Visualising Gallery
     });
 });
 
+// Handle Swiper Slide Gallery
+
+// [...document.querySelectorAll('.swiper-slide__overlay')].forEach((slide, SI) => {
+//     slide.addEventListener('click', (evnt) => {
+//         let gallery = document.getElementById(evnt.currentTarget.parentElement.parentElement.parentElement.parentElement.getAttribute('data-gallery'))
+//         console.log(gallery)
+//     });
+// });
+
+document.addEventListener('click', (e) => {
+    if(e.target.closest('.swiper-slide')) {
+        let gallery = document.getElementById(e.target.closest('.swiper-slide').parentElement.parentElement.parentElement.getAttribute('data-gallery'));
+        if(!gallery) return
+        gallery.classList.add('gallery--active')
+        // console.log(gallery)
+    }
+    if(e.target.closest('.gallery__close')){
+        e.target.closest('.gallery__close').parentElement.parentElement.classList.remove('gallery--active')
+    }
+})
+
 /*
 ****** 
 ******
